@@ -8,5 +8,11 @@ namespace Battleship
 {
     internal class LobbyViewModel
     {
+        public LobbyViewModel()
+        {
+            OpenGames = new List<string> { Guid.NewGuid().ToString() };
+        }
+
+        public IEnumerable<string> OpenGames { get; set; }
     }
 }
