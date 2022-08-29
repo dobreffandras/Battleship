@@ -1,9 +1,7 @@
 ﻿using Battleship.Services;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
 using System;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Battleship
@@ -25,7 +23,11 @@ namespace Battleship
 
         private void OnNewOpenGame(string gameId)
         {
-            OpenGames.Add(gameId);
+            Application.Current.Dispatcher.Invoke(
+                new Action(() => {
+                    OpenGames.Add(gameId);
+                }));
+            
         }
 
         public ObservableCollection<string> OpenGames { get; set; }

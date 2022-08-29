@@ -1,11 +1,7 @@
 ﻿using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Threading.Channels;
 
 namespace Battleship.Services
 {
@@ -21,20 +17,24 @@ namespace Battleship.Services
             var connection = factory.CreateConnection();
             channel = connection.CreateModel();
 
-            channel.QueueDeclare(
-                queue: "open_games", // TODO extract magic constant
-                durable: false,
-                exclusive: false,
-                autoDelete: false);
+            channel.ExchangeDeclare(
+                exchange: "open_games",
+                type: ExchangeType.Fanout);
         }
 
         public void Connect()
         {
+            var queueName = channel.QueueDeclare().QueueName;
+            channel.QueueBind(
+                queueName,
+                exchange: "open_games",
+                routingKey: string.Empty);
+
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += OpenGamesMessageReceived;
             channel.BasicConsume(
-                queue: "open_games",
-                autoAck: false,
+                queue: queueName,
+                autoAck: true,
                 consumer: consumer);
         }
 
@@ -49,8 +49,8 @@ namespace Battleship.Services
         internal void StartNewGame()
         {
             channel.BasicPublish(
-                exchange: string.Empty,
-                routingKey: "open_games",
+                exchange: "open_games",
+                routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(newGameId));
         }
     }
