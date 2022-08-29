@@ -3,16 +3,19 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace Battleship
 {
-    internal class LobbyViewModel
+    internal class LobbyViewModel : BaseViewModel
     {
+        private int selectedGameIndex;
+
         public LobbyViewModel()
         {
             var newGameId = Guid.NewGuid().ToString();
             OpenGames = new ObservableCollection<string>();
-
+            JoinGame = new JoinGameCommand(this);
             SendOpenGameMessage(newGameId);
         }
 
@@ -27,7 +30,7 @@ namespace Battleship
                 durable: false,
                 exclusive: false,
                 autoDelete: false);
-            
+
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += OpenGamesMessageReceived;
             channel.BasicConsume(
@@ -48,5 +51,18 @@ namespace Battleship
         }
 
         public ObservableCollection<string> OpenGames { get; set; }
+
+        public JoinGameCommand JoinGame { get; set; }
+
+        public string? SelectedGameItem { get; set; }
+
+        public int SelectedGameIndex        {
+            get => selectedGameIndex; 
+            set
+            {
+                selectedGameIndex = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
 }

@@ -11,8 +11,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Games"></TextBlock>
-        <ListView ItemsSource="{Binding OpenGames}"></ListView>
+        <ListView 
+            Grid.Row="1"
+            ItemsSource="{Binding OpenGames}"
+            SelectedItem="{Binding SelectedGameItem, Mode=OneWayToSource}"
+            SelectedIndex="{Binding SelectedGameIndex, Mode=OneWayToSource}"></ListView>
+        <Button
+            Grid.Row="2"
+            Command="{Binding JoinGame}"
+            CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
     </Grid>
 </UserControl>
