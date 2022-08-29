@@ -9,10 +9,11 @@ namespace Battleship
     internal class LobbyViewModel : BaseViewModel
     {
         private int selectedGameIndex;
+        private CommunicationService communicationService;
 
         public LobbyViewModel()
         {
-            var communicationService = new CommunicationService();
+            communicationService = new CommunicationService();
             OpenGames = new ObservableCollection<string>();
             JoinGame = new JoinGameCommand(this);
             NewGame = new NewGameCommand(communicationService);
@@ -23,13 +24,33 @@ namespace Battleship
 
         private void OnNewOpenGame(LobbyMessage message)
         {
-            if(message.Type == MessageType.NewGame)
+            var gameId = message.GameGuid;
+            switch (message.Type)
             {
-                var gameId = message.GameGuid;
-                Application.Current.Dispatcher.Invoke(
-                    new Action(() => {
-                        OpenGames.Add(gameId);
-                    }));
+                case MessageType.NewGame:
+                    Application.Current.Dispatcher.Invoke(
+                        new Action(() => {
+                            if (!OpenGames.Contains(gameId))
+                            {
+                                OpenGames.Add(gameId);
+                            }
+                        }));
+                    break;
+                case MessageType.GameDisappeared:
+
+                    Application.Current.Dispatcher.Invoke(
+                        new Action(() => {
+                            OpenGames.Remove(gameId);
+                        }));
+                    break;
+            }
+        }
+
+        internal void JoinGameAction()
+        {
+            if(SelectedGameItem is not null)
+            {
+                communicationService.JoinGame(SelectedGameItem);
             }
         }
 

@@ -53,7 +53,19 @@ namespace Battleship.Services
 
         internal void StartNewGame()
         {
-            var messageStr = JsonConvert.SerializeObject(new LobbyMessage(MessageType.NewGame, newGameId));
+            var messageStr = JsonConvert.SerializeObject(
+                new LobbyMessage(MessageType.NewGame, newGameId));
+
+            channel.BasicPublish(
+                exchange: "open_games",
+                routingKey: string.Empty,
+                body: Encoding.UTF8.GetBytes(messageStr));
+        }
+
+        internal void JoinGame(string selectedGameItem)
+        {
+            var messageStr = JsonConvert.SerializeObject(
+                new LobbyMessage(MessageType.GameDisappeared, selectedGameItem));
 
             channel.BasicPublish(
                 exchange: "open_games",

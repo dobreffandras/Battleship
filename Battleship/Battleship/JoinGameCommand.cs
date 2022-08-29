@@ -21,8 +21,7 @@ namespace Battleship
 
         public override void Execute(object? parameter)
         {
-            var selected = this.lobby.SelectedGameItem as string;
-            MessageBox.Show(selected);
+            this.lobby.JoinGameAction();
         }
 
         private void Lobby_PropertyChanged(
