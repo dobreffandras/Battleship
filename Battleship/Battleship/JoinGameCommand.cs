@@ -17,7 +17,7 @@ namespace Battleship
         }
 
         public override bool CanExecute(object? parameter) 
-            => lobby.SelectedGameIndex > 0 && base.CanExecute(parameter);
+            => lobby.SelectedGameIndex >= 0 && base.CanExecute(parameter);
 
         public override void Execute(object? parameter)
         {
