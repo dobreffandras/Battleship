@@ -1,6 +1,7 @@
 ﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Battleship
@@ -10,7 +11,7 @@ namespace Battleship
         public LobbyViewModel()
         {
             var newGameId = Guid.NewGuid().ToString();
-            OpenGames = new List<string> { newGameId };
+            OpenGames = new ObservableCollection<string>();
 
             SendOpenGameMessage(newGameId);
         }
@@ -26,6 +27,13 @@ namespace Battleship
                 durable: false,
                 exclusive: false,
                 autoDelete: false);
+            
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += OpenGamesMessageReceived;
+            channel.BasicConsume(
+                queue: "open_games",
+                autoAck: false,
+                consumer: consumer);
 
             channel.BasicPublish(
                 exchange: string.Empty,
@@ -33,6 +41,12 @@ namespace Battleship
                 body: Encoding.UTF8.GetBytes(newGameId));
         }
 
-        public IEnumerable<string> OpenGames { get; set; }
+        private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
+        {
+            var gameId = Encoding.UTF8.GetString(args.Body.ToArray());
+            OpenGames.Add(gameId);
+        }
+
+        public ObservableCollection<string> OpenGames { get; set; }
     }
 }
