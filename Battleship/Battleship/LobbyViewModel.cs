@@ -21,13 +21,16 @@ namespace Battleship
             communicationService.Connect();
         }
 
-        private void OnNewOpenGame(string gameId)
+        private void OnNewOpenGame(LobbyMessage message)
         {
-            Application.Current.Dispatcher.Invoke(
-                new Action(() => {
-                    OpenGames.Add(gameId);
-                }));
-            
+            if(message.Type == MessageType.NewGame)
+            {
+                var gameId = message.GameGuid;
+                Application.Current.Dispatcher.Invoke(
+                    new Action(() => {
+                        OpenGames.Add(gameId);
+                    }));
+            }
         }
 
         public ObservableCollection<string> OpenGames { get; set; }

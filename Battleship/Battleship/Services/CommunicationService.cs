@@ -2,6 +2,7 @@
 using RabbitMQ.Client;
 using System;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Battleship.Services
 {
@@ -38,20 +39,26 @@ namespace Battleship.Services
                 consumer: consumer);
         }
 
-        public Action<string>? NewOpenGameCallback { get; set; }
+        public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
-            var gameId = Encoding.UTF8.GetString(args.Body.ToArray());
-            NewOpenGameCallback?.Invoke(gameId);
+            var messageStr = Encoding.UTF8.GetString(args.Body.ToArray());
+            var message = JsonConvert.DeserializeObject<LobbyMessage>(messageStr);
+            if(message is not null)
+            {
+                NewOpenGameCallback?.Invoke(message);
+            }
         }
 
         internal void StartNewGame()
         {
+            var messageStr = JsonConvert.SerializeObject(new LobbyMessage(MessageType.NewGame, newGameId));
+
             channel.BasicPublish(
                 exchange: "open_games",
                 routingKey: string.Empty,
-                body: Encoding.UTF8.GetBytes(newGameId));
+                body: Encoding.UTF8.GetBytes(messageStr));
         }
     }
 }
