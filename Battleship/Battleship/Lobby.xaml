@@ -8,20 +8,39 @@
              d:DataContext="{d:DesignInstance Type=local:LobbyViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Games"></TextBlock>
-        <ListView 
-            Grid.Row="1"
-            ItemsSource="{Binding OpenGames}"
-            SelectedItem="{Binding SelectedGameItem, Mode=OneWayToSource}"
-            SelectedIndex="{Binding SelectedGameIndex, Mode=OneWayToSource}"></ListView>
-        <Button
-            Grid.Row="2"
-            Command="{Binding JoinGame}"
-            CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Games"></TextBlock>
+            <ListView 
+                Grid.Row="1"
+                ItemsSource="{Binding OpenGames}"
+                SelectedItem="{Binding SelectedGameItem, Mode=OneWayToSource}"
+                SelectedIndex="{Binding SelectedGameIndex, Mode=OneWayToSource}"></ListView>
+            <Button
+                Grid.Row="2"
+                Command="{Binding JoinGame}"
+                CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0">New Game</TextBlock>
+            <Button 
+                Grid.Row="1"
+                Command="{Binding NewGame}">Start new game</Button>
+        </Grid>
     </Grid>
 </UserControl>

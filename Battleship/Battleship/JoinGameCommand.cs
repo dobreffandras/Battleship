@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Battleship
 {
-    internal class JoinGameCommand : ICommand
+    internal class JoinGameCommand : BaseCommand
     {
         private readonly LobbyViewModel lobby;
 
@@ -16,11 +16,10 @@ namespace Battleship
             lobby.PropertyChanged += Lobby_PropertyChanged;
         }
 
-        public event EventHandler? CanExecuteChanged;
+        public override bool CanExecute(object? parameter) 
+            => lobby.SelectedGameIndex > 0 && base.CanExecute(parameter);
 
-        public bool CanExecute(object? parameter) => lobby.SelectedGameIndex > 0;
-
-        public void Execute(object? parameter)
+        public override void Execute(object? parameter)
         {
             var selected = this.lobby.SelectedGameItem as string;
             MessageBox.Show(selected);
@@ -32,7 +31,7 @@ namespace Battleship
         {
             if(e.PropertyName == nameof(LobbyViewModel.SelectedGameIndex))
             {
-                CanExecuteChanged?.Invoke(this, new EventArgs());
+                RaiseCanExecuteChanged();
             }
         }
     }
