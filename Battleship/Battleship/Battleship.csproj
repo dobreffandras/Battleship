@@ -16,4 +16,9 @@
 	  <DependentUpon>Lobby.xaml</DependentUpon>
 	</Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainWindowViewModel.cs">
+	  <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Content>
+  </ItemGroup>
 </Project>

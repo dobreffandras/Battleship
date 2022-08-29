@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Battleship"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:LobbyViewModel}">
+            <local:Lobby />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <local:Lobby></local:Lobby>
+        <ContentControl Content="{Binding ViewModel}" />
     </Grid>
 </Window>

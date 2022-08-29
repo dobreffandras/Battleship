@@ -23,7 +23,6 @@ namespace Battleship
         public Lobby()
         {
             InitializeComponent();
-            DataContext = new LobbyViewModel();
         }
     }
 }

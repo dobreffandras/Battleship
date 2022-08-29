@@ -23,6 +23,10 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel()
+            {
+                ViewModel = new LobbyViewModel(),
+            };
         }
     }
 }
