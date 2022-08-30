@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Battleship"
              mc:Ignorable="d"
+             xmlns:components="clr-namespace:Battleship.Components"
              d:DataContext="{d:DesignInstance Type=local:LobbyViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -15,6 +16,7 @@
         
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -29,18 +31,18 @@
                 Grid.Row="2"
                 Command="{Binding JoinGame}"
                 CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
+            <Button 
+                Grid.Row="3"
+                Command="{Binding NewGame}">Start new game</Button>
         </Grid>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0">New Game</TextBlock>
-            <Button 
-                Grid.Row="1"
-                Command="{Binding NewGame}">Start new game</Button>
+            <components:Playfield  
+                Grid.Row="1" 
+                DataContext="{Binding NewGamePlayField}" />
         </Grid>
     </Grid>
 </UserControl>

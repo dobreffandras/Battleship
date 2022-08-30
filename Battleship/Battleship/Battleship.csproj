@@ -26,4 +26,9 @@
       <DependentUpon>Game.xaml</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Components/PlayfieldViewModel.cs">
+      <DependentUpon>Components/Playfield.xaml</DependentUpon>
+    </Content>
+  </ItemGroup>
 </Project>

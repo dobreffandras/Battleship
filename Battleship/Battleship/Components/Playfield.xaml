@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="Battleship.Components.Playfield"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Battleship.Components"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=local:PlayfieldModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <CheckBox Grid.Column="0" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="A0"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="A1"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="A2"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="A3"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="A4"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="A5"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="A6"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="A7"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="A8"></CheckBox>
+        <CheckBox Grid.Column="0" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="A9"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="B0"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="B1"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="B2"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="B3"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="B4"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="B5"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="B6"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="B7"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="B8"></CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="B9"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="C0"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="C1"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="C2"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="C3"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="C4"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="C5"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="C6"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="C7"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="C8"></CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="C9"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="D0"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="D1"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="D2"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="D3"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="D4"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="D5"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="D6"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="D7"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="D8"></CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="D9"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="E0"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="E1"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="E2"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="E3"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="E4"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="E5"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="E6"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="E7"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="E8"></CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="E9"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="F0"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="F1"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="F2"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="F3"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="F4"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="F5"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="F6"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="F7"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="F8"></CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="F9"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="G0"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="G1"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="G2"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="G3"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="G4"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="G5"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="G6"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="G7"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="G8"></CheckBox>
+        <CheckBox Grid.Column="6" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="G9"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="H0"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="H1"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="H2"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="H3"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="H4"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="H5"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="H6"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="H7"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="H8"></CheckBox>
+        <CheckBox Grid.Column="7" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="H9"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="I0"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="I1"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="I2"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="I3"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="I4"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="I5"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="I6"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="I7"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="I8"></CheckBox>
+        <CheckBox Grid.Column="8" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="I9"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="J0"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="J1"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="J2"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="J3"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="J4"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="J5"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="J6"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="J7"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="J8"></CheckBox>
+        <CheckBox Grid.Column="9" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="J9"></CheckBox>
+    </Grid>
+</UserControl>
