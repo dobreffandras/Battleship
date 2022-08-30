@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,10 +16,13 @@ namespace Battleship
             this.lobby = lobby;
             this.navigate = navigate;
             lobby.PropertyChanged += Lobby_PropertyChanged;
+            lobby.NewGamePlayField.PropertyChanged += Lobby_NewGamePlayField_Propertychanged;
         }
 
         public override bool CanExecute(object? parameter) 
-            => lobby.SelectedGameIndex >= 0 && base.CanExecute(parameter);
+            => lobby.SelectedGameIndex >= 0 
+            && lobby.NewGamePlayField.IsPrepared
+            && base.CanExecute(parameter);
 
         public override void Execute(object? parameter)
         {
@@ -28,12 +32,22 @@ namespace Battleship
 
         private void Lobby_PropertyChanged(
             object? sender, 
-            System.ComponentModel.PropertyChangedEventArgs e)
+            PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(LobbyViewModel.SelectedGameIndex))
             {
                 RaiseCanExecuteChanged();
             }
         }
+        private void Lobby_NewGamePlayField_Propertychanged(
+            object? sender, 
+            PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(Components.PlayfieldViewModel.IsPrepared))
+            {
+                RaiseCanExecuteChanged();
+            }
+        }
+
     }
 }

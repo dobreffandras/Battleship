@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Battleship.Components
 {
@@ -21,5 +22,7 @@ namespace Battleship.Components
                 }
             }
         }
+
+        public bool IsPrepared => this.Count(kv => kv.Value) == 20;
     }
 }

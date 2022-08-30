@@ -16,12 +16,13 @@ namespace Battleship
             CommunicationService communicationService,
             Action navigateToGameViewModel)
         {
+            NewGamePlayField = new PlayfieldViewModel(new PlayfieldModel());
             OpenGames = new ObservableCollection<string>();
             JoinGame = new JoinGameCommand(this, navigateToGameViewModel);
-            NewGame = new NewGameCommand(communicationService, navigateToGameViewModel);
+            NewGame = new NewGameCommand(this, communicationService, navigateToGameViewModel);
             this.communicationService = communicationService;
 
-            NewGamePlayField = new PlayfieldViewModel(new PlayfieldModel());
+            
             
             communicationService.NewOpenGameCallback = this.OnNewOpenGame;
             communicationService.Connect();
