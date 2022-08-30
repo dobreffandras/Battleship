@@ -1,4 +1,5 @@
-﻿using Battleship.Services;
+﻿using Battleship.Components;
+using Battleship.Services;
 using System;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -9,12 +10,12 @@ namespace Battleship.Commands
     {
         private readonly LobbyViewModel lobby;
         private readonly CommunicationService communicationService;
-        private readonly Action navigate;
+        private readonly Action<PlayfieldModel> navigate;
 
         public NewGameCommand(
             LobbyViewModel lobby,
             CommunicationService communicationService,
-            Action navigate)
+            Action<PlayfieldModel> navigate)
         {
             this.lobby = lobby;
             this.communicationService = communicationService;
@@ -30,7 +31,7 @@ namespace Battleship.Commands
         public override void Execute(object? parameter)
         {
             communicationService.StartNewGame();
-            navigate();
+            navigate(lobby.NewGamePlayField.Model);
         }
 
         private void NewGamePlayField_PropertyChanged(

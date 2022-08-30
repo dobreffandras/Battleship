@@ -15,7 +15,7 @@ namespace Battleship
 
         public LobbyViewModel(
             CommunicationService communicationService,
-            Action navigateToGameViewModel)
+            Action<PlayfieldModel> navigateToGameViewModel)
         {
             NewGamePlayField = new PreparingPlayfieldViewModel(new PlayfieldModel());
             OpenGames = new ObservableCollection<string>();

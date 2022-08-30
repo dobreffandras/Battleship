@@ -1,4 +1,5 @@
-﻿using Battleship.Services;
+﻿using Battleship.Components;
+using Battleship.Services;
 
 namespace Battleship
 {
@@ -7,25 +8,20 @@ namespace Battleship
         private readonly CommunicationService communicationService;
         private string? messageReceived;
 
-        public GameViewModel(CommunicationService communicationService)
+        public GameViewModel(PlayfieldModel model, CommunicationService communicationService)
         {
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
+
+            PlayingFieldViewModel = new PlayingFieldViewModel(model);
         }
 
-        public string? MessageReceived
-        {
-            get => messageReceived;
-            set
-            {
-                messageReceived = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public PlayingFieldViewModel PlayingFieldViewModel { get; }
 
-        public void ChangeMessageReceived(string messageReceived)
+        public void ChangeMessageReceived(GameMessage message)
         {
-            this.MessageReceived = messageReceived;
+            PlayingFieldViewModel.ShootOn(message.X, message.Y);
+            NotifyPropertyChanged(nameof(PlayingFieldViewModel));
         }
     }
 }

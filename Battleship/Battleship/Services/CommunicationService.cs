@@ -42,7 +42,7 @@ namespace Battleship.Services
 
         public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
-        public Action<string>? GameActionCallback { get; set; }
+        public Action<GameMessage>? GameActionCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
@@ -76,7 +76,12 @@ namespace Battleship.Services
 
         private void GameActionMessageReceviced(object? sender, BasicDeliverEventArgs e)
         {
-            GameActionCallback?.Invoke(Encoding.UTF8.GetString(e.Body.ToArray()));
+            var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
+            var message = JsonConvert.DeserializeObject<GameMessage>(messageStr);
+            if (message is not null)
+            {
+                GameActionCallback?.Invoke(message);
+            }
         }
 
         internal void JoinGame(string selectedGameItem)
@@ -89,11 +94,15 @@ namespace Battleship.Services
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(messageStr));
 
+            // TODO this is a dummy message
             var gameQueue = $"game-{selectedGameItem}";
+            var gameMessageStr = JsonConvert.SerializeObject(
+                new GameMessage('B', '2')); 
+
             channel.BasicPublish(
                 exchange: string.Empty,
                 routingKey: gameQueue,
-                body: Encoding.UTF8.GetBytes($"Hejhó {gameQueue}"));
+                body: Encoding.UTF8.GetBytes(gameMessageStr));
         }
     }
 }

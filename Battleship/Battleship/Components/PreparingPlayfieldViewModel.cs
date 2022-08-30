@@ -15,9 +15,11 @@ namespace Battleship.Components
 
         public bool IsPrepared => model.IsPrepared;
 
+        public PlayfieldModel Model => model;
+
         internal void ToggleShippartAt(char x, char y)
         {
-            model[(x, y)] = !model[(x, y)];
+            model.ToggleShippart(x, y);
             NotifyPropertyChanged(nameof(IsPrepared));
         }
     }

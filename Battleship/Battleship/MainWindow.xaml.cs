@@ -29,9 +29,9 @@ namespace Battleship
             {
                 ViewModel = new LobbyViewModel(
                     communicationService,
-                    navigateToGameViewModel: () =>
+                    navigateToGameViewModel: (model) =>
                     {
-                        ChangeViewModel(new GameViewModel(communicationService));
+                        ChangeViewModel(new GameViewModel(model, communicationService));
                     }),
             };
         }
