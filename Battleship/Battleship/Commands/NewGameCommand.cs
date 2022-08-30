@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Battleship
+namespace Battleship.Commands
 {
     internal class NewGameCommand : BaseCommand
     {
@@ -23,8 +23,8 @@ namespace Battleship
             lobby.NewGamePlayField.PropertyChanged += NewGamePlayField_PropertyChanged;
         }
 
-        public override bool CanExecute(object? parameter) 
-            => lobby.NewGamePlayField.IsPrepared 
+        public override bool CanExecute(object? parameter)
+            => lobby.NewGamePlayField.IsPrepared
             && base.CanExecute(parameter);
 
         public override void Execute(object? parameter)
@@ -34,10 +34,10 @@ namespace Battleship
         }
 
         private void NewGamePlayField_PropertyChanged(
-            object? sender, 
+            object? sender,
             PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(Components.PlayfieldViewModel.IsPrepared))
+            if (e.PropertyName == nameof(Components.PlayfieldViewModel.IsPrepared))
             {
                 RaiseCanExecuteChanged();
             }

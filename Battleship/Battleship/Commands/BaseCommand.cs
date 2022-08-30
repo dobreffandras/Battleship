@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Battleship
+namespace Battleship.Commands
 {
     internal abstract class BaseCommand : ICommand
     {
