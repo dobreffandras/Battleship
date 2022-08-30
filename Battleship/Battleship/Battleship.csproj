@@ -12,13 +12,18 @@
     <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
   </ItemGroup>
   <ItemGroup>
-	<Content Include="LobbyViewModel.cs">
-	  <DependentUpon>Lobby.xaml</DependentUpon>
-	</Content>
+    <Content Include="LobbyViewModel.cs">
+      <DependentUpon>Lobby.xaml</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainWindowViewModel.cs">
-	  <DependentUpon>MainWindow.xaml</DependentUpon>
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GameViewModel.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

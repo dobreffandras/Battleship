@@ -25,8 +25,17 @@ namespace Battleship
             InitializeComponent();
             this.DataContext = new MainWindowViewModel()
             {
-                ViewModel = new LobbyViewModel(),
+                ViewModel = new LobbyViewModel(
+                    navigateToGameViewModel: () => ChangeViewModel(new GameViewModel())),
             };
+        }
+
+        private void ChangeViewModel(BaseViewModel viewModel)
+        {
+            if(DataContext is MainWindowViewModel mainViewModel)
+            {
+                mainViewModel.ViewModel = viewModel;
+            }
         }
     }
 }

@@ -11,13 +11,12 @@ namespace Battleship
         private int selectedGameIndex;
         private CommunicationService communicationService;
 
-        public LobbyViewModel()
+        public LobbyViewModel(Action navigateToGameViewModel)
         {
             communicationService = new CommunicationService();
             OpenGames = new ObservableCollection<string>();
-            JoinGame = new JoinGameCommand(this);
-            NewGame = new NewGameCommand(communicationService);
-
+            JoinGame = new JoinGameCommand(this, navigateToGameViewModel);
+            NewGame = new NewGameCommand(communicationService, navigateToGameViewModel);
             communicationService.NewOpenGameCallback = this.OnNewOpenGame;
             communicationService.Connect();
         }

@@ -2,6 +2,16 @@
 {
     internal class MainWindowViewModel : BaseViewModel
     {
-        public object? ViewModel { get; set; }
+        private object? viewModel;
+
+        public object? ViewModel
+        {
+            get => viewModel;
+            set
+            {
+                viewModel = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
 }
