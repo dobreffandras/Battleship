@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battleship.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,10 +24,15 @@ namespace Battleship
         public MainWindow()
         {
             InitializeComponent();
+            var communicationService = new CommunicationService();
             this.DataContext = new MainWindowViewModel()
             {
                 ViewModel = new LobbyViewModel(
-                    navigateToGameViewModel: () => ChangeViewModel(new GameViewModel())),
+                    communicationService,
+                    navigateToGameViewModel: () =>
+                    {
+                        ChangeViewModel(new GameViewModel(communicationService));
+                    }),
             };
         }
 

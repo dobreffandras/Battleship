@@ -3,6 +3,7 @@ using RabbitMQ.Client;
 using System;
 using System.Text;
 using Newtonsoft.Json;
+using System.Windows;
 
 namespace Battleship.Services
 {
@@ -41,6 +42,8 @@ namespace Battleship.Services
 
         public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
+        public Action<string>? GameActionCallback { get; set; }
+
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
             var messageStr = Encoding.UTF8.GetString(args.Body.ToArray());
@@ -60,6 +63,20 @@ namespace Battleship.Services
                 exchange: "open_games",
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(messageStr));
+
+            var gameQueue = $"game-{newGameId}";
+            channel.QueueDeclare(queue: gameQueue);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += GameActionMessageReceviced;
+            channel.BasicConsume(
+                queue: gameQueue,
+                consumer: consumer);
+        }
+
+        private void GameActionMessageReceviced(object? sender, BasicDeliverEventArgs e)
+        {
+            GameActionCallback?.Invoke(Encoding.UTF8.GetString(e.Body.ToArray()));
         }
 
         internal void JoinGame(string selectedGameItem)
@@ -71,6 +88,12 @@ namespace Battleship.Services
                 exchange: "open_games",
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(messageStr));
+
+            var gameQueue = $"game-{selectedGameItem}";
+            channel.BasicPublish(
+                exchange: string.Empty,
+                routingKey: gameQueue,
+                body: Encoding.UTF8.GetBytes($"Hejhó {gameQueue}"));
         }
     }
 }
