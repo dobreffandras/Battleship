@@ -18,9 +18,9 @@ namespace Battleship.Components
     /// <summary>
     /// Interaction logic for Playfield.xaml
     /// </summary>
-    public partial class Playfield : UserControl
+    public partial class PreparingPlayfield : UserControl
     {
-        public Playfield()
+        public PreparingPlayfield()
         {
             InitializeComponent();
         }

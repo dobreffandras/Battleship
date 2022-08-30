@@ -40,7 +40,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <components:Playfield  
+            <components:PreparingPlayfield  
                 Grid.Row="1" 
                 DataContext="{Binding NewGamePlayField}" />
         </Grid>

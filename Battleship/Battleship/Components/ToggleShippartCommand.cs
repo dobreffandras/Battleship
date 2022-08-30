@@ -1,13 +1,14 @@
 ﻿using System.Windows.Input;
+using Battleship.Commands;
 
 namespace Battleship.Components
 {
     internal class ToggleShippartCommand : BaseCommand
     {
-        private readonly PlayfieldViewModel viewModel;
+        private readonly PreparingPlayfieldViewModel viewModel;
 
         public ToggleShippartCommand(
-            PlayfieldViewModel viewModel)
+            PreparingPlayfieldViewModel viewModel)
         {
             this.viewModel = viewModel;
         }

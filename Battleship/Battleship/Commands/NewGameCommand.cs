@@ -37,7 +37,7 @@ namespace Battleship.Commands
             object? sender,
             PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Components.PlayfieldViewModel.IsPrepared))
+            if (e.PropertyName == nameof(Components.PreparingPlayfieldViewModel.IsPrepared))
             {
                 RaiseCanExecuteChanged();
             }

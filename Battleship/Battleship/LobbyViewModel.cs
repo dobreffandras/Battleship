@@ -1,4 +1,5 @@
-﻿using Battleship.Components;
+﻿using Battleship.Commands;
+using Battleship.Components;
 using Battleship.Services;
 using System;
 using System.Collections.ObjectModel;
@@ -16,7 +17,7 @@ namespace Battleship
             CommunicationService communicationService,
             Action navigateToGameViewModel)
         {
-            NewGamePlayField = new PlayfieldViewModel(new PlayfieldModel());
+            NewGamePlayField = new PreparingPlayfieldViewModel(new PlayfieldModel());
             OpenGames = new ObservableCollection<string>();
             JoinGame = new JoinGameCommand(this, navigateToGameViewModel);
             NewGame = new NewGameCommand(this, communicationService, navigateToGameViewModel);
@@ -64,7 +65,7 @@ namespace Battleship
 
         public JoinGameCommand JoinGame { get; set; }
 
-        public PlayfieldViewModel NewGamePlayField { get; }
+        public PreparingPlayfieldViewModel NewGamePlayField { get; }
 
         public ICommand NewGame { get; set; }
 

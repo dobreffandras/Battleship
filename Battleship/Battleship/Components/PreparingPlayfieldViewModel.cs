@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Battleship.Components
 {
-    internal class PlayfieldViewModel : BaseViewModel
+    internal class PreparingPlayfieldViewModel : BaseViewModel
     {
         private readonly PlayfieldModel model;
 
-        public PlayfieldViewModel(PlayfieldModel model)
+        public PreparingPlayfieldViewModel(PlayfieldModel model)
         {
             ToggleShippart = new ToggleShippartCommand(this);
             this.model = model;
