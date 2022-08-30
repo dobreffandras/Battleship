@@ -7,6 +7,39 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:PlayfieldModel}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Border 
+                            x:Name="CellBorder"
+                            BorderBrush="Blue"
+                            BorderThickness="0">
+                            <Rectangle 
+                                Width="20"
+                                Height="20"
+                                Fill="PapayaWhip"></Rectangle>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter TargetName="CellBorder" Property="BorderThickness" Value="0" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="CellBorder" Property="BorderThickness" Value="0" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CellBorder" Property="BorderThickness" Value="2" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"></ColumnDefinition>
