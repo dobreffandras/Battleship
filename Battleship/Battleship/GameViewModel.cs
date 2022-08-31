@@ -6,7 +6,6 @@ namespace Battleship
     internal class GameViewModel : BaseViewModel
     {
         private readonly CommunicationService communicationService;
-        private string? messageReceived;
 
         public GameViewModel(PlayfieldModel model, CommunicationService communicationService)
         {

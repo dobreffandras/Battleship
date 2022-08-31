@@ -5,8 +5,132 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Battleship.Components"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=local:PlayingFieldViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Shipparts[A0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Shipparts[A1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Shipparts[A2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Shipparts[A3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="{Binding Shipparts[A4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="{Binding Shipparts[A5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="{Binding Shipparts[A6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="{Binding Shipparts[A7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="{Binding Shipparts[A8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="{Binding Shipparts[A9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Shipparts[B0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Shipparts[B1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Shipparts[B2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Shipparts[B3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Shipparts[B4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Shipparts[B5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Shipparts[B6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding Shipparts[B7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding Shipparts[B8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding Shipparts[B9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Shipparts[C0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Shipparts[C1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Shipparts[C2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Shipparts[C3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding Shipparts[C4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding Shipparts[C5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="2" Text="{Binding Shipparts[C6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="2" Text="{Binding Shipparts[C7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="2" Text="{Binding Shipparts[C8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="2" Text="{Binding Shipparts[C9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding Shipparts[D0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Shipparts[D1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Shipparts[D2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Shipparts[D3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding Shipparts[D4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding Shipparts[D5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="3" Text="{Binding Shipparts[D6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="3" Text="{Binding Shipparts[D7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="3" Text="{Binding Shipparts[D8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="3" Text="{Binding Shipparts[D9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding Shipparts[E0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding Shipparts[E1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding Shipparts[E2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding Shipparts[E3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding Shipparts[E4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding Shipparts[E5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="{Binding Shipparts[E6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="4" Text="{Binding Shipparts[E7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="4" Text="{Binding Shipparts[E8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="4" Text="{Binding Shipparts[E9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="5" Text="{Binding Shipparts[F0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="5" Text="{Binding Shipparts[F1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="5" Text="{Binding Shipparts[F2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="5" Text="{Binding Shipparts[F3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="5" Text="{Binding Shipparts[F4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="5" Text="{Binding Shipparts[F5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="5" Text="{Binding Shipparts[F6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="5" Text="{Binding Shipparts[F7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="5" Text="{Binding Shipparts[F8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="5" Text="{Binding Shipparts[F9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="6" Text="{Binding Shipparts[G0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="6" Text="{Binding Shipparts[G1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="6" Text="{Binding Shipparts[G2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="6" Text="{Binding Shipparts[G3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="6" Text="{Binding Shipparts[G4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="6" Text="{Binding Shipparts[G5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="6" Text="{Binding Shipparts[G6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="6" Text="{Binding Shipparts[G7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="6" Text="{Binding Shipparts[G8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="6" Text="{Binding Shipparts[G9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="7" Text="{Binding Shipparts[H0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="7" Text="{Binding Shipparts[H1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="7" Text="{Binding Shipparts[H2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="7" Text="{Binding Shipparts[H3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="7" Text="{Binding Shipparts[H4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="7" Text="{Binding Shipparts[H5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="7" Text="{Binding Shipparts[H6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="7" Text="{Binding Shipparts[H7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="7" Text="{Binding Shipparts[H8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="7" Text="{Binding Shipparts[H9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="8" Text="{Binding Shipparts[I0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="8" Text="{Binding Shipparts[I1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="8" Text="{Binding Shipparts[I2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="8" Text="{Binding Shipparts[I3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="8" Text="{Binding Shipparts[I4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="8" Text="{Binding Shipparts[I5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="8" Text="{Binding Shipparts[I6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="8" Text="{Binding Shipparts[I7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="8" Text="{Binding Shipparts[I8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="8" Text="{Binding Shipparts[I9]}"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="9" Text="{Binding Shipparts[J0]}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="9" Text="{Binding Shipparts[J1]}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="9" Text="{Binding Shipparts[J2]}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="9" Text="{Binding Shipparts[J3]}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="9" Text="{Binding Shipparts[J4]}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="9" Text="{Binding Shipparts[J5]}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="9" Text="{Binding Shipparts[J6]}"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="9" Text="{Binding Shipparts[J7]}"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="9" Text="{Binding Shipparts[J8]}"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="9" Text="{Binding Shipparts[J9]}"></TextBlock>
     </Grid>
 </UserControl>

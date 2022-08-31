@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Battleship.Components
 {
@@ -15,5 +17,10 @@ namespace Battleship.Components
         {
             model.ShootOn(x, y);
         }
+
+        public IDictionary<string, string> Shipparts 
+            => model.Shipparts.ToDictionary(
+                kv => $"{kv.Key.Item1}{kv.Key.Item2}", 
+                kv => kv.Value.ToString());
     }
 }
