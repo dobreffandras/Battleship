@@ -7,9 +7,30 @@
              xmlns:components="clr-namespace:Battleship.Components"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:GameViewModel}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450"
+             d:DesignWidth="800">
     <Grid>
-        <TextBlock>Game</TextBlock>
-        <components:PlayingField DataContext="{Binding PlayingFieldViewModel}"></components:PlayingField>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Grid.Column="0"
+            Grid.Row="0" 
+            Grid.ColumnSpan="2">Game</TextBlock>
+        <components:PlayingField 
+            Grid.Column="0"
+            Grid.Row="1" 
+            DataContext="{Binding PlayingFieldViewModel}"
+            PlayingType="Passive"></components:PlayingField>
+        <components:PlayingField 
+            Grid.Column="1"
+            Grid.Row="1" 
+            DataContext="{Binding PlayingFieldViewModel}"
+            PlayingType="Active"></components:PlayingField>
     </Grid>
 </UserControl>

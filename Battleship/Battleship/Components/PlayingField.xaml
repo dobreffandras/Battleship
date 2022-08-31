@@ -8,6 +8,20 @@
              d:DataContext="{d:DesignInstance Type=local:PlayingFieldViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="Violet"></Setter>
+                <Style.Triggers>
+                    <DataTrigger 
+                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:PlayingField, AncestorLevel=1}, Path=PlayingType}"
+                        Value="Active">
+                        <DataTrigger.Setters>
+                            <Setter Property="Background" Value="Red"></Setter>
+                        </DataTrigger.Setters>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
