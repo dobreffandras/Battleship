@@ -7,44 +7,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border>
-            <Border.Style>
-                <Style TargetType="Border">
-                    <Setter Property="BorderThickness" Value="0"></Setter>
-                    <Setter Property="Background" Value="Yellow"></Setter>
-                    <Setter Property="BorderBrush" Value="Blue"></Setter>
-                    <Style.Triggers>
-                        <DataTrigger 
-                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=IsShippart}"
-                            Value="True">
-                            <DataTrigger.Setters>
-                                <Setter Property="BorderThickness" Value="1"></Setter>
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <DataTrigger
-                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                            Value="None">
-                            <DataTrigger.Setters>
-                                <Setter Property="Background" Value="Gray"></Setter>
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <DataTrigger
-                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                            Value="Hit">
-                            <DataTrigger.Setters>
-                                <Setter Property="Background" Value="Orange"></Setter>
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                        <DataTrigger
-                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                            Value="Miss">
-                            <DataTrigger.Setters>
-                                <Setter Property="Background" Value="Green"></Setter>
-                            </DataTrigger.Setters>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
-        </Border>
+        <Button Command="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=Command}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Setter Property="Background" Value="Yellow"></Setter>
+                                <Setter Property="BorderBrush" Value="Blue"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=IsShippart}"
+                                Value="True">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="BorderThickness" Value="1"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                    <DataTrigger
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
+                                Value="None">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="Background" Value="Gray"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                    <DataTrigger
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
+                                Value="Hit">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="Background" Value="Orange"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                    <DataTrigger
+                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
+                                Value="Miss">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="Background" Value="Green"></Setter>
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </UserControl>

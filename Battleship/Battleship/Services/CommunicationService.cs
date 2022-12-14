@@ -9,12 +9,13 @@ namespace Battleship.Services
 {
     internal class CommunicationService
     {
-        private readonly string newGameId;
+        private string? exchange;
+        private string? player;
+        private string? receivingQueue;
         private readonly IModel channel;
 
         public CommunicationService()
         {
-            newGameId = Guid.NewGuid().ToString();
             var factory = new ConnectionFactory() { HostName = "localhost" }; // TODO extract to config
             var connection = factory.CreateConnection();
             channel = connection.CreateModel();
@@ -56,6 +57,7 @@ namespace Battleship.Services
 
         internal void StartNewGame()
         {
+            var newGameId = Guid.NewGuid().ToString();
             var messageStr = JsonConvert.SerializeObject(
                 new LobbyMessage(MessageType.NewGame, newGameId));
 
@@ -64,13 +66,23 @@ namespace Battleship.Services
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(messageStr));
 
-            var gameQueue = $"game-{newGameId}";
-            channel.QueueDeclare(queue: gameQueue);
+            receivingQueue = $"game-{newGameId}-receive-a";
+            exchange = $"game-{newGameId}";
+            player = "a";
+            var otherPlayer = "b";
+
+            channel.ExchangeDeclare(exchange, ExchangeType.Direct);
+            channel.QueueDeclare(queue: receivingQueue);
+
+            channel.QueueBind(
+                receivingQueue,
+                exchange,
+                otherPlayer);
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += GameActionMessageReceviced;
             channel.BasicConsume(
-                queue: gameQueue,
+                queue: receivingQueue,
                 consumer: consumer);
         }
 
@@ -94,14 +106,35 @@ namespace Battleship.Services
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(messageStr));
 
-            // TODO this is a dummy message
-            var gameQueue = $"game-{selectedGameItem}";
+
+            receivingQueue = $"game-{selectedGameItem}-receive-b";
+            exchange = $"game-{selectedGameItem}";
+            player = "b";
+            var otherPlayer = "a";
+
+            channel.ExchangeDeclare(exchange, ExchangeType.Direct);
+            channel.QueueDeclare(queue: receivingQueue);
+
+            channel.QueueBind(
+                receivingQueue,
+                exchange,
+                otherPlayer);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += GameActionMessageReceviced;
+            channel.BasicConsume(
+                queue: receivingQueue,
+                consumer: consumer);
+        }
+
+        internal void Shoot((char x, char y) coord)
+        {
             var gameMessageStr = JsonConvert.SerializeObject(
-                new GameMessage('B', '2')); 
+                new GameMessage(coord.x, coord.y));
 
             channel.BasicPublish(
-                exchange: string.Empty,
-                routingKey: gameQueue,
+                exchange: exchange,
+                routingKey: player,
                 body: Encoding.UTF8.GetBytes(gameMessageStr));
         }
     }

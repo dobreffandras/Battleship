@@ -12,7 +12,7 @@ namespace Battleship
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
 
-            PlayingFieldViewModel = new PlayingFieldViewModel(model);
+            PlayingFieldViewModel = new PlayingFieldViewModel(model, communicationService);
         }
 
         public PlayingFieldViewModel PlayingFieldViewModel { get; }

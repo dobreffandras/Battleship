@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Battleship.Commands;
+using Battleship.Services;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Battleship.Components
 {
@@ -8,9 +10,15 @@ namespace Battleship.Components
     {
         private readonly PlayfieldModel model;
 
-        public PlayingFieldViewModel(PlayfieldModel model)
+        public PlayingFieldViewModel(
+            PlayfieldModel model,
+            CommunicationService communicationService)
         {
             this.model = model;
+            ShootCommands = model.CellCoordinates
+                .ToDictionary<(char, char), string, ICommand>(
+                    c => $"{c.Item1}{c.Item2}",
+                    c => new ShootCommand(c, communicationService));
         }
 
         internal void ShootOn(char x, char y)
@@ -28,5 +36,7 @@ namespace Battleship.Components
             => model.ShootStates.ToDictionary(
                 kv => $"{kv.Key.Item1}{kv.Key.Item2}",
                 kv => kv.Value);
+
+        public IDictionary<string, ICommand> ShootCommands { get; }
     }
 }

@@ -45,6 +45,8 @@ namespace Battleship.Components
 
         public bool IsPrepared => cells.Count(kv => kv.Value.IsShippart) == 20;
 
+        public IReadOnlyCollection<(char, char)> CellCoordinates => cells.Keys;
+
         public IDictionary<(char, char), ShootState> ShootStates 
             => cells.ToDictionary(x => x.Key, x => x.Value.ShootState);
         

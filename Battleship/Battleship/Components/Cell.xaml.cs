@@ -51,5 +51,22 @@ namespace Battleship.Components
                 propertyType: typeof(ShootState),
                 ownerType: typeof(Cell),
                 typeMetadata: new PropertyMetadata(ShootState.None));
+
+
+
+        public ICommand Command
+        {
+            get { return (ICommand)GetValue(CommandProperty); }
+            set { SetValue(CommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register(
+                name: nameof(Command),
+                propertyType: typeof(ICommand),
+                ownerType: typeof(Cell),
+                typeMetadata: new PropertyMetadata(null));
+
+
     }
 }
