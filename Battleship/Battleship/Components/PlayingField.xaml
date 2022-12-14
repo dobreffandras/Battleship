@@ -46,105 +46,105 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <local:Cell Grid.Row="0" Grid.Column="0" IsShippart="{Binding Shipparts[A0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="0" IsShippart="{Binding Shipparts[A1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="0" IsShippart="{Binding Shipparts[A2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="0" IsShippart="{Binding Shipparts[A3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="0" IsShippart="{Binding Shipparts[A4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="0" IsShippart="{Binding Shipparts[A5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="0" IsShippart="{Binding Shipparts[A6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="0" IsShippart="{Binding Shipparts[A7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="0" IsShippart="{Binding Shipparts[A8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="0" IsShippart="{Binding Shipparts[A9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="1" IsShippart="{Binding Shipparts[B0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="1" IsShippart="{Binding Shipparts[B1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="1" IsShippart="{Binding Shipparts[B2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="1" IsShippart="{Binding Shipparts[B3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="1" IsShippart="{Binding Shipparts[B4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="1" IsShippart="{Binding Shipparts[B5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="1" IsShippart="{Binding Shipparts[B6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="1" IsShippart="{Binding Shipparts[B7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="1" IsShippart="{Binding Shipparts[B8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="1" IsShippart="{Binding Shipparts[B9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="2" IsShippart="{Binding Shipparts[C0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="2" IsShippart="{Binding Shipparts[C1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="2" IsShippart="{Binding Shipparts[C2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="2" IsShippart="{Binding Shipparts[C3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="2" IsShippart="{Binding Shipparts[C4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="2" IsShippart="{Binding Shipparts[C5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="2" IsShippart="{Binding Shipparts[C6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="2" IsShippart="{Binding Shipparts[C7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="2" IsShippart="{Binding Shipparts[C8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="2" IsShippart="{Binding Shipparts[C9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="3" IsShippart="{Binding Shipparts[D0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="3" IsShippart="{Binding Shipparts[D1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="3" IsShippart="{Binding Shipparts[D2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="3" IsShippart="{Binding Shipparts[D3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="3" IsShippart="{Binding Shipparts[D4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="3" IsShippart="{Binding Shipparts[D5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="3" IsShippart="{Binding Shipparts[D6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="3" IsShippart="{Binding Shipparts[D7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="3" IsShippart="{Binding Shipparts[D8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="3" IsShippart="{Binding Shipparts[D9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="4" IsShippart="{Binding Shipparts[E0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="4" IsShippart="{Binding Shipparts[E1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="4" IsShippart="{Binding Shipparts[E2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="4" IsShippart="{Binding Shipparts[E3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="4" IsShippart="{Binding Shipparts[E4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="4" IsShippart="{Binding Shipparts[E5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="4" IsShippart="{Binding Shipparts[E6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="4" IsShippart="{Binding Shipparts[E7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="4" IsShippart="{Binding Shipparts[E8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="4" IsShippart="{Binding Shipparts[E9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="5" IsShippart="{Binding Shipparts[F0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="5" IsShippart="{Binding Shipparts[F1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="5" IsShippart="{Binding Shipparts[F2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="5" IsShippart="{Binding Shipparts[F3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="5" IsShippart="{Binding Shipparts[F4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="5" IsShippart="{Binding Shipparts[F5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="5" IsShippart="{Binding Shipparts[F6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="5" IsShippart="{Binding Shipparts[F7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="5" IsShippart="{Binding Shipparts[F8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="5" IsShippart="{Binding Shipparts[F9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="6" IsShippart="{Binding Shipparts[G0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="6" IsShippart="{Binding Shipparts[G1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="6" IsShippart="{Binding Shipparts[G2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="6" IsShippart="{Binding Shipparts[G3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="6" IsShippart="{Binding Shipparts[G4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="6" IsShippart="{Binding Shipparts[G5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="6" IsShippart="{Binding Shipparts[G6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="6" IsShippart="{Binding Shipparts[G7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="6" IsShippart="{Binding Shipparts[G8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="6" IsShippart="{Binding Shipparts[G9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="7" IsShippart="{Binding Shipparts[H0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="7" IsShippart="{Binding Shipparts[H1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="7" IsShippart="{Binding Shipparts[H2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="7" IsShippart="{Binding Shipparts[H3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="7" IsShippart="{Binding Shipparts[H4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="7" IsShippart="{Binding Shipparts[H5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="7" IsShippart="{Binding Shipparts[H6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="7" IsShippart="{Binding Shipparts[H7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="7" IsShippart="{Binding Shipparts[H8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="7" IsShippart="{Binding Shipparts[H9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="8" IsShippart="{Binding Shipparts[I0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="8" IsShippart="{Binding Shipparts[I1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="8" IsShippart="{Binding Shipparts[I2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="8" IsShippart="{Binding Shipparts[I3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="8" IsShippart="{Binding Shipparts[I4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="8" IsShippart="{Binding Shipparts[I5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="8" IsShippart="{Binding Shipparts[I6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="8" IsShippart="{Binding Shipparts[I7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="8" IsShippart="{Binding Shipparts[I8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="8" IsShippart="{Binding Shipparts[I9]}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="9" IsShippart="{Binding Shipparts[J0]}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="9" IsShippart="{Binding Shipparts[J1]}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="9" IsShippart="{Binding Shipparts[J2]}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="9" IsShippart="{Binding Shipparts[J3]}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="9" IsShippart="{Binding Shipparts[J4]}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="9" IsShippart="{Binding Shipparts[J5]}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="9" IsShippart="{Binding Shipparts[J6]}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="9" IsShippart="{Binding Shipparts[J7]}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="9" IsShippart="{Binding Shipparts[J8]}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="9" IsShippart="{Binding Shipparts[J9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="0" IsShippart="{Binding Shipparts[A0]}" ShootState="{Binding ShootStates[A0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="0" IsShippart="{Binding Shipparts[A1]}" ShootState="{Binding ShootStates[A1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="0" IsShippart="{Binding Shipparts[A2]}" ShootState="{Binding ShootStates[A2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="0" IsShippart="{Binding Shipparts[A3]}" ShootState="{Binding ShootStates[A3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="0" IsShippart="{Binding Shipparts[A4]}" ShootState="{Binding ShootStates[A4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="0" IsShippart="{Binding Shipparts[A5]}" ShootState="{Binding ShootStates[A5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="0" IsShippart="{Binding Shipparts[A6]}" ShootState="{Binding ShootStates[A6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="0" IsShippart="{Binding Shipparts[A7]}" ShootState="{Binding ShootStates[A7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="0" IsShippart="{Binding Shipparts[A8]}" ShootState="{Binding ShootStates[A8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="0" IsShippart="{Binding Shipparts[A9]}" ShootState="{Binding ShootStates[A9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="1" IsShippart="{Binding Shipparts[B0]}" ShootState="{Binding ShootStates[B0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="1" IsShippart="{Binding Shipparts[B1]}" ShootState="{Binding ShootStates[B1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="1" IsShippart="{Binding Shipparts[B2]}" ShootState="{Binding ShootStates[B2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="1" IsShippart="{Binding Shipparts[B3]}" ShootState="{Binding ShootStates[B3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="1" IsShippart="{Binding Shipparts[B4]}" ShootState="{Binding ShootStates[B4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="1" IsShippart="{Binding Shipparts[B5]}" ShootState="{Binding ShootStates[B5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="1" IsShippart="{Binding Shipparts[B6]}" ShootState="{Binding ShootStates[B6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="1" IsShippart="{Binding Shipparts[B7]}" ShootState="{Binding ShootStates[B7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="1" IsShippart="{Binding Shipparts[B8]}" ShootState="{Binding ShootStates[B8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="1" IsShippart="{Binding Shipparts[B9]}" ShootState="{Binding ShootStates[B9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="2" IsShippart="{Binding Shipparts[C0]}" ShootState="{Binding ShootStates[C0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="2" IsShippart="{Binding Shipparts[C1]}" ShootState="{Binding ShootStates[C1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="2" IsShippart="{Binding Shipparts[C2]}" ShootState="{Binding ShootStates[C2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="2" IsShippart="{Binding Shipparts[C3]}" ShootState="{Binding ShootStates[C3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="2" IsShippart="{Binding Shipparts[C4]}" ShootState="{Binding ShootStates[C4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="2" IsShippart="{Binding Shipparts[C5]}" ShootState="{Binding ShootStates[C5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="2" IsShippart="{Binding Shipparts[C6]}" ShootState="{Binding ShootStates[C6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="2" IsShippart="{Binding Shipparts[C7]}" ShootState="{Binding ShootStates[C7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="2" IsShippart="{Binding Shipparts[C8]}" ShootState="{Binding ShootStates[C8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="2" IsShippart="{Binding Shipparts[C9]}" ShootState="{Binding ShootStates[C9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="3" IsShippart="{Binding Shipparts[D0]}" ShootState="{Binding ShootStates[D0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="3" IsShippart="{Binding Shipparts[D1]}" ShootState="{Binding ShootStates[D1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="3" IsShippart="{Binding Shipparts[D2]}" ShootState="{Binding ShootStates[D2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="3" IsShippart="{Binding Shipparts[D3]}" ShootState="{Binding ShootStates[D3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="3" IsShippart="{Binding Shipparts[D4]}" ShootState="{Binding ShootStates[D4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="3" IsShippart="{Binding Shipparts[D5]}" ShootState="{Binding ShootStates[D5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="3" IsShippart="{Binding Shipparts[D6]}" ShootState="{Binding ShootStates[D6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="3" IsShippart="{Binding Shipparts[D7]}" ShootState="{Binding ShootStates[D7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="3" IsShippart="{Binding Shipparts[D8]}" ShootState="{Binding ShootStates[D8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="3" IsShippart="{Binding Shipparts[D9]}" ShootState="{Binding ShootStates[D9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="4" IsShippart="{Binding Shipparts[E0]}" ShootState="{Binding ShootStates[E0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="4" IsShippart="{Binding Shipparts[E1]}" ShootState="{Binding ShootStates[E1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="4" IsShippart="{Binding Shipparts[E2]}" ShootState="{Binding ShootStates[E2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="4" IsShippart="{Binding Shipparts[E3]}" ShootState="{Binding ShootStates[E3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="4" IsShippart="{Binding Shipparts[E4]}" ShootState="{Binding ShootStates[E4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="4" IsShippart="{Binding Shipparts[E5]}" ShootState="{Binding ShootStates[E5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="4" IsShippart="{Binding Shipparts[E6]}" ShootState="{Binding ShootStates[E6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="4" IsShippart="{Binding Shipparts[E7]}" ShootState="{Binding ShootStates[E7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="4" IsShippart="{Binding Shipparts[E8]}" ShootState="{Binding ShootStates[E8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="4" IsShippart="{Binding Shipparts[E9]}" ShootState="{Binding ShootStates[E9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="5" IsShippart="{Binding Shipparts[F0]}" ShootState="{Binding ShootStates[F0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="5" IsShippart="{Binding Shipparts[F1]}" ShootState="{Binding ShootStates[F1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="5" IsShippart="{Binding Shipparts[F2]}" ShootState="{Binding ShootStates[F2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="5" IsShippart="{Binding Shipparts[F3]}" ShootState="{Binding ShootStates[F3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="5" IsShippart="{Binding Shipparts[F4]}" ShootState="{Binding ShootStates[F4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="5" IsShippart="{Binding Shipparts[F5]}" ShootState="{Binding ShootStates[F5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="5" IsShippart="{Binding Shipparts[F6]}" ShootState="{Binding ShootStates[F6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="5" IsShippart="{Binding Shipparts[F7]}" ShootState="{Binding ShootStates[F7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="5" IsShippart="{Binding Shipparts[F8]}" ShootState="{Binding ShootStates[F8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="5" IsShippart="{Binding Shipparts[F9]}" ShootState="{Binding ShootStates[F9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="6" IsShippart="{Binding Shipparts[G0]}" ShootState="{Binding ShootStates[G0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="6" IsShippart="{Binding Shipparts[G1]}" ShootState="{Binding ShootStates[G1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="6" IsShippart="{Binding Shipparts[G2]}" ShootState="{Binding ShootStates[G2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="6" IsShippart="{Binding Shipparts[G3]}" ShootState="{Binding ShootStates[G3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="6" IsShippart="{Binding Shipparts[G4]}" ShootState="{Binding ShootStates[G4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="6" IsShippart="{Binding Shipparts[G5]}" ShootState="{Binding ShootStates[G5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="6" IsShippart="{Binding Shipparts[G6]}" ShootState="{Binding ShootStates[G6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="6" IsShippart="{Binding Shipparts[G7]}" ShootState="{Binding ShootStates[G7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="6" IsShippart="{Binding Shipparts[G8]}" ShootState="{Binding ShootStates[G8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="6" IsShippart="{Binding Shipparts[G9]}" ShootState="{Binding ShootStates[G9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="7" IsShippart="{Binding Shipparts[H0]}" ShootState="{Binding ShootStates[H0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="7" IsShippart="{Binding Shipparts[H1]}" ShootState="{Binding ShootStates[H1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="7" IsShippart="{Binding Shipparts[H2]}" ShootState="{Binding ShootStates[H2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="7" IsShippart="{Binding Shipparts[H3]}" ShootState="{Binding ShootStates[H3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="7" IsShippart="{Binding Shipparts[H4]}" ShootState="{Binding ShootStates[H4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="7" IsShippart="{Binding Shipparts[H5]}" ShootState="{Binding ShootStates[H5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="7" IsShippart="{Binding Shipparts[H6]}" ShootState="{Binding ShootStates[H6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="7" IsShippart="{Binding Shipparts[H7]}" ShootState="{Binding ShootStates[H7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="7" IsShippart="{Binding Shipparts[H8]}" ShootState="{Binding ShootStates[H8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="7" IsShippart="{Binding Shipparts[H9]}" ShootState="{Binding ShootStates[H9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="8" IsShippart="{Binding Shipparts[I0]}" ShootState="{Binding ShootStates[I0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="8" IsShippart="{Binding Shipparts[I1]}" ShootState="{Binding ShootStates[I1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="8" IsShippart="{Binding Shipparts[I2]}" ShootState="{Binding ShootStates[I2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="8" IsShippart="{Binding Shipparts[I3]}" ShootState="{Binding ShootStates[I3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="8" IsShippart="{Binding Shipparts[I4]}" ShootState="{Binding ShootStates[I4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="8" IsShippart="{Binding Shipparts[I5]}" ShootState="{Binding ShootStates[I5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="8" IsShippart="{Binding Shipparts[I6]}" ShootState="{Binding ShootStates[I6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="8" IsShippart="{Binding Shipparts[I7]}" ShootState="{Binding ShootStates[I7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="8" IsShippart="{Binding Shipparts[I8]}" ShootState="{Binding ShootStates[I8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="8" IsShippart="{Binding Shipparts[I9]}" ShootState="{Binding ShootStates[I9]}"></local:Cell>
+        <local:Cell Grid.Row="0" Grid.Column="9" IsShippart="{Binding Shipparts[J0]}" ShootState="{Binding ShootStates[J0]}"></local:Cell>
+        <local:Cell Grid.Row="1" Grid.Column="9" IsShippart="{Binding Shipparts[J1]}" ShootState="{Binding ShootStates[J1]}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="9" IsShippart="{Binding Shipparts[J2]}" ShootState="{Binding ShootStates[J2]}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="9" IsShippart="{Binding Shipparts[J3]}" ShootState="{Binding ShootStates[J3]}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="9" IsShippart="{Binding Shipparts[J4]}" ShootState="{Binding ShootStates[J4]}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="9" IsShippart="{Binding Shipparts[J5]}" ShootState="{Binding ShootStates[J5]}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="9" IsShippart="{Binding Shipparts[J6]}" ShootState="{Binding ShootStates[J6]}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="9" IsShippart="{Binding Shipparts[J7]}" ShootState="{Binding ShootStates[J7]}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="9" IsShippart="{Binding Shipparts[J8]}" ShootState="{Binding ShootStates[J8]}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="9" IsShippart="{Binding Shipparts[J9]}" ShootState="{Binding ShootStates[J9]}"></local:Cell>
     </Grid>
 </UserControl>

@@ -22,5 +22,10 @@ namespace Battleship.Components
             => model.Shipparts.ToDictionary(
                 kv => $"{kv.Key.Item1}{kv.Key.Item2}", 
                 kv => kv.Value.ToString());
+        
+        public IDictionary<string, ShootState> ShootStates 
+            => model.ShootStates.ToDictionary(
+                kv => $"{kv.Key.Item1}{kv.Key.Item2}",
+                kv => kv.Value);
     }
 }
