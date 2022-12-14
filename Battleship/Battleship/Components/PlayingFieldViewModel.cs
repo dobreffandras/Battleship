@@ -16,6 +16,7 @@ namespace Battleship.Components
         internal void ShootOn(char x, char y)
         {
             model.ShootOn(x, y);
+            NotifyPropertyChanged(nameof(ShootStates));
         }
 
         public IDictionary<string, string> Shipparts 
@@ -23,7 +24,7 @@ namespace Battleship.Components
                 kv => $"{kv.Key.Item1}{kv.Key.Item2}", 
                 kv => kv.Value.ToString());
         
-        public IDictionary<string, ShootState> ShootStates 
+        public IDictionary<string, ShootState> ShootStates
             => model.ShootStates.ToDictionary(
                 kv => $"{kv.Key.Item1}{kv.Key.Item2}",
                 kv => kv.Value);
