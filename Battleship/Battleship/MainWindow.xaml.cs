@@ -1,4 +1,5 @@
-﻿using Battleship.Services;
+﻿using Battleship.Components;
+using Battleship.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Battleship
                     communicationService,
                     navigateToGameViewModel: (model) =>
                     {
-                        ChangeViewModel(new GameViewModel(model, communicationService));
+                        ChangeViewModel(new GameViewModel(model, new PlayfieldModel(), communicationService));
                     }),
             };
         }

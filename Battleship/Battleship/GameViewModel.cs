@@ -7,20 +7,22 @@ namespace Battleship
     {
         private readonly CommunicationService communicationService;
 
-        public GameViewModel(PlayfieldModel model, CommunicationService communicationService)
+        public GameViewModel(PlayfieldModel myModel, PlayfieldModel otherModel, CommunicationService communicationService)
         {
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
 
-            PlayingFieldViewModel = new PlayingFieldViewModel(model, communicationService);
+            MyPlayingFieldViewModel = new PlayingFieldViewModel(myModel, communicationService);
+            OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, communicationService);
         }
 
-        public PlayingFieldViewModel PlayingFieldViewModel { get; }
+        public PlayingFieldViewModel MyPlayingFieldViewModel { get; }
+        public PlayingFieldViewModel OtherPlayingFieldViewModel { get; }
 
         public void ChangeMessageReceived(GameMessage message)
         {
-            PlayingFieldViewModel.ShootOn(message.X, message.Y);
-            NotifyPropertyChanged(nameof(PlayingFieldViewModel));
+            MyPlayingFieldViewModel.ShootOn(message.X, message.Y);
+            NotifyPropertyChanged(nameof(MyPlayingFieldViewModel));
         }
     }
 }
