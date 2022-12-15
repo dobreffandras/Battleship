@@ -51,6 +51,27 @@
                     </Border>
                 </ControlTemplate>
             </Button.Template>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="True"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger 
+                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=PlayingType}"
+                            Value="Active">
+                            <DataTrigger.Setters>
+                                <Setter Property="IsEnabled" Value="True"></Setter>
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                        <DataTrigger 
+                            Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=PlayingType}"
+                            Value="Passive">
+                            <DataTrigger.Setters>
+                                <Setter Property="IsEnabled" Value="False"></Setter>
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
     </Grid>
 </UserControl>

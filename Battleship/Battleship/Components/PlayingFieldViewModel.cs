@@ -12,9 +12,11 @@ namespace Battleship.Components
 
         public PlayingFieldViewModel(
             PlayfieldModel model,
+            PlayingType playingType,
             CommunicationService communicationService)
         {
             this.model = model;
+            PlayingType = playingType;
             ShootCommands = model.CellCoordinates
                 .ToDictionary<(char, char), string, ICommand>(
                     c => $"{c.Item1}{c.Item2}",
@@ -38,5 +40,7 @@ namespace Battleship.Components
                 kv => kv.Value);
 
         public IDictionary<string, ICommand> ShootCommands { get; }
+
+        public PlayingType PlayingType { get; }
     }
 }

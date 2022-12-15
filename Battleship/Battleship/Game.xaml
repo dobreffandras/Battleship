@@ -25,12 +25,10 @@
         <components:PlayingField 
             Grid.Column="0"
             Grid.Row="1" 
-            DataContext="{Binding MyPlayingFieldViewModel}"
-            PlayingType="Passive"></components:PlayingField>
+            DataContext="{Binding MyPlayingFieldViewModel}" />
         <components:PlayingField 
             Grid.Column="1"
             Grid.Row="1" 
-            DataContext="{Binding OtherPlayingFieldViewModel}"
-            PlayingType="Active"></components:PlayingField>
+            DataContext="{Binding OtherPlayingFieldViewModel}" />
     </Grid>
 </UserControl>

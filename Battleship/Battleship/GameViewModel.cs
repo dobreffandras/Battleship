@@ -12,8 +12,8 @@ namespace Battleship
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
 
-            MyPlayingFieldViewModel = new PlayingFieldViewModel(myModel, communicationService);
-            OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, communicationService);
+            MyPlayingFieldViewModel = new PlayingFieldViewModel(myModel, PlayingType.Passive, communicationService);
+            OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, PlayingType.Active, communicationService);
         }
 
         public PlayingFieldViewModel MyPlayingFieldViewModel { get; }

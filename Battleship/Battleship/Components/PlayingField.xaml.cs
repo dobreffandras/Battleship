@@ -24,28 +24,5 @@ namespace Battleship.Components
         {
             InitializeComponent();
         }
-
-
-
-        public PlayingType PlayingType
-        {
-            get { return (PlayingType)GetValue(PlayingTypeProperty); }
-            set { SetValue(PlayingTypeProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for PlayingType.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PlayingTypeProperty =
-            DependencyProperty.Register(
-                name: "PlayingType",
-                propertyType: typeof(PlayingType),
-                ownerType: typeof(PlayingField),
-                typeMetadata: new PropertyMetadata(PlayingType.Active));
-
-
-    }
-
-    public enum PlayingType
-    {
-        Active, Passive
     }
 }
