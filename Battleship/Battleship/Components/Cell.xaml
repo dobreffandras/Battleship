@@ -13,38 +13,37 @@
                     <Border>
                         <Border.Style>
                             <Style TargetType="Border">
-                                <Setter Property="BorderThickness" Value="0"></Setter>
-                                <Setter Property="Background" Value="Yellow"></Setter>
-                                <Setter Property="BorderBrush" Value="Blue"></Setter>
+                                <Setter Property="BorderThickness" Value="1"></Setter>
+                                <Setter Property="BorderBrush" Value="Gray"></Setter>
+                                <Setter Property="Background" Value="LightSkyBlue"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger 
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=IsShippart}"
-                                Value="True">
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=IsShippart}"
+                                        Value="True">
                                         <DataTrigger.Setters>
-                                            <Setter Property="BorderThickness" Value="1"></Setter>
+                                            <Setter Property="BorderThickness" Value="2"></Setter>
+                                            <Setter Property="Background" Value="LightGray"></Setter>
                                         </DataTrigger.Setters>
                                     </DataTrigger>
                                     <DataTrigger
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                                Value="None">
-                                        <DataTrigger.Setters>
-                                            <Setter Property="Background" Value="Gray"></Setter>
-                                        </DataTrigger.Setters>
-                                    </DataTrigger>
-                                    <DataTrigger
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                                Value="Hit">
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
+                                        Value="Hit">
                                         <DataTrigger.Setters>
                                             <Setter Property="Background" Value="Orange"></Setter>
                                         </DataTrigger.Setters>
                                     </DataTrigger>
                                     <DataTrigger
-                                Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
-                                Value="Miss">
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:Cell, AncestorLevel=1}, Path=ShootState}"
+                                        Value="Miss">
                                         <DataTrigger.Setters>
-                                            <Setter Property="Background" Value="Green"></Setter>
+                                            <Setter Property="Background" Value="LightSteelBlue"></Setter>
                                         </DataTrigger.Setters>
                                     </DataTrigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="BorderThickness" Value="2" />
+                                        <Setter Property="BorderBrush" Value="DimGray"></Setter>
+                                        <Setter Property="Cursor" Value="Cross"/>
+                                    </Trigger>
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
