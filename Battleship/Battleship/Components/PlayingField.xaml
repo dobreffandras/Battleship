@@ -21,6 +21,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -33,106 +34,128 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <local:Cell Grid.Row="0" Grid.Column="0" IsShippart="{Binding Shipparts[A0]}" ShootState="{Binding ShootStates[A0]}" Command="{Binding ShootCommands[A0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="0" IsShippart="{Binding Shipparts[A1]}" ShootState="{Binding ShootStates[A1]}" Command="{Binding ShootCommands[A1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="0" IsShippart="{Binding Shipparts[A2]}" ShootState="{Binding ShootStates[A2]}" Command="{Binding ShootCommands[A2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="0" IsShippart="{Binding Shipparts[A3]}" ShootState="{Binding ShootStates[A3]}" Command="{Binding ShootCommands[A3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="0" IsShippart="{Binding Shipparts[A4]}" ShootState="{Binding ShootStates[A4]}" Command="{Binding ShootCommands[A4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="0" IsShippart="{Binding Shipparts[A5]}" ShootState="{Binding ShootStates[A5]}" Command="{Binding ShootCommands[A5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="0" IsShippart="{Binding Shipparts[A6]}" ShootState="{Binding ShootStates[A6]}" Command="{Binding ShootCommands[A6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="0" IsShippart="{Binding Shipparts[A7]}" ShootState="{Binding ShootStates[A7]}" Command="{Binding ShootCommands[A7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="0" IsShippart="{Binding Shipparts[A8]}" ShootState="{Binding ShootStates[A8]}" Command="{Binding ShootCommands[A8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="0" IsShippart="{Binding Shipparts[A9]}" ShootState="{Binding ShootStates[A9]}" Command="{Binding ShootCommands[A9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="1" IsShippart="{Binding Shipparts[B0]}" ShootState="{Binding ShootStates[B0]}" Command="{Binding ShootCommands[B0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="1" IsShippart="{Binding Shipparts[B1]}" ShootState="{Binding ShootStates[B1]}" Command="{Binding ShootCommands[B1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="1" IsShippart="{Binding Shipparts[B2]}" ShootState="{Binding ShootStates[B2]}" Command="{Binding ShootCommands[B2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="1" IsShippart="{Binding Shipparts[B3]}" ShootState="{Binding ShootStates[B3]}" Command="{Binding ShootCommands[B3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="1" IsShippart="{Binding Shipparts[B4]}" ShootState="{Binding ShootStates[B4]}" Command="{Binding ShootCommands[B4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="1" IsShippart="{Binding Shipparts[B5]}" ShootState="{Binding ShootStates[B5]}" Command="{Binding ShootCommands[B5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="1" IsShippart="{Binding Shipparts[B6]}" ShootState="{Binding ShootStates[B6]}" Command="{Binding ShootCommands[B6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="1" IsShippart="{Binding Shipparts[B7]}" ShootState="{Binding ShootStates[B7]}" Command="{Binding ShootCommands[B7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="1" IsShippart="{Binding Shipparts[B8]}" ShootState="{Binding ShootStates[B8]}" Command="{Binding ShootCommands[B8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="1" IsShippart="{Binding Shipparts[B9]}" ShootState="{Binding ShootStates[B9]}" Command="{Binding ShootCommands[B9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="2" IsShippart="{Binding Shipparts[C0]}" ShootState="{Binding ShootStates[C0]}" Command="{Binding ShootCommands[C0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="2" IsShippart="{Binding Shipparts[C1]}" ShootState="{Binding ShootStates[C1]}" Command="{Binding ShootCommands[C1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="2" IsShippart="{Binding Shipparts[C2]}" ShootState="{Binding ShootStates[C2]}" Command="{Binding ShootCommands[C2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="2" IsShippart="{Binding Shipparts[C3]}" ShootState="{Binding ShootStates[C3]}" Command="{Binding ShootCommands[C3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="2" IsShippart="{Binding Shipparts[C4]}" ShootState="{Binding ShootStates[C4]}" Command="{Binding ShootCommands[C4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="2" IsShippart="{Binding Shipparts[C5]}" ShootState="{Binding ShootStates[C5]}" Command="{Binding ShootCommands[C5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="2" IsShippart="{Binding Shipparts[C6]}" ShootState="{Binding ShootStates[C6]}" Command="{Binding ShootCommands[C6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="2" IsShippart="{Binding Shipparts[C7]}" ShootState="{Binding ShootStates[C7]}" Command="{Binding ShootCommands[C7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="2" IsShippart="{Binding Shipparts[C8]}" ShootState="{Binding ShootStates[C8]}" Command="{Binding ShootCommands[C8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="2" IsShippart="{Binding Shipparts[C9]}" ShootState="{Binding ShootStates[C9]}" Command="{Binding ShootCommands[C9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="3" IsShippart="{Binding Shipparts[D0]}" ShootState="{Binding ShootStates[D0]}" Command="{Binding ShootCommands[D0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="3" IsShippart="{Binding Shipparts[D1]}" ShootState="{Binding ShootStates[D1]}" Command="{Binding ShootCommands[D1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="3" IsShippart="{Binding Shipparts[D2]}" ShootState="{Binding ShootStates[D2]}" Command="{Binding ShootCommands[D2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="3" IsShippart="{Binding Shipparts[D3]}" ShootState="{Binding ShootStates[D3]}" Command="{Binding ShootCommands[D3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="3" IsShippart="{Binding Shipparts[D4]}" ShootState="{Binding ShootStates[D4]}" Command="{Binding ShootCommands[D4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="3" IsShippart="{Binding Shipparts[D5]}" ShootState="{Binding ShootStates[D5]}" Command="{Binding ShootCommands[D5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="3" IsShippart="{Binding Shipparts[D6]}" ShootState="{Binding ShootStates[D6]}" Command="{Binding ShootCommands[D6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="3" IsShippart="{Binding Shipparts[D7]}" ShootState="{Binding ShootStates[D7]}" Command="{Binding ShootCommands[D7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="3" IsShippart="{Binding Shipparts[D8]}" ShootState="{Binding ShootStates[D8]}" Command="{Binding ShootCommands[D8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="3" IsShippart="{Binding Shipparts[D9]}" ShootState="{Binding ShootStates[D9]}" Command="{Binding ShootCommands[D9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="4" IsShippart="{Binding Shipparts[E0]}" ShootState="{Binding ShootStates[E0]}" Command="{Binding ShootCommands[E0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="4" IsShippart="{Binding Shipparts[E1]}" ShootState="{Binding ShootStates[E1]}" Command="{Binding ShootCommands[E1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="4" IsShippart="{Binding Shipparts[E2]}" ShootState="{Binding ShootStates[E2]}" Command="{Binding ShootCommands[E2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="4" IsShippart="{Binding Shipparts[E3]}" ShootState="{Binding ShootStates[E3]}" Command="{Binding ShootCommands[E3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="4" IsShippart="{Binding Shipparts[E4]}" ShootState="{Binding ShootStates[E4]}" Command="{Binding ShootCommands[E4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="4" IsShippart="{Binding Shipparts[E5]}" ShootState="{Binding ShootStates[E5]}" Command="{Binding ShootCommands[E5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="4" IsShippart="{Binding Shipparts[E6]}" ShootState="{Binding ShootStates[E6]}" Command="{Binding ShootCommands[E6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="4" IsShippart="{Binding Shipparts[E7]}" ShootState="{Binding ShootStates[E7]}" Command="{Binding ShootCommands[E7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="4" IsShippart="{Binding Shipparts[E8]}" ShootState="{Binding ShootStates[E8]}" Command="{Binding ShootCommands[E8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="4" IsShippart="{Binding Shipparts[E9]}" ShootState="{Binding ShootStates[E9]}" Command="{Binding ShootCommands[E9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="5" IsShippart="{Binding Shipparts[F0]}" ShootState="{Binding ShootStates[F0]}" Command="{Binding ShootCommands[F0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="5" IsShippart="{Binding Shipparts[F1]}" ShootState="{Binding ShootStates[F1]}" Command="{Binding ShootCommands[F1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="5" IsShippart="{Binding Shipparts[F2]}" ShootState="{Binding ShootStates[F2]}" Command="{Binding ShootCommands[F2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="5" IsShippart="{Binding Shipparts[F3]}" ShootState="{Binding ShootStates[F3]}" Command="{Binding ShootCommands[F3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="5" IsShippart="{Binding Shipparts[F4]}" ShootState="{Binding ShootStates[F4]}" Command="{Binding ShootCommands[F4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="5" IsShippart="{Binding Shipparts[F5]}" ShootState="{Binding ShootStates[F5]}" Command="{Binding ShootCommands[F5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="5" IsShippart="{Binding Shipparts[F6]}" ShootState="{Binding ShootStates[F6]}" Command="{Binding ShootCommands[F6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="5" IsShippart="{Binding Shipparts[F7]}" ShootState="{Binding ShootStates[F7]}" Command="{Binding ShootCommands[F7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="5" IsShippart="{Binding Shipparts[F8]}" ShootState="{Binding ShootStates[F8]}" Command="{Binding ShootCommands[F8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="5" IsShippart="{Binding Shipparts[F9]}" ShootState="{Binding ShootStates[F9]}" Command="{Binding ShootCommands[F9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="6" IsShippart="{Binding Shipparts[G0]}" ShootState="{Binding ShootStates[G0]}" Command="{Binding ShootCommands[G0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="6" IsShippart="{Binding Shipparts[G1]}" ShootState="{Binding ShootStates[G1]}" Command="{Binding ShootCommands[G1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="6" IsShippart="{Binding Shipparts[G2]}" ShootState="{Binding ShootStates[G2]}" Command="{Binding ShootCommands[G2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="6" IsShippart="{Binding Shipparts[G3]}" ShootState="{Binding ShootStates[G3]}" Command="{Binding ShootCommands[G3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="6" IsShippart="{Binding Shipparts[G4]}" ShootState="{Binding ShootStates[G4]}" Command="{Binding ShootCommands[G4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="6" IsShippart="{Binding Shipparts[G5]}" ShootState="{Binding ShootStates[G5]}" Command="{Binding ShootCommands[G5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="6" IsShippart="{Binding Shipparts[G6]}" ShootState="{Binding ShootStates[G6]}" Command="{Binding ShootCommands[G6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="6" IsShippart="{Binding Shipparts[G7]}" ShootState="{Binding ShootStates[G7]}" Command="{Binding ShootCommands[G7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="6" IsShippart="{Binding Shipparts[G8]}" ShootState="{Binding ShootStates[G8]}" Command="{Binding ShootCommands[G8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="6" IsShippart="{Binding Shipparts[G9]}" ShootState="{Binding ShootStates[G9]}" Command="{Binding ShootCommands[G9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="7" IsShippart="{Binding Shipparts[H0]}" ShootState="{Binding ShootStates[H0]}" Command="{Binding ShootCommands[H0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="7" IsShippart="{Binding Shipparts[H1]}" ShootState="{Binding ShootStates[H1]}" Command="{Binding ShootCommands[H1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="7" IsShippart="{Binding Shipparts[H2]}" ShootState="{Binding ShootStates[H2]}" Command="{Binding ShootCommands[H2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="7" IsShippart="{Binding Shipparts[H3]}" ShootState="{Binding ShootStates[H3]}" Command="{Binding ShootCommands[H3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="7" IsShippart="{Binding Shipparts[H4]}" ShootState="{Binding ShootStates[H4]}" Command="{Binding ShootCommands[H4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="7" IsShippart="{Binding Shipparts[H5]}" ShootState="{Binding ShootStates[H5]}" Command="{Binding ShootCommands[H5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="7" IsShippart="{Binding Shipparts[H6]}" ShootState="{Binding ShootStates[H6]}" Command="{Binding ShootCommands[H6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="7" IsShippart="{Binding Shipparts[H7]}" ShootState="{Binding ShootStates[H7]}" Command="{Binding ShootCommands[H7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="7" IsShippart="{Binding Shipparts[H8]}" ShootState="{Binding ShootStates[H8]}" Command="{Binding ShootCommands[H8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="7" IsShippart="{Binding Shipparts[H9]}" ShootState="{Binding ShootStates[H9]}" Command="{Binding ShootCommands[H9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="8" IsShippart="{Binding Shipparts[I0]}" ShootState="{Binding ShootStates[I0]}" Command="{Binding ShootCommands[I0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="8" IsShippart="{Binding Shipparts[I1]}" ShootState="{Binding ShootStates[I1]}" Command="{Binding ShootCommands[I1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="8" IsShippart="{Binding Shipparts[I2]}" ShootState="{Binding ShootStates[I2]}" Command="{Binding ShootCommands[I2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="8" IsShippart="{Binding Shipparts[I3]}" ShootState="{Binding ShootStates[I3]}" Command="{Binding ShootCommands[I3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="8" IsShippart="{Binding Shipparts[I4]}" ShootState="{Binding ShootStates[I4]}" Command="{Binding ShootCommands[I4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="8" IsShippart="{Binding Shipparts[I5]}" ShootState="{Binding ShootStates[I5]}" Command="{Binding ShootCommands[I5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="8" IsShippart="{Binding Shipparts[I6]}" ShootState="{Binding ShootStates[I6]}" Command="{Binding ShootCommands[I6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="8" IsShippart="{Binding Shipparts[I7]}" ShootState="{Binding ShootStates[I7]}" Command="{Binding ShootCommands[I7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="8" IsShippart="{Binding Shipparts[I8]}" ShootState="{Binding ShootStates[I8]}" Command="{Binding ShootCommands[I8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="8" IsShippart="{Binding Shipparts[I9]}" ShootState="{Binding ShootStates[I9]}" Command="{Binding ShootCommands[I9]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="0" Grid.Column="9" IsShippart="{Binding Shipparts[J0]}" ShootState="{Binding ShootStates[J0]}" Command="{Binding ShootCommands[J0]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="1" Grid.Column="9" IsShippart="{Binding Shipparts[J1]}" ShootState="{Binding ShootStates[J1]}" Command="{Binding ShootCommands[J1]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="2" Grid.Column="9" IsShippart="{Binding Shipparts[J2]}" ShootState="{Binding ShootStates[J2]}" Command="{Binding ShootCommands[J2]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="3" Grid.Column="9" IsShippart="{Binding Shipparts[J3]}" ShootState="{Binding ShootStates[J3]}" Command="{Binding ShootCommands[J3]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="4" Grid.Column="9" IsShippart="{Binding Shipparts[J4]}" ShootState="{Binding ShootStates[J4]}" Command="{Binding ShootCommands[J4]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="5" Grid.Column="9" IsShippart="{Binding Shipparts[J5]}" ShootState="{Binding ShootStates[J5]}" Command="{Binding ShootCommands[J5]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="6" Grid.Column="9" IsShippart="{Binding Shipparts[J6]}" ShootState="{Binding ShootStates[J6]}" Command="{Binding ShootCommands[J6]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="7" Grid.Column="9" IsShippart="{Binding Shipparts[J7]}" ShootState="{Binding ShootStates[J7]}" Command="{Binding ShootCommands[J7]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="8" Grid.Column="9" IsShippart="{Binding Shipparts[J8]}" ShootState="{Binding ShootStates[J8]}" Command="{Binding ShootCommands[J8]}" PlayingType="{Binding PlayingType}"></local:Cell>
-        <local:Cell Grid.Row="9" Grid.Column="9" IsShippart="{Binding Shipparts[J9]}" ShootState="{Binding ShootStates[J9]}" Command="{Binding ShootCommands[J9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <TextBlock  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">0</TextBlock>
+        <TextBlock  Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">1</TextBlock>
+        <TextBlock  Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">2</TextBlock>
+        <TextBlock  Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">3</TextBlock>
+        <TextBlock  Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">4</TextBlock>
+        <TextBlock  Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">5</TextBlock>
+        <TextBlock  Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">6</TextBlock>
+        <TextBlock  Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">7</TextBlock>
+        <TextBlock  Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">8</TextBlock>
+        <TextBlock  Grid.Row="10" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">9</TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">A</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="1" IsShippart="{Binding Shipparts[A0]}" ShootState="{Binding ShootStates[A0]}" Command="{Binding ShootCommands[A0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="1" IsShippart="{Binding Shipparts[A1]}" ShootState="{Binding ShootStates[A1]}" Command="{Binding ShootCommands[A1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="1" IsShippart="{Binding Shipparts[A2]}" ShootState="{Binding ShootStates[A2]}" Command="{Binding ShootCommands[A2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="1" IsShippart="{Binding Shipparts[A3]}" ShootState="{Binding ShootStates[A3]}" Command="{Binding ShootCommands[A3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="1" IsShippart="{Binding Shipparts[A4]}" ShootState="{Binding ShootStates[A4]}" Command="{Binding ShootCommands[A4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="1" IsShippart="{Binding Shipparts[A5]}" ShootState="{Binding ShootStates[A5]}" Command="{Binding ShootCommands[A5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="1" IsShippart="{Binding Shipparts[A6]}" ShootState="{Binding ShootStates[A6]}" Command="{Binding ShootCommands[A6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="1" IsShippart="{Binding Shipparts[A7]}" ShootState="{Binding ShootStates[A7]}" Command="{Binding ShootCommands[A7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="1" IsShippart="{Binding Shipparts[A8]}" ShootState="{Binding ShootStates[A8]}" Command="{Binding ShootCommands[A8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="1" IsShippart="{Binding Shipparts[A9]}" ShootState="{Binding ShootStates[A9]}" Command="{Binding ShootCommands[A9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">B</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="2" IsShippart="{Binding Shipparts[B0]}" ShootState="{Binding ShootStates[B0]}" Command="{Binding ShootCommands[B0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="2" IsShippart="{Binding Shipparts[B1]}" ShootState="{Binding ShootStates[B1]}" Command="{Binding ShootCommands[B1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="2" IsShippart="{Binding Shipparts[B2]}" ShootState="{Binding ShootStates[B2]}" Command="{Binding ShootCommands[B2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="2" IsShippart="{Binding Shipparts[B3]}" ShootState="{Binding ShootStates[B3]}" Command="{Binding ShootCommands[B3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="2" IsShippart="{Binding Shipparts[B4]}" ShootState="{Binding ShootStates[B4]}" Command="{Binding ShootCommands[B4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="2" IsShippart="{Binding Shipparts[B5]}" ShootState="{Binding ShootStates[B5]}" Command="{Binding ShootCommands[B5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="2" IsShippart="{Binding Shipparts[B6]}" ShootState="{Binding ShootStates[B6]}" Command="{Binding ShootCommands[B6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="2" IsShippart="{Binding Shipparts[B7]}" ShootState="{Binding ShootStates[B7]}" Command="{Binding ShootCommands[B7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="2" IsShippart="{Binding Shipparts[B8]}" ShootState="{Binding ShootStates[B8]}" Command="{Binding ShootCommands[B8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="2" IsShippart="{Binding Shipparts[B9]}" ShootState="{Binding ShootStates[B9]}" Command="{Binding ShootCommands[B9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">C</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="3" IsShippart="{Binding Shipparts[C0]}" ShootState="{Binding ShootStates[C0]}" Command="{Binding ShootCommands[C0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="3" IsShippart="{Binding Shipparts[C1]}" ShootState="{Binding ShootStates[C1]}" Command="{Binding ShootCommands[C1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="3" IsShippart="{Binding Shipparts[C2]}" ShootState="{Binding ShootStates[C2]}" Command="{Binding ShootCommands[C2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="3" IsShippart="{Binding Shipparts[C3]}" ShootState="{Binding ShootStates[C3]}" Command="{Binding ShootCommands[C3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="3" IsShippart="{Binding Shipparts[C4]}" ShootState="{Binding ShootStates[C4]}" Command="{Binding ShootCommands[C4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="3" IsShippart="{Binding Shipparts[C5]}" ShootState="{Binding ShootStates[C5]}" Command="{Binding ShootCommands[C5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="3" IsShippart="{Binding Shipparts[C6]}" ShootState="{Binding ShootStates[C6]}" Command="{Binding ShootCommands[C6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="3" IsShippart="{Binding Shipparts[C7]}" ShootState="{Binding ShootStates[C7]}" Command="{Binding ShootCommands[C7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="3" IsShippart="{Binding Shipparts[C8]}" ShootState="{Binding ShootStates[C8]}" Command="{Binding ShootCommands[C8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="3" IsShippart="{Binding Shipparts[C9]}" ShootState="{Binding ShootStates[C9]}" Command="{Binding ShootCommands[C9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">D</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="4" IsShippart="{Binding Shipparts[D0]}" ShootState="{Binding ShootStates[D0]}" Command="{Binding ShootCommands[D0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="4" IsShippart="{Binding Shipparts[D1]}" ShootState="{Binding ShootStates[D1]}" Command="{Binding ShootCommands[D1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="4" IsShippart="{Binding Shipparts[D2]}" ShootState="{Binding ShootStates[D2]}" Command="{Binding ShootCommands[D2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="4" IsShippart="{Binding Shipparts[D3]}" ShootState="{Binding ShootStates[D3]}" Command="{Binding ShootCommands[D3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="4" IsShippart="{Binding Shipparts[D4]}" ShootState="{Binding ShootStates[D4]}" Command="{Binding ShootCommands[D4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="4" IsShippart="{Binding Shipparts[D5]}" ShootState="{Binding ShootStates[D5]}" Command="{Binding ShootCommands[D5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="4" IsShippart="{Binding Shipparts[D6]}" ShootState="{Binding ShootStates[D6]}" Command="{Binding ShootCommands[D6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="4" IsShippart="{Binding Shipparts[D7]}" ShootState="{Binding ShootStates[D7]}" Command="{Binding ShootCommands[D7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="4" IsShippart="{Binding Shipparts[D8]}" ShootState="{Binding ShootStates[D8]}" Command="{Binding ShootCommands[D8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="4" IsShippart="{Binding Shipparts[D9]}" ShootState="{Binding ShootStates[D9]}" Command="{Binding ShootCommands[D9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center">E</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="5" IsShippart="{Binding Shipparts[E0]}" ShootState="{Binding ShootStates[E0]}" Command="{Binding ShootCommands[E0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="5" IsShippart="{Binding Shipparts[E1]}" ShootState="{Binding ShootStates[E1]}" Command="{Binding ShootCommands[E1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="5" IsShippart="{Binding Shipparts[E2]}" ShootState="{Binding ShootStates[E2]}" Command="{Binding ShootCommands[E2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="5" IsShippart="{Binding Shipparts[E3]}" ShootState="{Binding ShootStates[E3]}" Command="{Binding ShootCommands[E3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="5" IsShippart="{Binding Shipparts[E4]}" ShootState="{Binding ShootStates[E4]}" Command="{Binding ShootCommands[E4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="5" IsShippart="{Binding Shipparts[E5]}" ShootState="{Binding ShootStates[E5]}" Command="{Binding ShootCommands[E5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="5" IsShippart="{Binding Shipparts[E6]}" ShootState="{Binding ShootStates[E6]}" Command="{Binding ShootCommands[E6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="5" IsShippart="{Binding Shipparts[E7]}" ShootState="{Binding ShootStates[E7]}" Command="{Binding ShootCommands[E7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="5" IsShippart="{Binding Shipparts[E8]}" ShootState="{Binding ShootStates[E8]}" Command="{Binding ShootCommands[E8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="5" IsShippart="{Binding Shipparts[E9]}" ShootState="{Binding ShootStates[E9]}" Command="{Binding ShootCommands[E9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center">F</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="6" IsShippart="{Binding Shipparts[F0]}" ShootState="{Binding ShootStates[F0]}" Command="{Binding ShootCommands[F0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="6" IsShippart="{Binding Shipparts[F1]}" ShootState="{Binding ShootStates[F1]}" Command="{Binding ShootCommands[F1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="6" IsShippart="{Binding Shipparts[F2]}" ShootState="{Binding ShootStates[F2]}" Command="{Binding ShootCommands[F2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="6" IsShippart="{Binding Shipparts[F3]}" ShootState="{Binding ShootStates[F3]}" Command="{Binding ShootCommands[F3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="6" IsShippart="{Binding Shipparts[F4]}" ShootState="{Binding ShootStates[F4]}" Command="{Binding ShootCommands[F4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="6" IsShippart="{Binding Shipparts[F5]}" ShootState="{Binding ShootStates[F5]}" Command="{Binding ShootCommands[F5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="6" IsShippart="{Binding Shipparts[F6]}" ShootState="{Binding ShootStates[F6]}" Command="{Binding ShootCommands[F6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="6" IsShippart="{Binding Shipparts[F7]}" ShootState="{Binding ShootStates[F7]}" Command="{Binding ShootCommands[F7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="6" IsShippart="{Binding Shipparts[F8]}" ShootState="{Binding ShootStates[F8]}" Command="{Binding ShootCommands[F8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="6" IsShippart="{Binding Shipparts[F9]}" ShootState="{Binding ShootStates[F9]}" Command="{Binding ShootCommands[F9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center">G</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="7" IsShippart="{Binding Shipparts[G0]}" ShootState="{Binding ShootStates[G0]}" Command="{Binding ShootCommands[G0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="7" IsShippart="{Binding Shipparts[G1]}" ShootState="{Binding ShootStates[G1]}" Command="{Binding ShootCommands[G1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="7" IsShippart="{Binding Shipparts[G2]}" ShootState="{Binding ShootStates[G2]}" Command="{Binding ShootCommands[G2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="7" IsShippart="{Binding Shipparts[G3]}" ShootState="{Binding ShootStates[G3]}" Command="{Binding ShootCommands[G3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="7" IsShippart="{Binding Shipparts[G4]}" ShootState="{Binding ShootStates[G4]}" Command="{Binding ShootCommands[G4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="7" IsShippart="{Binding Shipparts[G5]}" ShootState="{Binding ShootStates[G5]}" Command="{Binding ShootCommands[G5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="7" IsShippart="{Binding Shipparts[G6]}" ShootState="{Binding ShootStates[G6]}" Command="{Binding ShootCommands[G6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="7" IsShippart="{Binding Shipparts[G7]}" ShootState="{Binding ShootStates[G7]}" Command="{Binding ShootCommands[G7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="7" IsShippart="{Binding Shipparts[G8]}" ShootState="{Binding ShootStates[G8]}" Command="{Binding ShootCommands[G8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="7" IsShippart="{Binding Shipparts[G9]}" ShootState="{Binding ShootStates[G9]}" Command="{Binding ShootCommands[G9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center">H</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="8" IsShippart="{Binding Shipparts[H0]}" ShootState="{Binding ShootStates[H0]}" Command="{Binding ShootCommands[H0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="8" IsShippart="{Binding Shipparts[H1]}" ShootState="{Binding ShootStates[H1]}" Command="{Binding ShootCommands[H1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="8" IsShippart="{Binding Shipparts[H2]}" ShootState="{Binding ShootStates[H2]}" Command="{Binding ShootCommands[H2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="8" IsShippart="{Binding Shipparts[H3]}" ShootState="{Binding ShootStates[H3]}" Command="{Binding ShootCommands[H3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="8" IsShippart="{Binding Shipparts[H4]}" ShootState="{Binding ShootStates[H4]}" Command="{Binding ShootCommands[H4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="8" IsShippart="{Binding Shipparts[H5]}" ShootState="{Binding ShootStates[H5]}" Command="{Binding ShootCommands[H5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="8" IsShippart="{Binding Shipparts[H6]}" ShootState="{Binding ShootStates[H6]}" Command="{Binding ShootCommands[H6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="8" IsShippart="{Binding Shipparts[H7]}" ShootState="{Binding ShootStates[H7]}" Command="{Binding ShootCommands[H7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="8" IsShippart="{Binding Shipparts[H8]}" ShootState="{Binding ShootStates[H8]}" Command="{Binding ShootCommands[H8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="8" IsShippart="{Binding Shipparts[H9]}" ShootState="{Binding ShootStates[H9]}" Command="{Binding ShootCommands[H9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="9" HorizontalAlignment="Center" VerticalAlignment="Center">I</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="9" IsShippart="{Binding Shipparts[I0]}" ShootState="{Binding ShootStates[I0]}" Command="{Binding ShootCommands[I0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="9" IsShippart="{Binding Shipparts[I1]}" ShootState="{Binding ShootStates[I1]}" Command="{Binding ShootCommands[I1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="9" IsShippart="{Binding Shipparts[I2]}" ShootState="{Binding ShootStates[I2]}" Command="{Binding ShootCommands[I2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="9" IsShippart="{Binding Shipparts[I3]}" ShootState="{Binding ShootStates[I3]}" Command="{Binding ShootCommands[I3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="9" IsShippart="{Binding Shipparts[I4]}" ShootState="{Binding ShootStates[I4]}" Command="{Binding ShootCommands[I4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="9" IsShippart="{Binding Shipparts[I5]}" ShootState="{Binding ShootStates[I5]}" Command="{Binding ShootCommands[I5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="9" IsShippart="{Binding Shipparts[I6]}" ShootState="{Binding ShootStates[I6]}" Command="{Binding ShootCommands[I6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="9" IsShippart="{Binding Shipparts[I7]}" ShootState="{Binding ShootStates[I7]}" Command="{Binding ShootCommands[I7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="9" IsShippart="{Binding Shipparts[I8]}" ShootState="{Binding ShootStates[I8]}" Command="{Binding ShootCommands[I8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="9" IsShippart="{Binding Shipparts[I9]}" ShootState="{Binding ShootStates[I9]}" Command="{Binding ShootCommands[I9]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <TextBlock  Grid.Row="0" Grid.Column="10" HorizontalAlignment="Center" VerticalAlignment="Center">J</TextBlock>
+        <local:Cell Grid.Row="1" Grid.Column="10" IsShippart="{Binding Shipparts[J0]}" ShootState="{Binding ShootStates[J0]}" Command="{Binding ShootCommands[J0]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="2" Grid.Column="10" IsShippart="{Binding Shipparts[J1]}" ShootState="{Binding ShootStates[J1]}" Command="{Binding ShootCommands[J1]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="3" Grid.Column="10" IsShippart="{Binding Shipparts[J2]}" ShootState="{Binding ShootStates[J2]}" Command="{Binding ShootCommands[J2]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="4" Grid.Column="10" IsShippart="{Binding Shipparts[J3]}" ShootState="{Binding ShootStates[J3]}" Command="{Binding ShootCommands[J3]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="5" Grid.Column="10" IsShippart="{Binding Shipparts[J4]}" ShootState="{Binding ShootStates[J4]}" Command="{Binding ShootCommands[J4]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="6" Grid.Column="10" IsShippart="{Binding Shipparts[J5]}" ShootState="{Binding ShootStates[J5]}" Command="{Binding ShootCommands[J5]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="7" Grid.Column="10" IsShippart="{Binding Shipparts[J6]}" ShootState="{Binding ShootStates[J6]}" Command="{Binding ShootCommands[J6]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="8" Grid.Column="10" IsShippart="{Binding Shipparts[J7]}" ShootState="{Binding ShootStates[J7]}" Command="{Binding ShootCommands[J7]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="9" Grid.Column="10" IsShippart="{Binding Shipparts[J8]}" ShootState="{Binding ShootStates[J8]}" Command="{Binding ShootCommands[J8]}" PlayingType="{Binding PlayingType}"></local:Cell>
+        <local:Cell Grid.Row="10" Grid.Column="10" IsShippart="{Binding Shipparts[J9]}" ShootState="{Binding ShootStates[J9]}" Command="{Binding ShootCommands[J9]}" PlayingType="{Binding PlayingType}"></local:Cell>
     </Grid>
 </UserControl>
