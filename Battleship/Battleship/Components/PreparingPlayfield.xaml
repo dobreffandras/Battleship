@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Battleship.Components"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=local:PlayfieldModel}"
+             d:DataContext="{d:DesignInstance Type=local:PreparingPlayfieldViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style TargetType="CheckBox">
@@ -66,105 +66,105 @@
             <RowDefinition Height="25"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <CheckBox Grid.Column="0" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="A0"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="A1"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="A2"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="A3"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="A4"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="A5"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="A6"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="A7"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="A8"></CheckBox>
-        <CheckBox Grid.Column="0" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="A9"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="B0"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="B1"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="B2"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="B3"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="B4"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="B5"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="B6"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="B7"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="B8"></CheckBox>
-        <CheckBox Grid.Column="1" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="B9"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="C0"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="C1"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="C2"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="C3"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="C4"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="C5"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="C6"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="C7"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="C8"></CheckBox>
-        <CheckBox Grid.Column="2" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="C9"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="D0"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="D1"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="D2"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="D3"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="D4"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="D5"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="D6"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="D7"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="D8"></CheckBox>
-        <CheckBox Grid.Column="3" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="D9"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="E0"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="E1"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="E2"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="E3"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="E4"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="E5"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="E6"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="E7"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="E8"></CheckBox>
-        <CheckBox Grid.Column="4" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="E9"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="F0"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="F1"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="F2"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="F3"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="F4"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="F5"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="F6"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="F7"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="F8"></CheckBox>
-        <CheckBox Grid.Column="5" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="F9"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="G0"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="G1"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="G2"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="G3"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="G4"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="G5"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="G6"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="G7"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="G8"></CheckBox>
-        <CheckBox Grid.Column="6" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="G9"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="H0"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="H1"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="H2"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="H3"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="H4"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="H5"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="H6"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="H7"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="H8"></CheckBox>
-        <CheckBox Grid.Column="7" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="H9"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="I0"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="I1"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="I2"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="I3"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="I4"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="I5"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="I6"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="I7"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="I8"></CheckBox>
-        <CheckBox Grid.Column="8" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="I9"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="0" Command="{Binding ToggleShippart}" CommandParameter="J0"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="1" Command="{Binding ToggleShippart}" CommandParameter="J1"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="2" Command="{Binding ToggleShippart}" CommandParameter="J2"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="3" Command="{Binding ToggleShippart}" CommandParameter="J3"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="4" Command="{Binding ToggleShippart}" CommandParameter="J4"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="5" Command="{Binding ToggleShippart}" CommandParameter="J5"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="6" Command="{Binding ToggleShippart}" CommandParameter="J6"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="7" Command="{Binding ToggleShippart}" CommandParameter="J7"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="8" Command="{Binding ToggleShippart}" CommandParameter="J8"></CheckBox>
-        <CheckBox Grid.Column="9" Grid.Row="9" Command="{Binding ToggleShippart}" CommandParameter="J9"></CheckBox>
+        <local:Cell Grid.Column="0" Grid.Row="0" IsShippart="{Binding Shipparts[A0]}" Command="{Binding ToggleShippart}" CommandParameter="A0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="1" IsShippart="{Binding Shipparts[A1]}" Command="{Binding ToggleShippart}" CommandParameter="A1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="2" IsShippart="{Binding Shipparts[A2]}" Command="{Binding ToggleShippart}" CommandParameter="A2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="3" IsShippart="{Binding Shipparts[A3]}" Command="{Binding ToggleShippart}" CommandParameter="A3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="4" IsShippart="{Binding Shipparts[A4]}" Command="{Binding ToggleShippart}" CommandParameter="A4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="5" IsShippart="{Binding Shipparts[A5]}" Command="{Binding ToggleShippart}" CommandParameter="A5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="6" IsShippart="{Binding Shipparts[A6]}" Command="{Binding ToggleShippart}" CommandParameter="A6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="7" IsShippart="{Binding Shipparts[A7]}" Command="{Binding ToggleShippart}" CommandParameter="A7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="8" IsShippart="{Binding Shipparts[A8]}" Command="{Binding ToggleShippart}" CommandParameter="A8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="0" Grid.Row="9" IsShippart="{Binding Shipparts[A9]}" Command="{Binding ToggleShippart}" CommandParameter="A9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="0" IsShippart="{Binding Shipparts[B0]}" Command="{Binding ToggleShippart}" CommandParameter="B0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="1" IsShippart="{Binding Shipparts[B1]}" Command="{Binding ToggleShippart}" CommandParameter="B1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="2" IsShippart="{Binding Shipparts[B2]}" Command="{Binding ToggleShippart}" CommandParameter="B2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="3" IsShippart="{Binding Shipparts[B3]}" Command="{Binding ToggleShippart}" CommandParameter="B3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="4" IsShippart="{Binding Shipparts[B4]}" Command="{Binding ToggleShippart}" CommandParameter="B4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="5" IsShippart="{Binding Shipparts[B5]}" Command="{Binding ToggleShippart}" CommandParameter="B5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="6" IsShippart="{Binding Shipparts[B6]}" Command="{Binding ToggleShippart}" CommandParameter="B6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="7" IsShippart="{Binding Shipparts[B7]}" Command="{Binding ToggleShippart}" CommandParameter="B7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="8" IsShippart="{Binding Shipparts[B8]}" Command="{Binding ToggleShippart}" CommandParameter="B8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="1" Grid.Row="9" IsShippart="{Binding Shipparts[B9]}" Command="{Binding ToggleShippart}" CommandParameter="B9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="0" IsShippart="{Binding Shipparts[C0]}" Command="{Binding ToggleShippart}" CommandParameter="C0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="1" IsShippart="{Binding Shipparts[C1]}" Command="{Binding ToggleShippart}" CommandParameter="C1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="2" IsShippart="{Binding Shipparts[C2]}" Command="{Binding ToggleShippart}" CommandParameter="C2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="3" IsShippart="{Binding Shipparts[C3]}" Command="{Binding ToggleShippart}" CommandParameter="C3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="4" IsShippart="{Binding Shipparts[C4]}" Command="{Binding ToggleShippart}" CommandParameter="C4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="5" IsShippart="{Binding Shipparts[C5]}" Command="{Binding ToggleShippart}" CommandParameter="C5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="6" IsShippart="{Binding Shipparts[C6]}" Command="{Binding ToggleShippart}" CommandParameter="C6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="7" IsShippart="{Binding Shipparts[C7]}" Command="{Binding ToggleShippart}" CommandParameter="C7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="8" IsShippart="{Binding Shipparts[C8]}" Command="{Binding ToggleShippart}" CommandParameter="C8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="2" Grid.Row="9" IsShippart="{Binding Shipparts[C9]}" Command="{Binding ToggleShippart}" CommandParameter="C9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="0" IsShippart="{Binding Shipparts[D0]}" Command="{Binding ToggleShippart}" CommandParameter="D0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="1" IsShippart="{Binding Shipparts[D1]}" Command="{Binding ToggleShippart}" CommandParameter="D1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="2" IsShippart="{Binding Shipparts[D2]}" Command="{Binding ToggleShippart}" CommandParameter="D2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="3" IsShippart="{Binding Shipparts[D3]}" Command="{Binding ToggleShippart}" CommandParameter="D3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="4" IsShippart="{Binding Shipparts[D4]}" Command="{Binding ToggleShippart}" CommandParameter="D4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="5" IsShippart="{Binding Shipparts[D5]}" Command="{Binding ToggleShippart}" CommandParameter="D5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="6" IsShippart="{Binding Shipparts[D6]}" Command="{Binding ToggleShippart}" CommandParameter="D6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="7" IsShippart="{Binding Shipparts[D7]}" Command="{Binding ToggleShippart}" CommandParameter="D7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="8" IsShippart="{Binding Shipparts[D8]}" Command="{Binding ToggleShippart}" CommandParameter="D8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="3" Grid.Row="9" IsShippart="{Binding Shipparts[D9]}" Command="{Binding ToggleShippart}" CommandParameter="D9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="0" IsShippart="{Binding Shipparts[E0]}" Command="{Binding ToggleShippart}" CommandParameter="E0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="1" IsShippart="{Binding Shipparts[E1]}" Command="{Binding ToggleShippart}" CommandParameter="E1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="2" IsShippart="{Binding Shipparts[E2]}" Command="{Binding ToggleShippart}" CommandParameter="E2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="3" IsShippart="{Binding Shipparts[E3]}" Command="{Binding ToggleShippart}" CommandParameter="E3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="4" IsShippart="{Binding Shipparts[E4]}" Command="{Binding ToggleShippart}" CommandParameter="E4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="5" IsShippart="{Binding Shipparts[E5]}" Command="{Binding ToggleShippart}" CommandParameter="E5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="6" IsShippart="{Binding Shipparts[E6]}" Command="{Binding ToggleShippart}" CommandParameter="E6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="7" IsShippart="{Binding Shipparts[E7]}" Command="{Binding ToggleShippart}" CommandParameter="E7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="8" IsShippart="{Binding Shipparts[E8]}" Command="{Binding ToggleShippart}" CommandParameter="E8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="4" Grid.Row="9" IsShippart="{Binding Shipparts[E9]}" Command="{Binding ToggleShippart}" CommandParameter="E9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="0" IsShippart="{Binding Shipparts[F0]}" Command="{Binding ToggleShippart}" CommandParameter="F0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="1" IsShippart="{Binding Shipparts[F1]}" Command="{Binding ToggleShippart}" CommandParameter="F1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="2" IsShippart="{Binding Shipparts[F2]}" Command="{Binding ToggleShippart}" CommandParameter="F2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="3" IsShippart="{Binding Shipparts[F3]}" Command="{Binding ToggleShippart}" CommandParameter="F3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="4" IsShippart="{Binding Shipparts[F4]}" Command="{Binding ToggleShippart}" CommandParameter="F4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="5" IsShippart="{Binding Shipparts[F5]}" Command="{Binding ToggleShippart}" CommandParameter="F5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="6" IsShippart="{Binding Shipparts[F6]}" Command="{Binding ToggleShippart}" CommandParameter="F6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="7" IsShippart="{Binding Shipparts[F7]}" Command="{Binding ToggleShippart}" CommandParameter="F7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="8" IsShippart="{Binding Shipparts[F8]}" Command="{Binding ToggleShippart}" CommandParameter="F8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="5" Grid.Row="9" IsShippart="{Binding Shipparts[F9]}" Command="{Binding ToggleShippart}" CommandParameter="F9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="0" IsShippart="{Binding Shipparts[G0]}" Command="{Binding ToggleShippart}" CommandParameter="G0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="1" IsShippart="{Binding Shipparts[G1]}" Command="{Binding ToggleShippart}" CommandParameter="G1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="2" IsShippart="{Binding Shipparts[G2]}" Command="{Binding ToggleShippart}" CommandParameter="G2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="3" IsShippart="{Binding Shipparts[G3]}" Command="{Binding ToggleShippart}" CommandParameter="G3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="4" IsShippart="{Binding Shipparts[G4]}" Command="{Binding ToggleShippart}" CommandParameter="G4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="5" IsShippart="{Binding Shipparts[G5]}" Command="{Binding ToggleShippart}" CommandParameter="G5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="6" IsShippart="{Binding Shipparts[G6]}" Command="{Binding ToggleShippart}" CommandParameter="G6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="7" IsShippart="{Binding Shipparts[G7]}" Command="{Binding ToggleShippart}" CommandParameter="G7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="8" IsShippart="{Binding Shipparts[G8]}" Command="{Binding ToggleShippart}" CommandParameter="G8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="6" Grid.Row="9" IsShippart="{Binding Shipparts[G9]}" Command="{Binding ToggleShippart}" CommandParameter="G9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="0" IsShippart="{Binding Shipparts[H0]}" Command="{Binding ToggleShippart}" CommandParameter="H0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="1" IsShippart="{Binding Shipparts[H1]}" Command="{Binding ToggleShippart}" CommandParameter="H1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="2" IsShippart="{Binding Shipparts[H2]}" Command="{Binding ToggleShippart}" CommandParameter="H2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="3" IsShippart="{Binding Shipparts[H3]}" Command="{Binding ToggleShippart}" CommandParameter="H3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="4" IsShippart="{Binding Shipparts[H4]}" Command="{Binding ToggleShippart}" CommandParameter="H4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="5" IsShippart="{Binding Shipparts[H5]}" Command="{Binding ToggleShippart}" CommandParameter="H5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="6" IsShippart="{Binding Shipparts[H6]}" Command="{Binding ToggleShippart}" CommandParameter="H6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="7" IsShippart="{Binding Shipparts[H7]}" Command="{Binding ToggleShippart}" CommandParameter="H7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="8" IsShippart="{Binding Shipparts[H8]}" Command="{Binding ToggleShippart}" CommandParameter="H8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="7" Grid.Row="9" IsShippart="{Binding Shipparts[H9]}" Command="{Binding ToggleShippart}" CommandParameter="H9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="0" IsShippart="{Binding Shipparts[I0]}" Command="{Binding ToggleShippart}" CommandParameter="I0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="1" IsShippart="{Binding Shipparts[I1]}" Command="{Binding ToggleShippart}" CommandParameter="I1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="2" IsShippart="{Binding Shipparts[I2]}" Command="{Binding ToggleShippart}" CommandParameter="I2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="3" IsShippart="{Binding Shipparts[I3]}" Command="{Binding ToggleShippart}" CommandParameter="I3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="4" IsShippart="{Binding Shipparts[I4]}" Command="{Binding ToggleShippart}" CommandParameter="I4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="5" IsShippart="{Binding Shipparts[I5]}" Command="{Binding ToggleShippart}" CommandParameter="I5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="6" IsShippart="{Binding Shipparts[I6]}" Command="{Binding ToggleShippart}" CommandParameter="I6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="7" IsShippart="{Binding Shipparts[I7]}" Command="{Binding ToggleShippart}" CommandParameter="I7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="8" IsShippart="{Binding Shipparts[I8]}" Command="{Binding ToggleShippart}" CommandParameter="I8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="8" Grid.Row="9" IsShippart="{Binding Shipparts[I9]}" Command="{Binding ToggleShippart}" CommandParameter="I9" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="0" IsShippart="{Binding Shipparts[J0]}" Command="{Binding ToggleShippart}" CommandParameter="J0" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="1" IsShippart="{Binding Shipparts[J1]}" Command="{Binding ToggleShippart}" CommandParameter="J1" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="2" IsShippart="{Binding Shipparts[J2]}" Command="{Binding ToggleShippart}" CommandParameter="J2" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="3" IsShippart="{Binding Shipparts[J3]}" Command="{Binding ToggleShippart}" CommandParameter="J3" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="4" IsShippart="{Binding Shipparts[J4]}" Command="{Binding ToggleShippart}" CommandParameter="J4" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="5" IsShippart="{Binding Shipparts[J5]}" Command="{Binding ToggleShippart}" CommandParameter="J5" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="6" IsShippart="{Binding Shipparts[J6]}" Command="{Binding ToggleShippart}" CommandParameter="J6" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="7" IsShippart="{Binding Shipparts[J7]}" Command="{Binding ToggleShippart}" CommandParameter="J7" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="8" IsShippart="{Binding Shipparts[J8]}" Command="{Binding ToggleShippart}" CommandParameter="J8" PlayingType="Active"></local:Cell>
+        <local:Cell Grid.Column="9" Grid.Row="9" IsShippart="{Binding Shipparts[J9]}" Command="{Binding ToggleShippart}" CommandParameter="J9" PlayingType="Active"></local:Cell>
     </Grid>
 </UserControl>

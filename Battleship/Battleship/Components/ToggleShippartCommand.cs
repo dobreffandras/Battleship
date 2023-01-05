@@ -15,7 +15,6 @@ namespace Battleship.Components
 
         public override void Execute(object? parameter)
         {
-            
             if(parameter is string coordinate)
             {
                 char x = coordinate[0];

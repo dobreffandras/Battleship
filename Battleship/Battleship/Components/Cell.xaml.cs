@@ -55,6 +55,19 @@ namespace Battleship.Components
                 ownerType: typeof(Cell),
                 typeMetadata: new PropertyMetadata(null));
 
+        public object CommandParameter
+        {
+            get { return (object)GetValue(CommandParameterProperty); }
+            set { SetValue(CommandParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register(
+                name: nameof(CommandParameter),
+                propertyType: typeof(object),
+                ownerType: typeof(Cell),
+                typeMetadata: new PropertyMetadata(null));
+
         public PlayingType PlayingType
         {
             get { return (PlayingType)GetValue(PlayingTypeProperty); }

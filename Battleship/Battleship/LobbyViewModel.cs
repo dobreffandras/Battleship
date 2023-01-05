@@ -22,8 +22,6 @@ namespace Battleship
             JoinGame = new JoinGameCommand(this, navigateToGameViewModel);
             NewGame = new NewGameCommand(this, communicationService, navigateToGameViewModel);
             this.communicationService = communicationService;
-
-            
             
             communicationService.NewOpenGameCallback = this.OnNewOpenGame;
             communicationService.Connect();
