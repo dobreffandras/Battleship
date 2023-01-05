@@ -21,22 +21,37 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Games"></TextBlock>
-            <ListView 
+            <TextBlock 
+                Grid.Row="0" 
+                Margin="20 20 20 10"
+                Text="Games"></TextBlock>
+            <ListView
                 Grid.Row="1"
+                Margin="20 0"
                 ItemsSource="{Binding OpenGames}"
                 SelectedItem="{Binding SelectedGameItem, Mode=OneWayToSource}"
-                SelectedIndex="{Binding SelectedGameIndex, Mode=OneWayToSource}"></ListView>
+                SelectedIndex="{Binding SelectedGameIndex, Mode=OneWayToSource}"
+                MinHeight="50"></ListView>
             <Button
                 Grid.Row="2"
+                Margin="20 20 20 10"
+                Width="150"
+                Padding="10"
+                FontSize="16"
                 Command="{Binding JoinGame}"
                 CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
             <Button 
                 Grid.Row="3"
+                Margin="100 10 100 10"
+                Padding="10"
+                Width="150"
+                FontSize="16"
                 Command="{Binding NewGame}">Start new game</Button>
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid 
+            Grid.Column="1"
+            Margin="20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
