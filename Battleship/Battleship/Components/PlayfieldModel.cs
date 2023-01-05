@@ -36,11 +36,19 @@ namespace Battleship.Components
         {
             var cell = cells[(x, y)];
             var shootState = 
-                cell.IsShippart 
-                ? ShootState.Hit 
+                cell.IsShippart
+                ? ShootState.Hit
                 : ShootState.Miss;
 
             cells[(x, y)] = (cell.IsShippart, shootState);
+        }
+
+        internal void SetCell(char x, char y, bool isShippart, ShootState shootState)
+        {
+            if (cells.ContainsKey((x, y)))
+            {
+                cells[(x, y)] = (isShippart, shootState);
+            }
         }
 
         public bool IsPrepared => cells.Count(kv => kv.Value.IsShippart) == 20;

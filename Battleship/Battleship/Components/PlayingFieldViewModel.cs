@@ -9,6 +9,7 @@ namespace Battleship.Components
     internal class PlayingFieldViewModel : BaseViewModel
     {
         private readonly PlayfieldModel model;
+        private readonly CommunicationService communicationService;
 
         public PlayingFieldViewModel(
             PlayfieldModel model,
@@ -17,6 +18,7 @@ namespace Battleship.Components
         {
             this.model = model;
             PlayingType = playingType;
+            this.communicationService = communicationService;
             ShootCommands = model.CellCoordinates
                 .ToDictionary<(char, char), string, ICommand>(
                     c => $"{c.Item1}{c.Item2}",
@@ -26,6 +28,16 @@ namespace Battleship.Components
         internal void ShootOn(char x, char y)
         {
             model.ShootOn(x, y);
+            NotifyPropertyChanged(nameof(ShootStates));
+            var isShippart = model.Shipparts[(x, y)];
+            var shootState = model.ShootStates[(x, y)];
+            communicationService.Respond((x, y), isShippart, shootState);
+        }
+
+        internal void SetCell(char x, char y, bool isShippart, ShootState shootState)
+        {
+            model.SetCell(x, y, isShippart, shootState);
+            NotifyPropertyChanged(nameof(Shipparts));
             NotifyPropertyChanged(nameof(ShootStates));
         }
 

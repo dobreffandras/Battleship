@@ -4,6 +4,7 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 using System.Windows;
+using Battleship.Components;
 
 namespace Battleship.Services
 {
@@ -12,6 +13,7 @@ namespace Battleship.Services
         private string? exchange;
         private string? player;
         private string? receivingQueue;
+        private string? responseQueue;
         private readonly IModel channel;
 
         public CommunicationService()
@@ -44,6 +46,8 @@ namespace Battleship.Services
         public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
         public Action<GameMessage>? GameActionCallback { get; set; }
+        
+        public Action<GameResponseMessage>? GameResponseCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
@@ -67,23 +71,35 @@ namespace Battleship.Services
                 body: Encoding.UTF8.GetBytes(messageStr));
 
             receivingQueue = $"game-{newGameId}-receive-a";
+            responseQueue = $"game-{newGameId}-response-a";
             exchange = $"game-{newGameId}";
             player = "a";
             var otherPlayer = "b";
 
             channel.ExchangeDeclare(exchange, ExchangeType.Direct);
             channel.QueueDeclare(queue: receivingQueue);
+            channel.QueueDeclare(queue: responseQueue);
 
             channel.QueueBind(
                 receivingQueue,
                 exchange,
-                otherPlayer);
+                $"{otherPlayer}.receive");
 
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += GameActionMessageReceviced;
+            channel.QueueBind(
+                responseQueue,
+                exchange,
+                $"{otherPlayer}.response");
+
+            var consumer1 = new EventingBasicConsumer(channel);
+            var consumer2 = new EventingBasicConsumer(channel);
+            consumer1.Received += GameActionMessageReceviced;
+            consumer2.Received += GameResponseMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
-                consumer: consumer);
+                consumer: consumer1);
+            channel.BasicConsume(
+                queue: responseQueue,
+                consumer: consumer2);
         }
 
         private void GameActionMessageReceviced(object? sender, BasicDeliverEventArgs e)
@@ -93,6 +109,16 @@ namespace Battleship.Services
             if (message is not null)
             {
                 GameActionCallback?.Invoke(message);
+            }
+        }
+        
+        private void GameResponseMessageReceviced(object? sender, BasicDeliverEventArgs e)
+        {
+            var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
+            var message = JsonConvert.DeserializeObject<GameResponseMessage>(messageStr);
+            if (message is not null)
+            {
+                GameResponseCallback?.Invoke(message);
             }
         }
 
@@ -108,23 +134,34 @@ namespace Battleship.Services
 
 
             receivingQueue = $"game-{selectedGameItem}-receive-b";
+            responseQueue = $"game-{selectedGameItem}-response-b";
             exchange = $"game-{selectedGameItem}";
             player = "b";
             var otherPlayer = "a";
 
             channel.ExchangeDeclare(exchange, ExchangeType.Direct);
             channel.QueueDeclare(queue: receivingQueue);
+            channel.QueueDeclare(queue: responseQueue);
 
             channel.QueueBind(
                 receivingQueue,
                 exchange,
-                otherPlayer);
+                $"{otherPlayer}.receive");
+            channel.QueueBind(
+                responseQueue,
+                exchange,
+                $"{otherPlayer}.response");
 
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += GameActionMessageReceviced;
+            var consumer1 = new EventingBasicConsumer(channel);
+            var consumer2 = new EventingBasicConsumer(channel);
+            consumer1.Received += GameActionMessageReceviced;
+            consumer2.Received += GameResponseMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
-                consumer: consumer);
+                consumer: consumer1);
+            channel.BasicConsume(
+                queue: responseQueue,
+                consumer: consumer2);
         }
 
         internal void Shoot((char x, char y) coord)
@@ -134,8 +171,19 @@ namespace Battleship.Services
 
             channel.BasicPublish(
                 exchange: exchange,
-                routingKey: player,
+                routingKey: $"{player}.receive",
                 body: Encoding.UTF8.GetBytes(gameMessageStr));
+        }
+        
+        internal void Respond((char x, char y) coord, bool isShippart, ShootState shootState)
+        {
+            var responseMessageStr = JsonConvert.SerializeObject(
+                new GameResponseMessage(coord.x, coord.y, isShippart, shootState));
+
+            channel.BasicPublish(
+                exchange: exchange,
+                routingKey: $"{player}.response",
+                body: Encoding.UTF8.GetBytes(responseMessageStr));
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Battleship
         {
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
+            communicationService.GameResponseCallback = ResponseMessageReceived;
 
             MyPlayingFieldViewModel = new PlayingFieldViewModel(myModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, PlayingType.Active, communicationService);
@@ -23,6 +24,12 @@ namespace Battleship
         {
             MyPlayingFieldViewModel.ShootOn(message.X, message.Y);
             NotifyPropertyChanged(nameof(MyPlayingFieldViewModel));
+        }
+        
+        public void ResponseMessageReceived(GameResponseMessage message)
+        {
+            OtherPlayingFieldViewModel.SetCell(message.X, message.Y, message.IsShippart, message.ShootState);
+            NotifyPropertyChanged(nameof(OtherPlayingFieldViewModel));
         }
     }
 }
