@@ -7,9 +7,9 @@ namespace Battleship.Commands
     internal class JoinGameCommand : BaseCommand
     {
         private readonly LobbyViewModel lobby;
-        private readonly Action<PlayfieldModel> navigate;
+        private readonly Action<GameModel> navigate;
 
-        public JoinGameCommand(LobbyViewModel lobby, Action<PlayfieldModel> navigate)
+        public JoinGameCommand(LobbyViewModel lobby, Action<GameModel> navigate)
         {
             this.lobby = lobby;
             this.navigate = navigate;
@@ -24,8 +24,10 @@ namespace Battleship.Commands
 
         public override void Execute(object? parameter)
         {
-            lobby.JoinGameAction();
-            navigate(lobby.NewGamePlayField.Model);
+            if (lobby.SelectedGameItem is not null)
+            {
+                navigate(lobby.JoinGame());
+            }
         }
 
         private void Lobby_PropertyChanged(

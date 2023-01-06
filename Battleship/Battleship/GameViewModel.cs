@@ -14,11 +14,15 @@ namespace Battleship
             communicationService.GameActionCallback = ChangeMessageReceived;
             communicationService.GameResponseCallback = ResponseMessageReceived;
 
+            GameId = game.GameId;
             MyPlayingFieldViewModel = new PlayingFieldViewModel(game.PlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, PlayingType.Active, communicationService);
         }
 
+        public string GameId { get; set; }
+
         public PlayingFieldViewModel MyPlayingFieldViewModel { get; }
+
         public PlayingFieldViewModel OtherPlayingFieldViewModel { get; }
 
         public void ChangeMessageReceived(GameMessage message)

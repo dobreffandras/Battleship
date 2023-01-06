@@ -38,15 +38,14 @@
                 Width="150"
                 Padding="10"
                 FontSize="16"
-                Command="{Binding JoinGame}"
-                CommandParameter="{Binding SelectedGameIndex}">Join Game</Button>
+                Command="{Binding JoinGameCommand}">Join Game</Button>
             <Button 
                 Grid.Row="3"
                 Margin="100 10 100 10"
                 Padding="10"
                 Width="150"
                 FontSize="16"
-                Command="{Binding NewGame}">Start new game</Button>
+                Command="{Binding NewGameCommand}">Start new game</Button>
         </Grid>
 
         <Grid 

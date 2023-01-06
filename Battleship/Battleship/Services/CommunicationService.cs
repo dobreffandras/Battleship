@@ -3,7 +3,6 @@ using RabbitMQ.Client;
 using System;
 using System.Text;
 using Newtonsoft.Json;
-using System.Windows;
 using Battleship.Model;
 
 namespace Battleship.Services
@@ -59,7 +58,7 @@ namespace Battleship.Services
             }
         }
 
-        internal void StartNewGame()
+        internal string StartNewGame()
         {
             var newGameId = Guid.NewGuid().ToString();
             var messageStr = JsonConvert.SerializeObject(
@@ -100,6 +99,8 @@ namespace Battleship.Services
             channel.BasicConsume(
                 queue: responseQueue,
                 consumer: consumer2);
+
+            return newGameId;
         }
 
         private void GameActionMessageReceviced(object? sender, BasicDeliverEventArgs e)

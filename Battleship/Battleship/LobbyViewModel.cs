@@ -16,12 +16,12 @@ namespace Battleship
 
         public LobbyViewModel(
             CommunicationService communicationService,
-            Action<PlayfieldModel> navigateToGameViewModel)
+            Action<GameModel> navigateToGameViewModel)
         {
             NewGamePlayField = new PreparingPlayfieldViewModel(new PlayfieldModel());
             OpenGames = new ObservableCollection<string>();
-            JoinGame = new JoinGameCommand(this, navigateToGameViewModel);
-            NewGame = new NewGameCommand(this, communicationService, navigateToGameViewModel);
+            JoinGameCommand = new JoinGameCommand(this, navigateToGameViewModel);
+            NewGameCommand = new NewGameCommand(this, navigateToGameViewModel);
             this.communicationService = communicationService;
             
             communicationService.NewOpenGameCallback = this.OnNewOpenGame;
@@ -52,21 +52,28 @@ namespace Battleship
             }
         }
 
-        internal void JoinGameAction()
+        internal GameModel CreateNewGame()
         {
-            if(SelectedGameItem is not null)
-            {
-                communicationService.JoinGame(SelectedGameItem);
-            }
+            var gameId = communicationService.StartNewGame();
+            return new GameModel(gameId, NewGamePlayField.Model);
+        }
+
+        internal GameModel JoinGame()
+        {
+            // Should not be called without selected game
+            if (SelectedGameItem is null) throw new ArgumentNullException(nameof(SelectedGameItem));
+
+            communicationService.JoinGame(SelectedGameItem);
+            return new GameModel(SelectedGameItem, NewGamePlayField.Model);
         }
 
         public ObservableCollection<string> OpenGames { get; set; }
 
-        public JoinGameCommand JoinGame { get; set; }
+        public ICommand JoinGameCommand { get; set; }
 
         public PreparingPlayfieldViewModel NewGamePlayField { get; }
 
-        public ICommand NewGame { get; set; }
+        public ICommand NewGameCommand { get; set; }
 
         public string? SelectedGameItem { get; set; }
 

@@ -1,24 +1,19 @@
 ﻿using Battleship.Model;
-using Battleship.Services;
 using System;
 using System.ComponentModel;
-using System.Windows.Input;
 
 namespace Battleship.Commands
 {
     internal class NewGameCommand : BaseCommand
     {
         private readonly LobbyViewModel lobby;
-        private readonly CommunicationService communicationService;
-        private readonly Action<PlayfieldModel> navigate;
+        private readonly Action<GameModel> navigate;
 
         public NewGameCommand(
             LobbyViewModel lobby,
-            CommunicationService communicationService,
-            Action<PlayfieldModel> navigate)
+            Action<GameModel> navigate)
         {
             this.lobby = lobby;
-            this.communicationService = communicationService;
             this.navigate = navigate;
 
             lobby.NewGamePlayField.PropertyChanged += NewGamePlayField_PropertyChanged;
@@ -30,8 +25,7 @@ namespace Battleship.Commands
 
         public override void Execute(object? parameter)
         {
-            communicationService.StartNewGame();
-            navigate(lobby.NewGamePlayField.Model);
+            navigate(lobby.CreateNewGame());
         }
 
         private void NewGamePlayField_PropertyChanged(
