@@ -6,7 +6,8 @@
         {
             GameId = gameId;
             Player = player;
-            PlayfieldModel = playfieldModel;
+            MyPlayfieldModel = playfieldModel;
+            OtherPlayfieldModel = new PlayfieldModel();
             State = new WaitingOpponent();
         }
 
@@ -16,7 +17,9 @@
 
         public Player Player { get; }
 
-        public PlayfieldModel PlayfieldModel { get; }
+        public PlayfieldModel MyPlayfieldModel { get; }
+
+        public PlayfieldModel OtherPlayfieldModel { get; }
     }
 
     internal interface IGameState { }
