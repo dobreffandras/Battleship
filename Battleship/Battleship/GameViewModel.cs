@@ -13,6 +13,7 @@ namespace Battleship
 
             GameId = game.GameId;
             player = game.Player;
+            GameState = game.State.Text;
             MyPlayingFieldViewModel = new PlayingFieldViewModel(game.MyPlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(game.OtherPlayfieldModel, PlayingType.Active, communicationService);
         }
@@ -26,6 +27,8 @@ namespace Battleship
         public PlayingFieldViewModel MyPlayingFieldViewModel { get; }
 
         public PlayingFieldViewModel OtherPlayingFieldViewModel { get; }
+
+        public string GameState { get; set; }
 
         public void ChangeMessageReceived(GameMessage message)
         {

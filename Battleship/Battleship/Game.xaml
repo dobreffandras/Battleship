@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,6 +30,11 @@
             Grid.Row="1"
             Grid.ColumnSpan="2"
             Text="{Binding GameId, StringFormat=Game: {0}}"></TextBlock>
+        <TextBlock 
+            Grid.Column="0"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Text="{Binding GameState}"></TextBlock>
         <components:PlayingField
             Grid.Column="0"
             Grid.Row="2"

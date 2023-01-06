@@ -22,11 +22,23 @@
         public PlayfieldModel OtherPlayfieldModel { get; }
     }
 
-    internal interface IGameState { }
+    internal interface IGameState
+    {
+        public string Text { get; }
+    }
 
-    internal class WaitingOpponent : IGameState { }
+    internal class WaitingOpponent : IGameState
+    {
+        public string Text => "Waiting Opponent";
+    }
 
-    internal class Playing : IGameState { }
+    internal class Playing : IGameState
+    {
+        public string Text => "Your Turn";
+    }
 
-    internal class GameOver : IGameState { }
+    internal class GameOver : IGameState
+    {
+        public string Text => "Game Over";
+    }
 }
