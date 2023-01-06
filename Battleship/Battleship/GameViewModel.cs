@@ -8,13 +8,13 @@ namespace Battleship
     {
         private readonly CommunicationService communicationService;
 
-        public GameViewModel(PlayfieldModel myModel, PlayfieldModel otherModel, CommunicationService communicationService)
+        public GameViewModel(GameModel game, PlayfieldModel otherModel, CommunicationService communicationService)
         {
             this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
             communicationService.GameResponseCallback = ResponseMessageReceived;
 
-            MyPlayingFieldViewModel = new PlayingFieldViewModel(myModel, PlayingType.Passive, communicationService);
+            MyPlayingFieldViewModel = new PlayingFieldViewModel(game.PlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, PlayingType.Active, communicationService);
         }
 

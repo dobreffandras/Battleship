@@ -19,7 +19,7 @@ namespace Battleship
                     communicationService,
                     navigateToGameViewModel: (model) =>
                     {
-                        ChangeViewModel(new GameViewModel(model, new PlayfieldModel(), communicationService));
+                        ChangeViewModel(new GameViewModel(new GameModel("TODO", model), new PlayfieldModel(), communicationService));
                     }),
             };
         }
