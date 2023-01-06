@@ -6,21 +6,23 @@ namespace Battleship
 {
     internal class GameViewModel : BaseViewModel
     {
-        private readonly CommunicationService communicationService;
-
         public GameViewModel(GameModel game, PlayfieldModel otherModel, CommunicationService communicationService)
         {
-            this.communicationService = communicationService;
             communicationService.GameActionCallback = ChangeMessageReceived;
             communicationService.GameResponseCallback = ResponseMessageReceived;
 
             GameId = game.GameId;
+            player = game.Player;
             MyPlayingFieldViewModel = new PlayingFieldViewModel(game.PlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(otherModel, PlayingType.Active, communicationService);
         }
 
         public string GameId { get; set; }
 
+        private readonly Player player;
+
+        public string PlayerSide => player == Player.PlayerOne ? "Player 1" : "Player 2";
+        
         public PlayingFieldViewModel MyPlayingFieldViewModel { get; }
 
         public PlayingFieldViewModel OtherPlayingFieldViewModel { get; }

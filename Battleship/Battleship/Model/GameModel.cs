@@ -2,9 +2,10 @@
 {
     internal class GameModel
     {
-        public GameModel(string gameId, PlayfieldModel playfieldModel)
+        public GameModel(string gameId, Player player, PlayfieldModel playfieldModel)
         {
             GameId = gameId;
+            Player = player;
             PlayfieldModel = playfieldModel;
             State = new WaitingOpponent();
         }
@@ -12,6 +13,8 @@
         public IGameState State { get; set; }
 
         public string GameId { get; }
+
+        public Player Player { get; }
 
         public PlayfieldModel PlayfieldModel { get; }
     }

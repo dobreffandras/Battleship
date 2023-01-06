@@ -55,7 +55,7 @@ namespace Battleship
         internal GameModel CreateNewGame()
         {
             var gameId = communicationService.StartNewGame();
-            return new GameModel(gameId, NewGamePlayField.Model);
+            return new GameModel(gameId, Player.PlayerOne, NewGamePlayField.Model);
         }
 
         internal GameModel JoinGame()
@@ -64,7 +64,7 @@ namespace Battleship
             if (SelectedGameItem is null) throw new ArgumentNullException(nameof(SelectedGameItem));
 
             communicationService.JoinGame(SelectedGameItem);
-            return new GameModel(SelectedGameItem, NewGamePlayField.Model);
+            return new GameModel(SelectedGameItem, Player.PlayerTwo, NewGamePlayField.Model);
         }
 
         public ObservableCollection<string> OpenGames { get; set; }
