@@ -1,4 +1,6 @@
-﻿namespace Battleship.Model
+﻿using System;
+
+namespace Battleship.Model
 {
     internal class GameModel
     {
@@ -20,6 +22,38 @@
         public PlayfieldModel MyPlayfieldModel { get; }
 
         public PlayfieldModel OtherPlayfieldModel { get; }
+
+        public void OpponentConnected()
+        {
+            State = State switch 
+            {
+                WaitingOpponent s => s.MoveToPlayingState(currentPlayer: Player.PlayerOne),
+                _ => throw new InvalidOperationException(), // TODO Specify error
+            };
+        }
+
+        public void ConnectionAccepted()
+        {
+            State = State switch
+            {
+                WaitingOpponent s => s.MoveToPlayingState(currentPlayer: Player.PlayerTwo),
+                _ => throw new InvalidOperationException(), // TODO Specify error
+            };
+        }
+
+        public void ChangeTurn() 
+        {
+            State = State switch
+            {
+                Playing s => s.ChangePlayerOnTurn(),
+                _ => throw new InvalidOperationException(), // TODO Specify error
+            };
+        }
+
+        public void OpponentLeft()
+        {
+            // TODO 
+        }
     }
 
     internal interface IGameState
@@ -30,11 +64,38 @@
     internal class WaitingOpponent : IGameState
     {
         public string Text => "Waiting Opponent";
+
+        public IGameState MoveToPlayingState(Player currentPlayer)
+        {
+            return new Playing(currentPlayer);
+        }
     }
 
     internal class Playing : IGameState
     {
-        public string Text => "Your Turn";
+        public Playing(Player currentPlayer, Player onTurn = Player.PlayerOne)
+        {
+            Current = currentPlayer;
+            OnTurn = onTurn;
+        }
+
+        Player Current  { get; set; }
+
+        Player OnTurn { get; set; }
+        
+        public string Text => Current == OnTurn ? "Your turn" : "Opponent's turn";
+
+        public IGameState ChangePlayerOnTurn() 
+        { 
+            if (OnTurn == Player.PlayerOne) 
+            { 
+                return new Playing(Current, Player.PlayerTwo);
+            }
+            else
+            {
+                return new Playing(Current, Player.PlayerOne);
+            }
+        }
     }
 
     internal class GameOver : IGameState

@@ -28,6 +28,7 @@ namespace Battleship.Components
 
         internal void ShootOn(char x, char y)
         {
+            // TODO move logic to GameModel ?
             model.ShootOn(x, y);
             NotifyPropertyChanged(nameof(ShootStates));
             var isShippart = model.Shipparts[(x, y)];

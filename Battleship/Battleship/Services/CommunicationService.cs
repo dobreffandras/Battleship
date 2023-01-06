@@ -13,6 +13,7 @@ namespace Battleship.Services
         private string? player;
         private string? receivingQueue;
         private string? responseQueue;
+        private string? utilityQueue;
         private readonly IModel channel;
 
         public CommunicationService()
@@ -47,6 +48,12 @@ namespace Battleship.Services
         public Action<ShootMessage>? ShootCallback { get; set; }
         
         public Action<ShootResponseMessage>? ShootResponseCallback { get; set; }
+        
+        public Action? OpponentConnectedCallback { get; set; }
+
+        public Action? ConnectionAcceptedCallback { get; set; }
+        
+        public Action? OpponentLeftCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
@@ -71,6 +78,7 @@ namespace Battleship.Services
 
             receivingQueue = $"game-{newGameId}-receive-a";
             responseQueue = $"game-{newGameId}-response-a";
+            utilityQueue = $"game-{newGameId}-utility-a";
             exchange = $"game-{newGameId}";
             player = "a";
             var otherPlayer = "b";
@@ -78,27 +86,36 @@ namespace Battleship.Services
             channel.ExchangeDeclare(exchange, ExchangeType.Direct);
             channel.QueueDeclare(queue: receivingQueue);
             channel.QueueDeclare(queue: responseQueue);
+            channel.QueueDeclare(queue: utilityQueue);
 
             channel.QueueBind(
                 receivingQueue,
                 exchange,
                 $"{otherPlayer}.receive");
-
             channel.QueueBind(
                 responseQueue,
                 exchange,
                 $"{otherPlayer}.response");
+            channel.QueueBind(
+                utilityQueue,
+                exchange,
+                $"{otherPlayer}.utility");
 
             var consumer1 = new EventingBasicConsumer(channel);
             var consumer2 = new EventingBasicConsumer(channel);
+            var consumer3 = new EventingBasicConsumer(channel);
             consumer1.Received += ShootMessageReceviced;
             consumer2.Received += ShootResponseMessageReceviced;
+            consumer3.Received += UtilityMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
                 consumer: consumer1);
             channel.BasicConsume(
                 queue: responseQueue,
                 consumer: consumer2);
+            channel.BasicConsume(
+                queue: utilityQueue,
+                consumer: consumer3);
 
             return newGameId;
         }
@@ -122,6 +139,20 @@ namespace Battleship.Services
                 ShootResponseCallback?.Invoke(message);
             }
         }
+        
+        private void UtilityMessageReceviced(object? sender, BasicDeliverEventArgs e)
+        {
+            var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
+            var action = messageStr switch
+            {
+                "opponentConnected" => OpponentConnectedCallback,
+                "connectionAccepted" => ConnectionAcceptedCallback,
+                "opponentLeft" => OpponentLeftCallback,
+                _ => null
+            };
+
+            action?.Invoke();
+        }
 
         internal void JoinGame(string selectedGameItem)
         {
@@ -136,6 +167,7 @@ namespace Battleship.Services
 
             receivingQueue = $"game-{selectedGameItem}-receive-b";
             responseQueue = $"game-{selectedGameItem}-response-b";
+            utilityQueue = $"game-{selectedGameItem}-utility-b";
             exchange = $"game-{selectedGameItem}";
             player = "b";
             var otherPlayer = "a";
@@ -143,6 +175,7 @@ namespace Battleship.Services
             channel.ExchangeDeclare(exchange, ExchangeType.Direct);
             channel.QueueDeclare(queue: receivingQueue);
             channel.QueueDeclare(queue: responseQueue);
+            channel.QueueDeclare(queue: utilityQueue);
 
             channel.QueueBind(
                 receivingQueue,
@@ -152,17 +185,44 @@ namespace Battleship.Services
                 responseQueue,
                 exchange,
                 $"{otherPlayer}.response");
+            channel.QueueBind(
+                utilityQueue,
+                exchange,
+                $"{otherPlayer}.utility");
 
             var consumer1 = new EventingBasicConsumer(channel);
             var consumer2 = new EventingBasicConsumer(channel);
+            var consumer3 = new EventingBasicConsumer(channel);
             consumer1.Received += ShootMessageReceviced;
             consumer2.Received += ShootResponseMessageReceviced;
+            consumer3.Received += UtilityMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
                 consumer: consumer1);
             channel.BasicConsume(
                 queue: responseQueue,
                 consumer: consumer2);
+            channel.BasicConsume(
+                queue: utilityQueue,
+                consumer: consumer3);
+
+            SendConnectionMessage();
+        }
+
+        private void SendConnectionMessage()
+        {
+            channel.BasicPublish(
+                exchange: exchange,
+                routingKey: $"{player}.utility",
+                body: Encoding.UTF8.GetBytes("opponentConnected"));
+        }
+
+        internal void AcceptConnection()
+        {
+            channel.BasicPublish(
+                exchange: exchange,
+                routingKey: $"{player}.utility",
+                body: Encoding.UTF8.GetBytes("connectionAccepted"));
         }
 
         internal void Shoot((char x, char y) coord)
