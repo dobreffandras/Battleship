@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Battleship.Model;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 

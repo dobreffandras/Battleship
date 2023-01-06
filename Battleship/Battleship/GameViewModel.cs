@@ -1,4 +1,5 @@
 ﻿using Battleship.Components;
+using Battleship.Model;
 using Battleship.Services;
 
 namespace Battleship

@@ -1,4 +1,5 @@
 ﻿using Battleship.Commands;
+using Battleship.Model;
 using Battleship.Services;
 using System.Collections.Generic;
 using System.Linq;

@@ -28,12 +28,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components/PreparingPlayfieldViewModel.cs">
-      <DependentUpon>Components/PreparingPlayfield.xaml</DependentUpon>
+      <DependentUpon>/Components/PreparingPlayfield.xaml</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Components/PlayingFieldViewModel.cs">
-      <DependentUpon>Components/PlayingField.xaml</DependentUpon>
+      <DependentUpon>/Components/PlayingField.xaml</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

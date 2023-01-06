@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Battleship.Components
+namespace Battleship.Model
 {
     public class PlayfieldModel
     {
@@ -15,9 +15,9 @@ namespace Battleship.Components
 
         private void Fillup()
         {
-            foreach(var x in new[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' })
+            foreach (var x in new[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' })
             {
-                for(var i = 0; i < 10; i++)
+                for (var i = 0; i < 10; i++)
                 {
                     var y = i.ToString()[0];
                     cells[(x, y)] = (false, ShootState.None);
@@ -35,7 +35,7 @@ namespace Battleship.Components
         internal void ShootOn(char x, char y)
         {
             var cell = cells[(x, y)];
-            var shootState = 
+            var shootState =
                 cell.IsShippart
                 ? ShootState.Hit
                 : ShootState.Miss;
@@ -55,10 +55,10 @@ namespace Battleship.Components
 
         public IReadOnlyCollection<(char, char)> CellCoordinates => cells.Keys;
 
-        public IDictionary<(char, char), ShootState> ShootStates 
+        public IDictionary<(char, char), ShootState> ShootStates
             => cells.ToDictionary(x => x.Key, x => x.Value.ShootState);
-        
-        public IDictionary<(char, char), bool> Shipparts 
+
+        public IDictionary<(char, char), bool> Shipparts
             => cells.ToDictionary(x => x.Key, x => x.Value.IsShippart);
     }
 

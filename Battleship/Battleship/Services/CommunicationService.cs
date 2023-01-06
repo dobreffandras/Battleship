@@ -4,7 +4,7 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 using System.Windows;
-using Battleship.Components;
+using Battleship.Model;
 
 namespace Battleship.Services
 {

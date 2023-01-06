@@ -1,5 +1,6 @@
 ﻿using Battleship.Commands;
 using Battleship.Components;
+using Battleship.Model;
 using Battleship.Services;
 using System;
 using System.Collections.ObjectModel;

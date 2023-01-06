@@ -1,4 +1,4 @@
-﻿using Battleship.Components;
+﻿using Battleship.Model;
 using System;
 using System.ComponentModel;
 
