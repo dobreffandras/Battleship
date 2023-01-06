@@ -8,8 +8,8 @@ namespace Battleship
     {
         public GameViewModel(GameModel game, CommunicationService communicationService)
         {
-            communicationService.GameActionCallback = ChangeMessageReceived;
-            communicationService.GameResponseCallback = ResponseMessageReceived;
+            communicationService.ShootCallback = ShootMessageReceived;
+            communicationService.ShootResponseCallback = ShootResponseMessageReceived;
 
             GameId = game.GameId;
             player = game.Player;
@@ -30,13 +30,13 @@ namespace Battleship
 
         public string GameState { get; set; }
 
-        public void ChangeMessageReceived(GameMessage message)
+        public void ShootMessageReceived(ShootMessage message)
         {
             MyPlayingFieldViewModel.ShootOn(message.X, message.Y);
             NotifyPropertyChanged(nameof(MyPlayingFieldViewModel));
         }
         
-        public void ResponseMessageReceived(GameResponseMessage message)
+        public void ShootResponseMessageReceived(ShootResponseMessage message)
         {
             OtherPlayingFieldViewModel.SetCell(message.X, message.Y, message.IsShippart, message.ShootState);
             NotifyPropertyChanged(nameof(OtherPlayingFieldViewModel));

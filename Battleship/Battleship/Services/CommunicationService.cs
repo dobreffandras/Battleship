@@ -44,9 +44,9 @@ namespace Battleship.Services
 
         public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
-        public Action<GameMessage>? GameActionCallback { get; set; }
+        public Action<ShootMessage>? ShootCallback { get; set; }
         
-        public Action<GameResponseMessage>? GameResponseCallback { get; set; }
+        public Action<ShootResponseMessage>? ShootResponseCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
@@ -91,8 +91,8 @@ namespace Battleship.Services
 
             var consumer1 = new EventingBasicConsumer(channel);
             var consumer2 = new EventingBasicConsumer(channel);
-            consumer1.Received += GameActionMessageReceviced;
-            consumer2.Received += GameResponseMessageReceviced;
+            consumer1.Received += ShootMessageReceviced;
+            consumer2.Received += ShootResponseMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
                 consumer: consumer1);
@@ -103,23 +103,23 @@ namespace Battleship.Services
             return newGameId;
         }
 
-        private void GameActionMessageReceviced(object? sender, BasicDeliverEventArgs e)
+        private void ShootMessageReceviced(object? sender, BasicDeliverEventArgs e)
         {
             var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
-            var message = JsonConvert.DeserializeObject<GameMessage>(messageStr);
+            var message = JsonConvert.DeserializeObject<ShootMessage>(messageStr);
             if (message is not null)
             {
-                GameActionCallback?.Invoke(message);
+                ShootCallback?.Invoke(message);
             }
         }
         
-        private void GameResponseMessageReceviced(object? sender, BasicDeliverEventArgs e)
+        private void ShootResponseMessageReceviced(object? sender, BasicDeliverEventArgs e)
         {
             var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
-            var message = JsonConvert.DeserializeObject<GameResponseMessage>(messageStr);
+            var message = JsonConvert.DeserializeObject<ShootResponseMessage>(messageStr);
             if (message is not null)
             {
-                GameResponseCallback?.Invoke(message);
+                ShootResponseCallback?.Invoke(message);
             }
         }
 
@@ -155,8 +155,8 @@ namespace Battleship.Services
 
             var consumer1 = new EventingBasicConsumer(channel);
             var consumer2 = new EventingBasicConsumer(channel);
-            consumer1.Received += GameActionMessageReceviced;
-            consumer2.Received += GameResponseMessageReceviced;
+            consumer1.Received += ShootMessageReceviced;
+            consumer2.Received += ShootResponseMessageReceviced;
             channel.BasicConsume(
                 queue: receivingQueue,
                 consumer: consumer1);
@@ -168,7 +168,7 @@ namespace Battleship.Services
         internal void Shoot((char x, char y) coord)
         {
             var gameMessageStr = JsonConvert.SerializeObject(
-                new GameMessage(coord.x, coord.y));
+                new ShootMessage(coord.x, coord.y));
 
             channel.BasicPublish(
                 exchange: exchange,
@@ -179,7 +179,7 @@ namespace Battleship.Services
         internal void Respond((char x, char y) coord, bool isShippart, ShootState shootState)
         {
             var responseMessageStr = JsonConvert.SerializeObject(
-                new GameResponseMessage(coord.x, coord.y, isShippart, shootState));
+                new ShootResponseMessage(coord.x, coord.y, isShippart, shootState));
 
             channel.BasicPublish(
                 exchange: exchange,
