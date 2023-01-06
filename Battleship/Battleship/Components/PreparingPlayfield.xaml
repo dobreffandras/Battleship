@@ -40,30 +40,32 @@
         </Style>
     </UserControl.Resources>
     
-    <Grid>
+    <Grid
+        Name="PreparingPlayingFieldGrid"
+        Height="{Binding ElementName=PreparingPlayingFieldGrid, Path=ActualWidth}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
-            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
         <local:Cell Grid.Column="0" Grid.Row="0" IsShippart="{Binding Shipparts[A0]}" Command="{Binding ToggleShippart}" CommandParameter="A0" PlayingType="Active"></local:Cell>
