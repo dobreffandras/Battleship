@@ -1,4 +1,5 @@
-﻿using Battleship.Model;
+﻿using Battleship.Commands;
+using Battleship.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -11,7 +12,7 @@ namespace Battleship.Components
 
         public PreparingPlayfieldViewModel(PlayfieldModel model)
         {
-            ToggleShippart = new ToggleShippartCommand(this);
+            ToggleShippart = new ToggleShippartCommand(ToggleShippartAt);
             this.model = model;
         }
 
