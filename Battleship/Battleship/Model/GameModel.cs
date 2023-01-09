@@ -26,10 +26,10 @@ namespace Battleship.Model
 
         public void OpponentConnected()
         {
-            State = State switch 
+            State = State switch
             {
                 WaitingOpponent s => s.MoveToPlayingState(currentPlayer: Player.PlayerOne),
-                _ => throw new InvalidOperationException(), // TODO Specify error
+                _ => throw new InvalidOperationException($"{nameof(OpponentConnected)} method cannot be called in the current state of the game."),
             };
         }
 
@@ -38,16 +38,18 @@ namespace Battleship.Model
             State = State switch
             {
                 WaitingOpponent s => s.MoveToPlayingState(currentPlayer: Player.PlayerTwo),
-                _ => throw new InvalidOperationException(), // TODO Specify error
+                _ => throw new InvalidOperationException($"{nameof(ConnectionAccepted)} method cannot be called in the current state of the game."),
             };
         }
 
-        public void ChangeTurn() 
+        public void ChangeTurn()
         {
             State = State switch
             {
                 Playing s => s.ChangePlayerOnTurn(),
-                _ => throw new InvalidOperationException(), // TODO Specify error
+                _ => throw new InvalidOperationException($"{nameof(ChangeTurn)} method cannot be called in the current state of the game."),
+            };
+        }
 
         public void GameOver()
         {

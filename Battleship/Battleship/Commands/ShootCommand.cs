@@ -15,7 +15,7 @@ namespace Battleship.Commands
             this.communicationService = communicationService;
         }
 
-        public override bool CanExecute(object? parameter) => true; // TODO consider other players turn
+        public override bool CanExecute(object? parameter) => true;
 
         public override void Execute(object? parameter)
         {

@@ -8,7 +8,6 @@ namespace Battleship
     {
         public GameViewModel(GameModel game, CommunicationService communicationService)
         {
-            // TODO Consider collecting these under an interface
             communicationService.ShootCallback = ShootMessageReceived;
             communicationService.ShootResponseCallback = ShootResponseMessageReceived;
             communicationService.OpponentConnectedCallback = OpponentConnected;
