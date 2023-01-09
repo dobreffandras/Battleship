@@ -32,24 +32,46 @@ namespace Battleship
 
         public PlayingFieldViewModel OtherPlayingFieldViewModel { get; }
 
-        public string GameState { get => game.State.Text; }
+        public string GameStateMessage { get => game.State.Text; }
+        
+        public bool IsMyTurn 
+        {
+            get => game.State switch
+            {
+                Playing p => p.IsCurrentPlayerOnTurn,
+                _ => false,
+            }; 
+        }
+        
+        public bool IsOpponentsTurn 
+        {
+            get => game.State switch
+            {
+                Playing p => !p.IsCurrentPlayerOnTurn,
+                _ => false,
+            }; 
+        }
 
         public void OpponentConnected()
         {
             game.OpponentConnected();
             communicationService.AcceptConnection();
-            NotifyPropertyChanged(nameof(GameState));
+            NotifyPropertyChanged(nameof(GameStateMessage));
+            NotifyPropertyChanged(nameof(IsMyTurn));
+            NotifyPropertyChanged(nameof(IsOpponentsTurn));
         }
         public void ConnectionAccepted()
         {
             game.ConnectionAccepted();
-            NotifyPropertyChanged(nameof(GameState));
+            NotifyPropertyChanged(nameof(GameStateMessage));
+            NotifyPropertyChanged(nameof(IsMyTurn));
+            NotifyPropertyChanged(nameof(IsOpponentsTurn));
         }
 
         public void OpponentLeft()
         {
             game.OpponentLeft();
-            NotifyPropertyChanged(nameof(GameState));
+            NotifyPropertyChanged(nameof(GameStateMessage));
         }
 
         public void ShootMessageReceived(ShootMessage message)
@@ -59,14 +81,18 @@ namespace Battleship
 
             var (isShippart, shootState) = game.ReceiveShoot(x, y);
             communicationService.Respond((x, y), isShippart, shootState);
-            NotifyPropertyChanged(nameof(GameState));
+            NotifyPropertyChanged(nameof(GameStateMessage));
+            NotifyPropertyChanged(nameof(IsMyTurn));
+            NotifyPropertyChanged(nameof(IsOpponentsTurn));
             MyPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
 
         public void ShootResponseMessageReceived(ShootResponseMessage message)
         {
             game.ReceiveResponseForShoot(message.X, message.Y, message.IsShippart, message.ShootState);
-            NotifyPropertyChanged(nameof(GameState));
+            NotifyPropertyChanged(nameof(GameStateMessage));
+            NotifyPropertyChanged(nameof(IsMyTurn));
+            NotifyPropertyChanged(nameof(IsOpponentsTurn));
             OtherPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
     }

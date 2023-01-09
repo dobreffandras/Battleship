@@ -10,6 +10,23 @@
     <Grid 
         Name="PlayingFieldGrid"
         Height="{Binding ElementName=PlayingFieldGrid, Path=ActualWidth}">
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Setter Property="Opacity" Value="1"></Setter>
+                <Style.Triggers>
+                    <DataTrigger 
+                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:PlayingField, AncestorLevel=1}, Path=IsEnabled}"
+                        Value="True">
+                        <Setter Property="Opacity" Value="1"></Setter>
+                    </DataTrigger>
+                    <DataTrigger 
+                        Binding="{Binding RelativeSource={RelativeSource AncestorType=local:PlayingField, AncestorLevel=1}, Path=IsEnabled}"
+                        Value="False">
+                        <Setter Property="Opacity" Value="0.5"></Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>

@@ -104,6 +104,8 @@ namespace Battleship.Model
         Player Current  { get; set; }
 
         Player OnTurn { get; set; }
+
+        public bool IsCurrentPlayerOnTurn { get => Current == OnTurn; }
         
         public string Text => Current == OnTurn ? "Your turn" : "Opponent's turn";
 

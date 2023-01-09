@@ -34,16 +34,18 @@
             Grid.Column="0"
             Grid.Row="2"
             Grid.ColumnSpan="2"
-            Text="{Binding GameState}"></TextBlock>
+            Text="{Binding GameStateMessage}"></TextBlock>
         <components:PlayingField
             Grid.Column="0"
             Grid.Row="2"
             Margin="20"
+            IsEnabled="{Binding DataContext.IsOpponentsTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding MyPlayingFieldViewModel}" />
         <components:PlayingField 
             Grid.Column="1"
             Grid.Row="2"
             Margin="20"
+            IsEnabled="{Binding DataContext.IsMyTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding OtherPlayingFieldViewModel}" />
     </Grid>
 </UserControl>
