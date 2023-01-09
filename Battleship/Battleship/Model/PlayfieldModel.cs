@@ -60,6 +60,8 @@ namespace Battleship.Model
 
         public IDictionary<(char, char), bool> Shipparts
             => cells.ToDictionary(x => x.Key, x => x.Value.IsShippart);
+
+        public bool AllShipsSunk => ShootStates.Count(s => s.Value == ShootState.Hit) == 20;
     }
 
     public enum ShootState

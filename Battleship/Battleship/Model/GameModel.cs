@@ -48,6 +48,13 @@ namespace Battleship.Model
             {
                 Playing s => s.ChangePlayerOnTurn(),
                 _ => throw new InvalidOperationException(), // TODO Specify error
+
+        public void GameOver()
+        {
+            State = State switch
+            {
+                Playing s => s.GameOver(),
+                _ => throw new InvalidOperationException($"{nameof(GameOver)} method cannot be called in the current state of the game."),
             };
         }
 
@@ -61,17 +68,27 @@ namespace Battleship.Model
             MyPlayfieldModel.ShootOn(x, y);
             var isShippart = MyPlayfieldModel.Shipparts[(x, y)];
             var shootState = MyPlayfieldModel.ShootStates[(x, y)];
-            if(shootState != ShootState.Hit)
+
+            if (MyPlayfieldModel.AllShipsSunk)
+            {
+                GameOver();
+            }
+            else if (shootState != ShootState.Hit)
             {
                 ChangeTurn();
             }
+
             return (isShippart, shootState);
         }
-        
+
         public void ReceiveResponseForShoot(char x, char y, bool isShippart, ShootState shootState)
         {
             OtherPlayfieldModel.SetCell(x, y, isShippart, shootState);
-            if(shootState != ShootState.Hit)
+            if (OtherPlayfieldModel.AllShipsSunk)
+            {
+                GameOver();
+            }
+            else if (shootState != ShootState.Hit)
             {
                 ChangeTurn();
             }
@@ -101,18 +118,18 @@ namespace Battleship.Model
             OnTurn = onTurn;
         }
 
-        Player Current  { get; set; }
+        public Player Current { get; set; }
 
-        Player OnTurn { get; set; }
+        public Player OnTurn { get; set; }
 
         public bool IsCurrentPlayerOnTurn { get => Current == OnTurn; }
-        
+
         public string Text => Current == OnTurn ? "Your turn" : "Opponent's turn";
 
-        public IGameState ChangePlayerOnTurn() 
-        { 
-            if (OnTurn == Player.PlayerOne) 
-            { 
+        public IGameState ChangePlayerOnTurn()
+        {
+            if (OnTurn == Player.PlayerOne)
+            {
                 return new Playing(Current, Player.PlayerTwo);
             }
             else
@@ -120,10 +137,15 @@ namespace Battleship.Model
                 return new Playing(Current, Player.PlayerOne);
             }
         }
+
+        public IGameState GameOver()
+        {
+            return new GameOver(Current, OnTurn);
+        }
     }
 
-    internal class GameOver : IGameState
+    internal record GameOver(Player CurrentPlayer, Player Winner) : IGameState
     {
-        public string Text => "Game Over";
+        public string Text => CurrentPlayer == Winner ? "You are the winner!" : "You've lost";
     }
 }
