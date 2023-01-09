@@ -61,14 +61,20 @@ namespace Battleship.Model
             MyPlayfieldModel.ShootOn(x, y);
             var isShippart = MyPlayfieldModel.Shipparts[(x, y)];
             var shootState = MyPlayfieldModel.ShootStates[(x, y)];
-            ChangeTurn();
+            if(shootState != ShootState.Hit)
+            {
+                ChangeTurn();
+            }
             return (isShippart, shootState);
         }
         
         public void ReceiveResponseForShoot(char x, char y, bool isShippart, ShootState shootState)
         {
             OtherPlayfieldModel.SetCell(x, y, isShippart, shootState);
-            ChangeTurn();
+            if(shootState != ShootState.Hit)
+            {
+                ChangeTurn();
+            }
         }
     }
 
