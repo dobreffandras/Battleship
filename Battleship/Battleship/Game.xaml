@@ -24,26 +24,33 @@
             Grid.Column="0"
             Grid.Row="0"
             Grid.ColumnSpan="2"
-            Text="{Binding PlayerSide, StringFormat=Player: {0}}"></TextBlock>
+            Margin="10 5 10 0"
+            FontSize="14"
+            Text="{Binding GameId, StringFormat=Game: {0}}"></TextBlock>
         <TextBlock 
             Grid.Column="0"
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Text="{Binding GameId, StringFormat=Game: {0}}"></TextBlock>
+            Margin="10 5 10 5"
+            FontSize="14"
+            Text="{Binding PlayerSide, StringFormat=You are {0}}"></TextBlock>
         <TextBlock 
             Grid.Column="0"
             Grid.Row="2"
             Grid.ColumnSpan="2"
+            Margin="0 5 0 0"
+            FontSize="16"
+            HorizontalAlignment="Center"
             Text="{Binding GameStateMessage}"></TextBlock>
         <components:PlayingField
             Grid.Column="0"
-            Grid.Row="2"
+            Grid.Row="3"
             Margin="20"
             IsEnabled="{Binding DataContext.IsOpponentsTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding MyPlayingFieldViewModel}" />
         <components:PlayingField 
             Grid.Column="1"
-            Grid.Row="2"
+            Grid.Row="3"
             Margin="20"
             IsEnabled="{Binding DataContext.IsMyTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding OtherPlayingFieldViewModel}" />
