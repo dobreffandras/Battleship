@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Battleship.Services;
+using System;
 
 namespace Battleship.Model
 {
@@ -53,6 +54,21 @@ namespace Battleship.Model
         public void OpponentLeft()
         {
             // TODO 
+        }
+
+        public (bool isShippart, ShootState shootState) ReceiveShoot(char x, char y)
+        {
+            MyPlayfieldModel.ShootOn(x, y);
+            var isShippart = MyPlayfieldModel.Shipparts[(x, y)];
+            var shootState = MyPlayfieldModel.ShootStates[(x, y)];
+            ChangeTurn();
+            return (isShippart, shootState);
+        }
+        
+        public void ReceiveResponseForShoot(char x, char y, bool isShippart, ShootState shootState)
+        {
+            OtherPlayfieldModel.SetCell(x, y, isShippart, shootState);
+            ChangeTurn();
         }
     }
 

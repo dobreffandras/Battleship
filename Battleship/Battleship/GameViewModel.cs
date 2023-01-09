@@ -8,6 +8,7 @@ namespace Battleship
     {
         public GameViewModel(GameModel game, CommunicationService communicationService)
         {
+            // TODO Consider collecting these under an interface
             communicationService.ShootCallback = ShootMessageReceived;
             communicationService.ShootResponseCallback = ShootResponseMessageReceived;
             communicationService.OpponentConnectedCallback = OpponentConnected;
@@ -53,18 +54,20 @@ namespace Battleship
 
         public void ShootMessageReceived(ShootMessage message)
         {
-            MyPlayingFieldViewModel.ShootOn(message.X, message.Y);
-            game.ChangeTurn();
+            var x = message.X;
+            var y = message.Y;
+
+            var (isShippart, shootState) = game.ReceiveShoot(x, y);
+            communicationService.Respond((x, y), isShippart, shootState);
             NotifyPropertyChanged(nameof(GameState));
-            NotifyPropertyChanged(nameof(MyPlayingFieldViewModel));
+            MyPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
 
         public void ShootResponseMessageReceived(ShootResponseMessage message)
         {
-            OtherPlayingFieldViewModel.SetCell(message.X, message.Y, message.IsShippart, message.ShootState);
-            game.ChangeTurn();
+            game.ReceiveResponseForShoot(message.X, message.Y, message.IsShippart, message.ShootState);
             NotifyPropertyChanged(nameof(GameState));
-            NotifyPropertyChanged(nameof(OtherPlayingFieldViewModel));
+            OtherPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
     }
 }
