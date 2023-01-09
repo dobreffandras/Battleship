@@ -225,6 +225,14 @@ namespace Battleship.Services
                 body: Encoding.UTF8.GetBytes("connectionAccepted"));
         }
 
+        internal void LeaveGame()
+        {
+            channel.BasicPublish(
+                exchange: exchange,
+                routingKey: $"{player}.utility",
+                body: Encoding.UTF8.GetBytes("opponentLeft"));
+        }
+
         internal void Shoot((char x, char y) coord)
         {
             var gameMessageStr = JsonConvert.SerializeObject(

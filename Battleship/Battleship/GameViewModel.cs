@@ -59,6 +59,7 @@ namespace Battleship
             NotifyPropertyChanged(nameof(IsMyTurn));
             NotifyPropertyChanged(nameof(IsOpponentsTurn));
         }
+
         public void ConnectionAccepted()
         {
             game.ConnectionAccepted();
@@ -71,6 +72,8 @@ namespace Battleship
         {
             game.OpponentLeft();
             NotifyPropertyChanged(nameof(GameStateMessage));
+            NotifyPropertyChanged(nameof(IsMyTurn));
+            NotifyPropertyChanged(nameof(IsOpponentsTurn));
         }
 
         public void ShootMessageReceived(ShootMessage message)
@@ -94,5 +97,7 @@ namespace Battleship
             NotifyPropertyChanged(nameof(IsOpponentsTurn));
             OtherPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
+
+        internal void LeaveGame() => communicationService.LeaveGame();
     }
 }

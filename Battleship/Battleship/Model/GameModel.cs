@@ -1,5 +1,4 @@
-﻿using Battleship.Services;
-using System;
+﻿using System;
 
 namespace Battleship.Model
 {
@@ -59,10 +58,15 @@ namespace Battleship.Model
                 _ => throw new InvalidOperationException($"{nameof(GameOver)} method cannot be called in the current state of the game."),
             };
         }
-
+        
         public void OpponentLeft()
         {
-            // TODO 
+            State = State switch
+            {
+                Playing s => s.OpponentLeft(),
+                GameOver s => s,
+                _ => throw new InvalidOperationException($"{nameof(OpponentLeft)} method cannot be called in the current state of the game."),
+            };
         }
 
         public (bool isShippart, ShootState shootState) ReceiveShoot(char x, char y)
@@ -140,14 +144,18 @@ namespace Battleship.Model
             }
         }
 
-        public IGameState GameOver()
-        {
-            return new GameOver(Current, OnTurn);
-        }
+        public IGameState GameOver() => new GameOver(Current, OnTurn);
+
+        public IGameState OpponentLeft() => new Aborted();
     }
 
     internal record GameOver(Player CurrentPlayer, Player Winner) : IGameState
     {
         public string Text => CurrentPlayer == Winner ? "You are the winner!" : "You've lost";
+    }
+
+    internal class Aborted : IGameState
+    {
+        public string Text => "Opponent left the game";
     }
 }

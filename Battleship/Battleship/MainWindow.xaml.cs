@@ -31,5 +31,14 @@ namespace Battleship
                 mainViewModel.ViewModel = viewModel;
             }
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (DataContext is MainWindowViewModel mainViewModel
+                && mainViewModel.ViewModel is GameViewModel gameViewModel)
+            {
+                gameViewModel.LeaveGame();
+            }
+        }
     }
 }
