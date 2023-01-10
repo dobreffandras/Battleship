@@ -4,16 +4,13 @@ using System;
 using System.Text;
 using Newtonsoft.Json;
 using Battleship.Model;
+using static Battleship.Services.RabbitMqConstants;
 
 namespace Battleship.Services
 {
     internal class CommunicationService
     {
-        private string? exchange;
-        private string? player;
-        private string? receivingQueue;
-        private string? responseQueue;
-        private string? utilityQueue;
+        private GameInfo? gameInfo;
         private readonly IConnection connection;
         private readonly IModel channel;
 
@@ -24,7 +21,7 @@ namespace Battleship.Services
             channel = connection.CreateModel();
 
             channel.ExchangeDeclare(
-                exchange: "open_games",
+                exchange: ExchangeNames.OPEN_GAMES,
                 type: ExchangeType.Fanout,
                 durable: true);
         }
@@ -34,7 +31,7 @@ namespace Battleship.Services
             var queueName = channel.QueueDeclare().QueueName;
             channel.QueueBind(
                 queueName,
-                exchange: "open_games",
+                exchange: ExchangeNames.OPEN_GAMES,
                 routingKey: string.Empty);
 
             var consumer = new EventingBasicConsumer(channel);
@@ -48,20 +45,20 @@ namespace Battleship.Services
         public Action<LobbyMessage>? NewOpenGameCallback { get; set; }
 
         public Action<ShootMessage>? ShootCallback { get; set; }
-        
+
         public Action<ShootResponseMessage>? ShootResponseCallback { get; set; }
-        
+
         public Action? OpponentConnectedCallback { get; set; }
 
         public Action? ConnectionAcceptedCallback { get; set; }
-        
+
         public Action? OpponentLeftCallback { get; set; }
 
         private void OpenGamesMessageReceived(object? sender, BasicDeliverEventArgs args)
         {
             var messageStr = Encoding.UTF8.GetString(args.Body.ToArray());
             var message = JsonConvert.DeserializeObject<LobbyMessage>(messageStr);
-            if(message is not null)
+            if (message is not null)
             {
                 NewOpenGameCallback?.Invoke(message);
             }
@@ -70,58 +67,34 @@ namespace Battleship.Services
         internal string StartNewGame()
         {
             var newGameId = Guid.NewGuid().ToString();
-            var messageStr = JsonConvert.SerializeObject(
-                new LobbyMessage(MessageType.NewGame, newGameId));
 
-            channel.BasicPublish(
-                exchange: "open_games",
-                routingKey: string.Empty,
-                body: Encoding.UTF8.GetBytes(messageStr));
+            SendNewGameMessage(newGameId);
 
-            receivingQueue = $"game-{newGameId}-receive-a";
-            responseQueue = $"game-{newGameId}-response-a";
-            utilityQueue = $"game-{newGameId}-utility-a";
-            exchange = $"game-{newGameId}";
-            player = "a";
-            var otherPlayer = "b";
+            gameInfo = new GameInfo(newGameId, player: "a", otherPlayer: "b");
 
             channel.ExchangeDeclare(
-                exchange, 
+                gameInfo.Exchange,
                 ExchangeType.Direct,
                 autoDelete: true,
                 durable: true);
-            channel.QueueDeclare(queue: receivingQueue, durable: true);
-            channel.QueueDeclare(queue: responseQueue, durable: true);
-            channel.QueueDeclare(queue: utilityQueue, durable: true);
 
-            channel.QueueBind(
-                receivingQueue,
-                exchange,
-                $"{otherPlayer}.receive");
-            channel.QueueBind(
-                responseQueue,
-                exchange,
-                $"{otherPlayer}.response");
-            channel.QueueBind(
-                utilityQueue,
-                exchange,
-                $"{otherPlayer}.utility");
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.ReceivingQueue,
+                gameInfo.Exchange,
+                gameInfo.ReceivingRoutingKeyIn,
+                ShootMessageReceviced);
 
-            var consumer1 = new EventingBasicConsumer(channel);
-            var consumer2 = new EventingBasicConsumer(channel);
-            var consumer3 = new EventingBasicConsumer(channel);
-            consumer1.Received += ShootMessageReceviced;
-            consumer2.Received += ShootResponseMessageReceviced;
-            consumer3.Received += UtilityMessageReceviced;
-            channel.BasicConsume(
-                queue: receivingQueue,
-                consumer: consumer1);
-            channel.BasicConsume(
-                queue: responseQueue,
-                consumer: consumer2);
-            channel.BasicConsume(
-                queue: utilityQueue,
-                consumer: consumer3);
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.ResponseQueue,
+                gameInfo.Exchange,
+                gameInfo.ResponseRoutingKeyIn,
+                ShootResponseMessageReceviced);
+
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.UtilityQueue,
+                gameInfo.Exchange,
+                gameInfo.UtilityRountingKeyIn,
+                UtilityMessageReceviced);
 
             return newGameId;
         }
@@ -135,7 +108,7 @@ namespace Battleship.Services
                 ShootCallback?.Invoke(message);
             }
         }
-        
+
         private void ShootResponseMessageReceviced(object? sender, BasicDeliverEventArgs e)
         {
             var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
@@ -145,15 +118,15 @@ namespace Battleship.Services
                 ShootResponseCallback?.Invoke(message);
             }
         }
-        
+
         private void UtilityMessageReceviced(object? sender, BasicDeliverEventArgs e)
         {
             var messageStr = Encoding.UTF8.GetString(e.Body.ToArray());
             var action = messageStr switch
             {
-                "opponentConnected" => OpponentConnectedCallback,
-                "connectionAccepted" => ConnectionAcceptedCallback,
-                "opponentLeft" => OpponentLeftCallback,
+                UtilityMessages.OPPONENT_CONNECTED => OpponentConnectedCallback,
+                UtilityMessages.CONNECTION_ACCEPTED => ConnectionAcceptedCallback,
+                UtilityMessages.OPPONENT_LEFT => OpponentLeftCallback,
                 _ => null
             };
 
@@ -162,59 +135,33 @@ namespace Battleship.Services
 
         internal void JoinGame(string selectedGameItem)
         {
-            var messageStr = JsonConvert.SerializeObject(
-                new LobbyMessage(MessageType.GameDisappeared, selectedGameItem));
+            SendGameDisapperedMessage(selectedGameItem);
 
-            channel.BasicPublish(
-                exchange: "open_games",
-                routingKey: string.Empty,
-                body: Encoding.UTF8.GetBytes(messageStr));
-
-
-            receivingQueue = $"game-{selectedGameItem}-receive-b";
-            responseQueue = $"game-{selectedGameItem}-response-b";
-            utilityQueue = $"game-{selectedGameItem}-utility-b";
-            exchange = $"game-{selectedGameItem}";
-            player = "b";
-            var otherPlayer = "a";
+            gameInfo = new GameInfo(selectedGameItem, player: "b", otherPlayer: "a");
 
             channel.ExchangeDeclare(
-                exchange, 
+                gameInfo.Exchange,
                 ExchangeType.Direct,
                 autoDelete: true,
                 durable: true);
-            channel.QueueDeclare(queue: receivingQueue, durable: true);
-            channel.QueueDeclare(queue: responseQueue, durable: true);
-            channel.QueueDeclare(queue: utilityQueue, durable: true);
 
-            channel.QueueBind(
-                receivingQueue,
-                exchange,
-                $"{otherPlayer}.receive");
-            channel.QueueBind(
-                responseQueue,
-                exchange,
-                $"{otherPlayer}.response");
-            channel.QueueBind(
-                utilityQueue,
-                exchange,
-                $"{otherPlayer}.utility");
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.ReceivingQueue,
+                gameInfo.Exchange,
+                gameInfo.ReceivingRoutingKeyIn,
+                ShootMessageReceviced);
 
-            var consumer1 = new EventingBasicConsumer(channel);
-            var consumer2 = new EventingBasicConsumer(channel);
-            var consumer3 = new EventingBasicConsumer(channel);
-            consumer1.Received += ShootMessageReceviced;
-            consumer2.Received += ShootResponseMessageReceviced;
-            consumer3.Received += UtilityMessageReceviced;
-            channel.BasicConsume(
-                queue: receivingQueue,
-                consumer: consumer1);
-            channel.BasicConsume(
-                queue: responseQueue,
-                consumer: consumer2);
-            channel.BasicConsume(
-                queue: utilityQueue,
-                consumer: consumer3);
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.ResponseQueue,
+                gameInfo.Exchange,
+                gameInfo.ResponseRoutingKeyIn,
+                ShootResponseMessageReceviced);
+
+            DeclareAndBindQueueWithConsumer(
+                gameInfo.UtilityQueue,
+                gameInfo.Exchange,
+                gameInfo.UtilityRountingKeyIn,
+                UtilityMessageReceviced);
 
             SendConnectionMessage();
         }
@@ -222,30 +169,30 @@ namespace Battleship.Services
         private void SendConnectionMessage()
         {
             channel.BasicPublish(
-                exchange: exchange,
-                routingKey: $"{player}.utility",
-                body: Encoding.UTF8.GetBytes("opponentConnected"));
+                exchange: gameInfo.Exchange,
+                routingKey: gameInfo.UtilityRountingKeyOut,
+                body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_CONNECTED));
 
         }
 
         internal void AcceptConnection()
         {
             channel.BasicPublish(
-                exchange: exchange,
-                routingKey: $"{player}.utility",
-                body: Encoding.UTF8.GetBytes("connectionAccepted"));
+                exchange: gameInfo.Exchange,
+                routingKey: gameInfo.UtilityRountingKeyOut,
+                body: Encoding.UTF8.GetBytes(UtilityMessages.CONNECTION_ACCEPTED));
         }
 
         internal void LeaveGame()
         {
             channel.BasicPublish(
-                exchange: exchange,
-                routingKey: $"{player}.utility",
-                body: Encoding.UTF8.GetBytes("opponentLeft"));
+                exchange: gameInfo.Exchange,
+                routingKey: gameInfo.UtilityRountingKeyOut,
+                body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_LEFT));
 
-            channel.QueueDelete(receivingQueue);
-            channel.QueueDelete(responseQueue);
-            channel.QueueDelete(utilityQueue);
+            channel.QueueDelete(gameInfo.ReceivingQueue);
+            channel.QueueDelete(gameInfo.ResponseQueue);
+            channel.QueueDelete(gameInfo.UtilityQueue);
         }
 
         internal void Close()
@@ -259,20 +206,56 @@ namespace Battleship.Services
                 new ShootMessage(coord.x, coord.y));
 
             channel.BasicPublish(
-                exchange: exchange,
-                routingKey: $"{player}.receive",
+                exchange: gameInfo.Exchange,
+                routingKey: gameInfo.ReceivingRoutingKeyOut,
                 body: Encoding.UTF8.GetBytes(gameMessageStr));
         }
-        
+
         internal void Respond((char x, char y) coord, bool isShippart, ShootState shootState)
         {
             var responseMessageStr = JsonConvert.SerializeObject(
                 new ShootResponseMessage(coord.x, coord.y, isShippart, shootState));
 
             channel.BasicPublish(
-                exchange: exchange,
-                routingKey: $"{player}.response",
+                exchange: gameInfo.Exchange,
+                routingKey: gameInfo.ResponseRoutingKeyOut,
                 body: Encoding.UTF8.GetBytes(responseMessageStr));
+        }
+
+        private void SendNewGameMessage(string newGameId)
+        {
+            var message = new LobbyMessage(MessageType.NewGame, newGameId);
+
+            channel.BasicPublish(
+                exchange: ExchangeNames.OPEN_GAMES,
+                routingKey: string.Empty,
+                body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
+        }
+
+        private void SendGameDisapperedMessage(string selectedGameItem)
+        {
+            var message = new LobbyMessage(MessageType.GameDisappeared, selectedGameItem);
+
+            channel.BasicPublish(
+                exchange: ExchangeNames.OPEN_GAMES,
+                routingKey: string.Empty,
+                body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
+        }
+
+        private void DeclareAndBindQueueWithConsumer(
+            string queue,
+            string exchange,
+            string routingKey,
+            EventHandler<BasicDeliverEventArgs> eventHandler)
+        {
+            channel.QueueDeclare(queue, durable: true);
+            channel.QueueBind(queue, exchange, routingKey);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += eventHandler;
+            channel.BasicConsume(
+                queue: queue,
+                consumer: consumer);
         }
     }
 }
