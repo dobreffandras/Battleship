@@ -16,12 +16,12 @@ namespace Battleship
 
         public LobbyViewModel(
             CommunicationService communicationService,
-            Action<GameModel> navigateToGameViewModel)
+            NavigationService navigationService)
         {
             NewGamePlayField = new PreparingPlayfieldViewModel(new PlayfieldModel());
             OpenGames = new ObservableCollection<string>();
-            JoinGameCommand = new JoinGameCommand(this, navigateToGameViewModel);
-            NewGameCommand = new NewGameCommand(this, navigateToGameViewModel);
+            JoinGameCommand = new JoinGameCommand(this, navigationService);
+            NewGameCommand = new NewGameCommand(this, navigationService);
             this.communicationService = communicationService;
             
             communicationService.NewOpenGameCallback = this.OnNewOpenGame;

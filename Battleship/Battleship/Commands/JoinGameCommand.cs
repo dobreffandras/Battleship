@@ -1,4 +1,5 @@
 ﻿using Battleship.Model;
+using Battleship.Services;
 using System;
 using System.ComponentModel;
 
@@ -9,10 +10,10 @@ namespace Battleship.Commands
         private readonly LobbyViewModel lobby;
         private readonly Action<GameModel> navigate;
 
-        public JoinGameCommand(LobbyViewModel lobby, Action<GameModel> navigate)
+        public JoinGameCommand(LobbyViewModel lobby, NavigationService navigationService)
         {
             this.lobby = lobby;
-            this.navigate = navigate;
+            this.navigate = navigationService.ToGameViewModel;
             lobby.PropertyChanged += Lobby_PropertyChanged;
             lobby.NewGamePlayField.PropertyChanged += Lobby_NewGamePlayField_Propertychanged;
         }

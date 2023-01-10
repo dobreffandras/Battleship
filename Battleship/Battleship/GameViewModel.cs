@@ -1,12 +1,17 @@
-﻿using Battleship.Components;
+﻿using Battleship.Commands;
+using Battleship.Components;
 using Battleship.Model;
 using Battleship.Services;
+using System.Windows.Input;
 
 namespace Battleship
 {
     internal class GameViewModel : BaseViewModel
     {
-        public GameViewModel(GameModel game, CommunicationService communicationService)
+        public GameViewModel(
+            GameModel game, 
+            CommunicationService communicationService, 
+            NavigationService navigationService)
         {
             communicationService.ShootCallback = ShootMessageReceived;
             communicationService.ShootResponseCallback = ShootResponseMessageReceived;
@@ -18,10 +23,13 @@ namespace Battleship
             this.communicationService = communicationService;
             MyPlayingFieldViewModel = new PlayingFieldViewModel(game.MyPlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(game.OtherPlayfieldModel, PlayingType.Active, communicationService);
+            NavigateBackToLobby = new BackToLobbyCommand(navigationService);
         }
 
         private readonly GameModel game;
         private readonly CommunicationService communicationService;
+
+        public ICommand NavigateBackToLobby { get; }
 
         public string GameId => game.GameId;
 

@@ -14,29 +14,38 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock 
+        <Button 
             Grid.Column="0"
             Grid.Row="0"
+            Padding="5"
+            Width="100"
+            HorizontalAlignment="Left"
+            Command="{Binding NavigateBackToLobby}" 
+            Content="&#x2190; Quit"></Button>
+        <TextBlock 
+            Grid.Column="0"
+            Grid.Row="1"
             Grid.ColumnSpan="2"
             Margin="10 5 10 0"
             FontSize="14"
             Text="{Binding GameId, StringFormat=Game: {0}}"></TextBlock>
         <TextBlock 
             Grid.Column="0"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.ColumnSpan="2"
             Margin="10 5 10 5"
             FontSize="14"
             Text="{Binding PlayerSide, StringFormat=You are {0}}"></TextBlock>
         <TextBlock 
             Grid.Column="0"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.ColumnSpan="2"
             Margin="0 5 0 0"
             FontSize="16"
@@ -44,13 +53,13 @@
             Text="{Binding GameStateMessage}"></TextBlock>
         <components:PlayingField
             Grid.Column="0"
-            Grid.Row="3"
+            Grid.Row="4"
             Margin="20"
             IsEnabled="{Binding DataContext.IsOpponentsTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding MyPlayingFieldViewModel}" />
         <components:PlayingField 
             Grid.Column="1"
-            Grid.Row="3"
+            Grid.Row="4"
             Margin="20"
             IsEnabled="{Binding DataContext.IsMyTurn, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:Game}}}"
             DataContext="{Binding OtherPlayingFieldViewModel}" />

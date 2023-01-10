@@ -9,18 +9,16 @@ namespace Battleship
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CommunicationService communicationService;
+
         public MainWindow()
         {
             InitializeComponent();
-            var communicationService = new CommunicationService();
+            communicationService = new CommunicationService();
+            var navigationService = new NavigationService(ChangeViewModel, communicationService);
             this.DataContext = new MainWindowViewModel()
             {
-                ViewModel = new LobbyViewModel(
-                    communicationService,
-                    navigateToGameViewModel: game =>
-                    {
-                        ChangeViewModel(new GameViewModel(game, communicationService));
-                    }),
+                ViewModel = new LobbyViewModel(communicationService, navigationService),
             };
         }
 
