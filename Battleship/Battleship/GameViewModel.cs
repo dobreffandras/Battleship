@@ -21,8 +21,18 @@ namespace Battleship
 
             this.game = game;
             this.communicationService = communicationService;
-            MyPlayingFieldViewModel = new PlayingFieldViewModel(game.MyPlayfieldModel, PlayingType.Passive, communicationService);
-            OtherPlayingFieldViewModel = new PlayingFieldViewModel(game.OtherPlayfieldModel, PlayingType.Active, communicationService);
+            MyPlayingFieldViewModel = 
+                new PlayingFieldViewModel(
+                    game.GameMeta, 
+                    game.MyPlayfieldModel, 
+                    PlayingType.Passive, 
+                    communicationService);
+            OtherPlayingFieldViewModel = 
+                new PlayingFieldViewModel(
+                    game.GameMeta, 
+                    game.OtherPlayfieldModel, 
+                    PlayingType.Active, 
+                    communicationService);
             NavigateBackToLobby = new BackToLobbyCommand(this, navigationService);
         }
 
@@ -62,7 +72,7 @@ namespace Battleship
         public void OpponentConnected()
         {
             game.OpponentConnected();
-            communicationService.AcceptConnection();
+            communicationService.AcceptConnection(game.GameMeta);
             NotifyPropertyChanged(nameof(GameStateMessage));
             NotifyPropertyChanged(nameof(IsMyTurn));
             NotifyPropertyChanged(nameof(IsOpponentsTurn));
@@ -90,7 +100,7 @@ namespace Battleship
             var y = message.Y;
 
             var (isShippart, shootState) = game.ReceiveShoot(x, y);
-            communicationService.Respond((x, y), isShippart, shootState);
+            communicationService.Respond(game.GameMeta, (x, y), isShippart, shootState);
             NotifyPropertyChanged(nameof(GameStateMessage));
             NotifyPropertyChanged(nameof(IsMyTurn));
             NotifyPropertyChanged(nameof(IsOpponentsTurn));
@@ -106,6 +116,6 @@ namespace Battleship
             OtherPlayingFieldViewModel.NotifyAllPropertiesChanged();
         }
 
-        internal void LeaveGame() => communicationService.LeaveGame();
+        internal void LeaveGame() => communicationService.LeaveGame(game.GameMeta);
     }
 }

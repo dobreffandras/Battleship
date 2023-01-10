@@ -12,6 +12,7 @@ namespace Battleship.Components
         private readonly PlayfieldModel model;
 
         public PlayingFieldViewModel(
+            GameMetadata gameMeta,
             PlayfieldModel model,
             PlayingType playingType,
             CommunicationService communicationService)
@@ -21,7 +22,7 @@ namespace Battleship.Components
             ShootCommands = model.CellCoordinates
                 .ToDictionary<(char, char), string, ICommand>(
                     c => $"{c.Item1}{c.Item2}",
-                    c => new ShootCommand(c, communicationService));
+                    c => new ShootCommand(gameMeta, c, communicationService));
         }
 
         public IDictionary<string, string> Shipparts 

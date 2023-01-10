@@ -10,7 +10,6 @@ namespace Battleship.Services
 {
     internal class CommunicationService
     {
-        private GameInfo? gameInfo;
         private readonly IConnection connection;
         private readonly IModel channel;
 
@@ -64,39 +63,43 @@ namespace Battleship.Services
             }
         }
 
-        internal string StartNewGame()
+        internal GameMetadata StartNewGame()
         {
             var newGameId = Guid.NewGuid().ToString();
 
             SendNewGameMessage(newGameId);
 
-            gameInfo = new GameInfo(newGameId, player: "a", otherPlayer: "b");
+            var gameMeta =
+                new GameMetadata(
+                    newGameId, 
+                    player: Player.PlayerOne, 
+                    otherPlayer: Player.PlayerTwo);
 
             channel.ExchangeDeclare(
-                gameInfo.Exchange,
+                gameMeta.Exchange,
                 ExchangeType.Direct,
                 autoDelete: true,
                 durable: true);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.ReceivingQueue,
-                gameInfo.Exchange,
-                gameInfo.ReceivingRoutingKeyIn,
+                gameMeta.ReceivingQueue,
+                gameMeta.Exchange,
+                gameMeta.ReceivingRoutingKeyIn,
                 ShootMessageReceviced);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.ResponseQueue,
-                gameInfo.Exchange,
-                gameInfo.ResponseRoutingKeyIn,
+                gameMeta.ResponseQueue,
+                gameMeta.Exchange,
+                gameMeta.ResponseRoutingKeyIn,
                 ShootResponseMessageReceviced);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.UtilityQueue,
-                gameInfo.Exchange,
-                gameInfo.UtilityRountingKeyIn,
+                gameMeta.UtilityQueue,
+                gameMeta.Exchange,
+                gameMeta.UtilityRountingKeyIn,
                 UtilityMessageReceviced);
 
-            return newGameId;
+            return gameMeta;
         }
 
         private void ShootMessageReceviced(object? sender, BasicDeliverEventArgs e)
@@ -133,66 +136,71 @@ namespace Battleship.Services
             action?.Invoke();
         }
 
-        internal void JoinGame(string selectedGameItem)
+        internal GameMetadata JoinGame(string selectedGameItem)
         {
             SendGameDisapperedMessage(selectedGameItem);
 
-            gameInfo = new GameInfo(selectedGameItem, player: "b", otherPlayer: "a");
+            var gameMeta = 
+                new GameMetadata(
+                    selectedGameItem, 
+                    player: Player.PlayerTwo, 
+                    otherPlayer: Player.PlayerOne);
 
             channel.ExchangeDeclare(
-                gameInfo.Exchange,
+                gameMeta.Exchange,
                 ExchangeType.Direct,
                 autoDelete: true,
                 durable: true);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.ReceivingQueue,
-                gameInfo.Exchange,
-                gameInfo.ReceivingRoutingKeyIn,
+                gameMeta.ReceivingQueue,
+                gameMeta.Exchange,
+                gameMeta.ReceivingRoutingKeyIn,
                 ShootMessageReceviced);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.ResponseQueue,
-                gameInfo.Exchange,
-                gameInfo.ResponseRoutingKeyIn,
+                gameMeta.ResponseQueue,
+                gameMeta.Exchange,
+                gameMeta.ResponseRoutingKeyIn,
                 ShootResponseMessageReceviced);
 
             DeclareAndBindQueueWithConsumer(
-                gameInfo.UtilityQueue,
-                gameInfo.Exchange,
-                gameInfo.UtilityRountingKeyIn,
+                gameMeta.UtilityQueue,
+                gameMeta.Exchange,
+                gameMeta.UtilityRountingKeyIn,
                 UtilityMessageReceviced);
 
-            SendConnectionMessage();
+            SendConnectionMessage(gameMeta);
+
+            return gameMeta;
         }
 
-        private void SendConnectionMessage()
+        private void SendConnectionMessage(GameMetadata gameMeta)
         {
             channel.BasicPublish(
-                exchange: gameInfo.Exchange,
-                routingKey: gameInfo.UtilityRountingKeyOut,
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.UtilityRountingKeyOut,
                 body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_CONNECTED));
-
         }
 
-        internal void AcceptConnection()
+        internal void AcceptConnection(GameMetadata gameMeta)
         {
             channel.BasicPublish(
-                exchange: gameInfo.Exchange,
-                routingKey: gameInfo.UtilityRountingKeyOut,
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.UtilityRountingKeyOut,
                 body: Encoding.UTF8.GetBytes(UtilityMessages.CONNECTION_ACCEPTED));
         }
 
-        internal void LeaveGame()
+        internal void LeaveGame(GameMetadata gameMeta)
         {
             channel.BasicPublish(
-                exchange: gameInfo.Exchange,
-                routingKey: gameInfo.UtilityRountingKeyOut,
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.UtilityRountingKeyOut,
                 body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_LEFT));
 
-            channel.QueueDelete(gameInfo.ReceivingQueue);
-            channel.QueueDelete(gameInfo.ResponseQueue);
-            channel.QueueDelete(gameInfo.UtilityQueue);
+            channel.QueueDelete(gameMeta.ReceivingQueue);
+            channel.QueueDelete(gameMeta.ResponseQueue);
+            channel.QueueDelete(gameMeta.UtilityQueue);
         }
 
         internal void Close()
@@ -200,25 +208,25 @@ namespace Battleship.Services
             connection.Close();
         }
 
-        internal void Shoot((char x, char y) coord)
+        internal void Shoot(GameMetadata gameMeta, (char x, char y) coord)
         {
             var gameMessageStr = JsonConvert.SerializeObject(
                 new ShootMessage(coord.x, coord.y));
 
             channel.BasicPublish(
-                exchange: gameInfo.Exchange,
-                routingKey: gameInfo.ReceivingRoutingKeyOut,
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.ReceivingRoutingKeyOut,
                 body: Encoding.UTF8.GetBytes(gameMessageStr));
         }
 
-        internal void Respond((char x, char y) coord, bool isShippart, ShootState shootState)
+        internal void Respond(GameMetadata gameMeta, (char x, char y) coord, bool isShippart, ShootState shootState)
         {
             var responseMessageStr = JsonConvert.SerializeObject(
                 new ShootResponseMessage(coord.x, coord.y, isShippart, shootState));
 
             channel.BasicPublish(
-                exchange: gameInfo.Exchange,
-                routingKey: gameInfo.ResponseRoutingKeyOut,
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.ResponseRoutingKeyOut,
                 body: Encoding.UTF8.GetBytes(responseMessageStr));
         }
 

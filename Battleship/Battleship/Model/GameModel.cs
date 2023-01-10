@@ -1,13 +1,13 @@
 ﻿using System;
+using static Battleship.Services.RabbitMqConstants;
 
 namespace Battleship.Model
 {
     internal class GameModel
     {
-        public GameModel(string gameId, Player player, PlayfieldModel playfieldModel)
+        public GameModel(GameMetadata gameMeta, PlayfieldModel playfieldModel)
         {
-            GameId = gameId;
-            Player = player;
+            GameMeta = gameMeta;
             MyPlayfieldModel = playfieldModel;
             OtherPlayfieldModel = new PlayfieldModel();
             State = new WaitingOpponent();
@@ -15,10 +15,12 @@ namespace Battleship.Model
 
         public IGameState State { get; set; }
 
-        public string GameId { get; }
+        public string GameId => GameMeta.GameId;
 
-        public Player Player { get; }
+        public Player Player => GameMeta.Player;
 
+        public GameMetadata GameMeta { get; }
+        
         public PlayfieldModel MyPlayfieldModel { get; }
 
         public PlayfieldModel OtherPlayfieldModel { get; }
