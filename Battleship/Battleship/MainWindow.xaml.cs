@@ -36,6 +36,7 @@ namespace Battleship
                 && mainViewModel.ViewModel is GameViewModel gameViewModel)
             {
                 gameViewModel.LeaveGame();
+                communicationService.Close();
             }
         }
     }

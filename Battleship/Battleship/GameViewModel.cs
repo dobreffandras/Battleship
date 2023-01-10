@@ -23,7 +23,7 @@ namespace Battleship
             this.communicationService = communicationService;
             MyPlayingFieldViewModel = new PlayingFieldViewModel(game.MyPlayfieldModel, PlayingType.Passive, communicationService);
             OtherPlayingFieldViewModel = new PlayingFieldViewModel(game.OtherPlayfieldModel, PlayingType.Active, communicationService);
-            NavigateBackToLobby = new BackToLobbyCommand(navigationService);
+            NavigateBackToLobby = new BackToLobbyCommand(this, navigationService);
         }
 
         private readonly GameModel game;

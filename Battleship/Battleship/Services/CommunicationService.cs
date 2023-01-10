@@ -14,17 +14,19 @@ namespace Battleship.Services
         private string? receivingQueue;
         private string? responseQueue;
         private string? utilityQueue;
+        private readonly IConnection connection;
         private readonly IModel channel;
 
         public CommunicationService()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" }; // TODO extract to config
-            var connection = factory.CreateConnection();
+            connection = factory.CreateConnection();
             channel = connection.CreateModel();
 
             channel.ExchangeDeclare(
                 exchange: "open_games",
-                type: ExchangeType.Fanout);
+                type: ExchangeType.Fanout,
+                durable: true);
         }
 
         public void Connect()
@@ -83,10 +85,14 @@ namespace Battleship.Services
             player = "a";
             var otherPlayer = "b";
 
-            channel.ExchangeDeclare(exchange, ExchangeType.Direct);
-            channel.QueueDeclare(queue: receivingQueue);
-            channel.QueueDeclare(queue: responseQueue);
-            channel.QueueDeclare(queue: utilityQueue);
+            channel.ExchangeDeclare(
+                exchange, 
+                ExchangeType.Direct,
+                autoDelete: true,
+                durable: true);
+            channel.QueueDeclare(queue: receivingQueue, durable: true);
+            channel.QueueDeclare(queue: responseQueue, durable: true);
+            channel.QueueDeclare(queue: utilityQueue, durable: true);
 
             channel.QueueBind(
                 receivingQueue,
@@ -172,10 +178,14 @@ namespace Battleship.Services
             player = "b";
             var otherPlayer = "a";
 
-            channel.ExchangeDeclare(exchange, ExchangeType.Direct);
-            channel.QueueDeclare(queue: receivingQueue);
-            channel.QueueDeclare(queue: responseQueue);
-            channel.QueueDeclare(queue: utilityQueue);
+            channel.ExchangeDeclare(
+                exchange, 
+                ExchangeType.Direct,
+                autoDelete: true,
+                durable: true);
+            channel.QueueDeclare(queue: receivingQueue, durable: true);
+            channel.QueueDeclare(queue: responseQueue, durable: true);
+            channel.QueueDeclare(queue: utilityQueue, durable: true);
 
             channel.QueueBind(
                 receivingQueue,
@@ -215,6 +225,7 @@ namespace Battleship.Services
                 exchange: exchange,
                 routingKey: $"{player}.utility",
                 body: Encoding.UTF8.GetBytes("opponentConnected"));
+
         }
 
         internal void AcceptConnection()
@@ -231,6 +242,15 @@ namespace Battleship.Services
                 exchange: exchange,
                 routingKey: $"{player}.utility",
                 body: Encoding.UTF8.GetBytes("opponentLeft"));
+
+            channel.QueueDelete(receivingQueue);
+            channel.QueueDelete(responseQueue);
+            channel.QueueDelete(utilityQueue);
+        }
+
+        internal void Close()
+        {
+            connection.Close();
         }
 
         internal void Shoot((char x, char y) coord)
