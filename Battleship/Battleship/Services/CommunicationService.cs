@@ -13,9 +13,9 @@ namespace Battleship.Services
         private readonly IConnection connection;
         private readonly IModel channel;
 
-        public CommunicationService()
+        public CommunicationService(string hostName)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" }; // TODO extract to config
+            var factory = new ConnectionFactory() { HostName = hostName };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
 

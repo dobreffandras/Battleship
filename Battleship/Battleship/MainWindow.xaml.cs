@@ -1,5 +1,6 @@
 ﻿using Battleship.Model;
 using Battleship.Services;
+using Microsoft.Extensions.Configuration;
 using System.Windows;
 
 namespace Battleship
@@ -11,10 +12,11 @@ namespace Battleship
     {
         private CommunicationService communicationService;
 
-        public MainWindow()
+        public MainWindow(IConfiguration configuration)
         {
             InitializeComponent();
-            communicationService = new CommunicationService();
+            var host = configuration.GetRequiredSection("host").Value!;
+            communicationService = new CommunicationService(host);
             var navigationService = new NavigationService(ChangeViewModel, communicationService);
             this.DataContext = new MainWindowViewModel()
             {
