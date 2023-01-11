@@ -193,10 +193,12 @@ namespace Battleship.Services
 
         internal void LeaveGame(GameMetadata gameMeta)
         {
-            channel.BasicPublish(
-                exchange: gameMeta.Exchange,
-                routingKey: gameMeta.UtilityRountingKeyOut,
-                body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_LEFT));
+            SendOpponentLeftMessage(gameMeta);
+
+            if (gameMeta.Player == Player.PlayerOne)
+            {
+                SendGameDisapperedMessage(gameMeta.GameId);
+            }
 
             channel.QueueDelete(gameMeta.ReceivingQueue);
             channel.QueueDelete(gameMeta.ResponseQueue);
@@ -240,14 +242,22 @@ namespace Battleship.Services
                 body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
         }
 
-        private void SendGameDisapperedMessage(string selectedGameItem)
+        private void SendGameDisapperedMessage(string gameId)
         {
-            var message = new LobbyMessage(MessageType.GameDisappeared, selectedGameItem);
+            var message = new LobbyMessage(MessageType.GameDisappeared, gameId);
 
             channel.BasicPublish(
                 exchange: ExchangeNames.OPEN_GAMES,
                 routingKey: string.Empty,
                 body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message)));
+        }
+
+        private void SendOpponentLeftMessage(GameMetadata gameMeta)
+        {
+            channel.BasicPublish(
+                exchange: gameMeta.Exchange,
+                routingKey: gameMeta.UtilityRountingKeyOut,
+                body: Encoding.UTF8.GetBytes(UtilityMessages.OPPONENT_LEFT));
         }
 
         private void DeclareAndBindQueueWithConsumer(
